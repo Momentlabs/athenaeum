@@ -1,0 +1,58 @@
+proxy:
+  secretToken: "8b18b71869598f1fa686545f444a44397996050ec9d67e3427a51177e6f12ee4"
+  https:
+    hosts: 
+        - jupyter.momentlabs.io
+    letsencrypt:
+        contactEmail: operations@momentlabs.io
+
+hub:
+  extraEnv:
+      AUTH0_SUBDOMAIN: momentlabs
+      OAUTH_CLIENT_ID: "GRagFRYsYX4icgF3k3rKOF50gcCCoZUp"
+      OAUTH_CLIENT_SECRET: "pN_D1ndMOkgxNat3IJcITvTouz6lmJFSfccGdk6wwK2ACLMdi7zyZdSUQZI873wD"
+      OAUTH_CALLBACK_URL: "http://jupyter.momentlabs.io/hub/oauth_callback"
+  image:
+    name: momentlabs/jupyterhub-k8s
+    tag: latest
+
+auth:
+  admin:
+      users: 
+        - jdr@rivas-yee.com
+  type: custom
+  custom:
+      className: oauthenticator.auth0.Auth0OAuthenticator
+      config:
+        client_id: "GRagFRYsYX4icgF3k3rKOF50gcCCoZUp"
+        client_secret: "pN_D1ndMOkgxNat3IJcITvTouz6lmJFSfccGdk6wwK2ACLMdi7zyZdSUQZI873wD"
+        callback_url: "http://jupyter.momentlabs.io/hub/oauth_callback"
+  # type: github
+  # github:
+  #   clientId: "d3daead7c1fe84b354ab"
+  #   clientSecret: "3cc07c9525900bd1ddc454518f040ad6c3520576"
+  #   callbackUrl: "http://jupyter.momentlabs.io/hub/oauth_callback"
+
+cull:
+  enabled: true
+  timeout: 86400 # 86400 = 1 day in seconds, 3600 = 1 hours in seconds.
+  every: 3600 
+
+# prePuller:
+#   continuous:
+#     enabled: false
+#   hook:
+#       enabled: true
+
+singleuser: 
+  image: 
+    name: jupyter/scipy-notebook
+    tag: c7fb6660d096
+  memory:
+    limit: 2G
+    guarantee: 1G
+  cpu:
+    limit: 1.0
+    guarantee: .75
+
+

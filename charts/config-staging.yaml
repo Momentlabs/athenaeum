@@ -1,0 +1,68 @@
+proxy:
+  secretToken: "4217e4694aac558d374226ac16af7000603a1621ae6b29314d90afc7641afdec"
+  https:
+    hosts: 
+        - staging.atheneum.momentlabs.io
+    letsencrypt:
+        contactEmail: operations@momentlabs.io
+  service:
+    loadBalancerIP: 35.230.60.217
+
+prePuller:
+  hook:
+    enabled: false
+
+hub:
+  image:
+    name: momentlabs/jupyterhub-k8s
+    tag: '00002'
+  extraEnv:
+      AUTH0_SUBDOMAIN: momentlabs
+      # OAUTH_CLIENT_ID: "1bmk91W3XSgQ7XeD2U4ewbD5QYEBLJ1y"
+      # OAUTH_CLIENT_SECRET: "LhfMcwHklLkR8UPsf4kYOOsSmaef105AdEL1TJ62EejqvmWPd76Z-cSmYPNj036h"
+      # OAUTH_CALLBACK_URL: "http://staging.atheneum.momentlabs.io/hub/oauth_callback"
+
+auth:
+  # type: auth0
+  # auth0:
+  #   clientId: "1bmk91W3XSgQ7XeD2U4ewbD5QYEBLJ1y"
+  #   clientSecret: "LhfMcwHklLkR8UPsf4kYOOsSmaef105AdEL1TJ62EejqvmWPd76Z-cSmYPNj036h"
+  #   callbackUrl: "http://staging.atheneum.momentlabs.io/hub/oauth_callback"
+    
+  type: custom
+  custom:
+      className: oauthenticator.auth0.Auth0OAuthenticator
+      config:
+        client_id: "1bmk91W3XSgQ7XeD2U4ewbD5QYEBLJ1y"
+        client_secret: "LhfMcwHklLkR8UPsf4kYOOsSmaef105AdEL1TJ62EejqvmWPd76Z-cSmYPNj036h"
+        callback_url: "http://staging.atheneum.momentlabs.io/hub/oauth_callback"
+ 
+  #  type: github
+  # github:
+  #   clientId: "d3daead7c1fe84b354ab"
+  #   clientSecret: "3cc07c9525900bd1ddc454518f040ad6c3520576"
+  #   callbackUrl: "http://jupyter.momentlabs.io/hub/oauth_callback"
+
+# cull:
+#   enabled: true
+#   timeout: 86400 # 86400 = 1 day in seconds, 3600 = 1 hours in seconds.
+#   every: 3600 
+
+# prePuller:
+#   continuous:
+#     enabled: false
+#   hook:
+#       enabled: true
+
+singleuser: 
+  image: 
+    name: jupyter/scipy-notebook
+    tag: c7fb6660d096
+  memory:
+    limit: 2G
+    guarantee: .5G
+  cpu:
+    limit: 1.0
+    guarantee: .5
+
+
