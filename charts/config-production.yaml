@@ -1,0 +1,42 @@
+proxy:
+  secretToken: "8ad941f6f010706b320687fb0a3d5c6d3d35d8fe0f53a265b91d209847987464"
+  https:
+    hosts: 
+        - atheneumnb.io
+    letsencrypt:
+        contactEmail: operations@momentlabs.io
+  service:
+    loadBalancerIP: 35.230.47.79
+
+prePuller:
+  hook:
+    enabled: false
+
+hub:
+  image:
+    name: momentlabs/jupyterhub-k8s
+    tag: '00055'
+  extraEnv:
+      AUTH0_SUBDOMAIN: momentlabs
+
+auth:    
+  type: custom
+  custom:
+      className: oauthenticator.auth0.Auth0OAuthenticator
+      config:
+        client_id: "GRagFRYsYX4icgF3k3rKOF50gcCCoZUp"
+        client_secret: "pN_D1ndMOkgxNat3IJcITvTouz6lmJFSfccGdk6wwK2ACLMdi7zyZdSUQZI873wD"
+        oauth_callback_url: "http://atheneumnb.io/hub/oauth_callback"
+        auth0_subdomain: "momentlabs"
+        client_redirect_base_url: "https://atheneumnb.io"  # This is used for adding redirects (e.g. logout) from auth0 to us.
+
+singleuser: 
+  image: 
+    name: jupyter/scipy-notebook
+    tag: 96f2f777be6e
+  memory:
+    limit: 2G
+    guarantee: .5G
+  cpu:
+    limit: 1.0
+    guarantee: .5

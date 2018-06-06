@@ -1,8 +1,8 @@
 proxy:
-  secretToken: "4217e4694aac558d374226ac16af7000603a1621ae6b29314d90afc7641afdec"
+  secretToken: "76b052a7ea4a97b46cbe8b5b312508a5b3b4f82cca7aac6a7f2edc2d78b7dd36"
   https:
     hosts: 
-        - staging.atheneum.momentlabs.io
+        - staging.atheneumnb.io
     letsencrypt:
         contactEmail: operations@momentlabs.io
   service:
@@ -15,12 +15,12 @@ prePuller:
 hub:
   image:
     name: momentlabs/jupyterhub-k8s
-    tag: '00002'
+    tag: '00055'
   extraEnv:
       AUTH0_SUBDOMAIN: momentlabs
       # OAUTH_CLIENT_ID: "1bmk91W3XSgQ7XeD2U4ewbD5QYEBLJ1y"
       # OAUTH_CLIENT_SECRET: "LhfMcwHklLkR8UPsf4kYOOsSmaef105AdEL1TJ62EejqvmWPd76Z-cSmYPNj036h"
-      # OAUTH_CALLBACK_URL: "http://staging.atheneum.momentlabs.io/hub/oauth_callback"
+      # OAUTH_CALLBACK_URL: "http://staging.atheneumnb.io/hub/oauth_callback"
 
 auth:
   # type: auth0
@@ -35,8 +35,10 @@ auth:
       config:
         client_id: "1bmk91W3XSgQ7XeD2U4ewbD5QYEBLJ1y"
         client_secret: "LhfMcwHklLkR8UPsf4kYOOsSmaef105AdEL1TJ62EejqvmWPd76Z-cSmYPNj036h"
-        callback_url: "http://staging.atheneum.momentlabs.io/hub/oauth_callback"
- 
+        oauth_callback_url: "http://staging.atheneumnb.io/hub/oauth_callback"
+        auth0_subdomain: "momentlabs"
+        client_redirect_base_url: "https://staging.atheneumnb.io"  # This is used for adding redirects (e.g. logout) from auth0 to us.
+
   #  type: github
   # github:
   #   clientId: "d3daead7c1fe84b354ab"
@@ -57,7 +59,7 @@ auth:
 singleuser: 
   image: 
     name: jupyter/scipy-notebook
-    tag: c7fb6660d096
+    tag: 96f2f777be6e
   memory:
     limit: 2G
     guarantee: .5G
