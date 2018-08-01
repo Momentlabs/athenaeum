@@ -2,7 +2,7 @@ proxy:
   secretToken: "8ad941f6f010706b320687fb0a3d5c6d3d35d8fe0f53a265b91d209847987464"
   https:
     hosts: 
-        - atheneumnb.io
+        - notebooks-1.athenaeumnb.com
     letsencrypt:
         contactEmail: operations@momentlabs.io
   service:
@@ -11,11 +11,6 @@ proxy:
 prePuller:
   hook:
     enabled: false
-
-cull:
-  enabled: true
-  timeout: 3600 # 86400 = 1 day in seconds, 3600 = 1 hours in seconds.
-  every: 3600 
 
 hub:
   image:
@@ -31,9 +26,21 @@ auth:
       config:
         client_id: "GRagFRYsYX4icgF3k3rKOF50gcCCoZUp"
         client_secret: "pN_D1ndMOkgxNat3IJcITvTouz6lmJFSfccGdk6wwK2ACLMdi7zyZdSUQZI873wD"
-        oauth_callback_url: "http://atheneumnb.io/hub/oauth_callback"
+        oauth_callback_url: "http://notebooks-1.athenaeumnb.com/hub/oauth_callback"
         auth0_subdomain: "momentlabs"
-        client_redirect_base_url: "https://atheneumnb.io"  # This is used for adding redirects (e.g. logout) from auth0 to us.
+        client_redirect_base_url: "https://notebooks-1.athenaeumnb.com"  # This is used for adding redirects (e.g. logout) from auth0 to us.
+
+cull:
+  enabled: true
+  timeout: 3600 # 86400 = 1 day in seconds, 3600 = 1 hour in seconds.
+  every: 3600 
+
+# this will pull images on nodes during the initial deployment.
+prePuller:
+  continuous:
+    enabled: true
+  hook:
+      enabled: true
 
 singleuser: 
   image: 
