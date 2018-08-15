@@ -1,4 +1,6 @@
-FROM momentlabs/jupyterhub-k8s-basis
+ARG VERSION=0.8.1
+FROM jupyterhub/jupyterhub:${VERSION}
+# FROM momentlabs/jupyterhub-k8s-basis
 
 # Install the local version of Oauthenticator
 USER root
