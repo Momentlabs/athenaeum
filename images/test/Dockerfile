@@ -9,7 +9,8 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get install -y nodejs
 
 # Get the latest jupyterhub
-RUN git clone https://github.com/jupyterhub/jupyterhub
+ARG JUPYTERHUB_RELEASE_TAG=0.9.1
+RUN git clone https://github.com/jupyterhub/jupyterhub --tag ${JUPYTERHUB_RELEASE_TAG}
 
 # Install dependencies
 WORKDIR /srv/test/jupyterhub
