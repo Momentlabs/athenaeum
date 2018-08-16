@@ -10,7 +10,7 @@ RUN apt-get install -y nodejs
 
 # Get the latest jupyterhub
 ARG JUPYTERHUB_RELEASE_TAG=0.9.1
-RUN git clone https://github.com/jupyterhub/jupyterhub --tag ${JUPYTERHUB_RELEASE_TAG}
+RUN git clone https://github.com/jupyterhub/jupyterhub --branch ${JUPYTERHUB_RELEASE_TAG}
 
 # Install dependencies
 WORKDIR /srv/test/jupyterhub
