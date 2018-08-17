@@ -24,7 +24,7 @@ gcr-production:
 
 
 dh-build:
-	docker build -t momentlabs/${IMAGE} .
+	docker build --no-cache -t momentlabs/${IMAGE} .
 
 dh-latest: dh-build
 	docker push momentlabs/${IMAGE}

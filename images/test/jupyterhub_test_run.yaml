@@ -1,0 +1,3 @@
+steps:
+- name: 'gcr.io/momentlabs-jupyter/athenaeum-hub-test:production'
+  dir: '/srv/test/jupyterhub'
