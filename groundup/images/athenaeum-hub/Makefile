@@ -6,7 +6,7 @@ BRANCH := 'dev'
 IMAGE := athenaeum-hub
 
 default: 
-	gcloud builds submit --substitutions BRANCH_NAME=${BRANCH},SHORT_SHA=${SHORT_SHA},_IMAGE=${IMAGE} --config cloudbuild.yaml
+	gcloud builds submit --substitutions BRANCH_NAME=${BRANCH},SHORT_SHA=${SHORT_SHA},_IMAGE=${IMAGE},_DOCKERFILE=. --config cloudbuild.yaml
 
 # 	gcloud builds submit --tag gcr.io/$(GCP_PROJECT)/$(IMAGE):latest .
 
