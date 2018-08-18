@@ -1,0 +1,14 @@
+ARG VERSION=0.9.1
+FROM jupyterhub/jupyterhub:${VERSION}
+# FROM momentlabs/jupyterhub-k8s-basis
+
+# Install the local version of Oauthenticator
+# USER root
+# RUN pip install "oauthenticator>=0.8.1.dev-jdr0" --extra-index-url https://pypi.fury.io/yBaYGxYxSuitsF7y7ppn/momentlabs/
+
+# USER ${NB_USER}
+
+ADD jupyterhub_config.py /srv/jupyterhub/jupyterhub_config.py
+
+ENTRYPOINT ["jupyterhub"] 
+CMD ["--debug", "--config", "/srv/jupyterhub/jupyterhub_config.py"]
