@@ -12,9 +12,16 @@ spec:
       labels:
         app: jupyterhub
     spec:  
+      volumes:
+      - name: hub-db
+        persistentVolumeClaim:
+          claimName: hub-db
       containers:
-      -  name: jupyterhub
-         image: gcr.io/momentlabs-jupyter/athenaeum-hub
-         ports: 
-         - containerPort: 8000
+      - name: jupyterhub
+        image: gcr.io/momentlabs-jupyter/athenaeum-hub
+        ports: 
+        - containerPort: 8000
+        volumeMounts:
+        - mountPath: /srv/jupyterhub
+          name: hub-db
 
