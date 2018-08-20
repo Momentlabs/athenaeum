@@ -1,6 +1,24 @@
 # Configuration file for jupyterhub.
 # geenrated new from juppyterhub on: Tue Aug 14 17:58:30 PDT 2018
 
+## Class for authenticating users.
+#  
+#  This should be a class with the following form:
+#  
+#  - constructor takes one kwarg: `config`, the IPython config object.
+#  
+#  with an authenticate method that:
+#  
+#  - is a coroutine (asyncio or tornado)
+#  - returns username on success, None on failure
+#  - takes two arguments: (handler, data),
+#    where `handler` is the calling web.RequestHandler,
+#    and `data` is the POST form data from the login page.
+#c.JupyterHub.authenticator_class = 'jupyterhub.auth.PAMAuthenticator'
+c.JupyterHub.authenticator_class = 'dummyautenticator.DummyAuthenticator'
+c.DummyAuthenticator.password = None
+
+
 #------------------------------------------------------------------------------
 # Application(SingletonConfigurable) configuration
 #------------------------------------------------------------------------------
@@ -65,20 +83,6 @@
 #  API.
 #c.JupyterHub.api_tokens = {}
 
-## Class for authenticating users.
-#  
-#  This should be a class with the following form:
-#  
-#  - constructor takes one kwarg: `config`, the IPython config object.
-#  
-#  with an authenticate method that:
-#  
-#  - is a coroutine (asyncio or tornado)
-#  - returns username on success, None on failure
-#  - takes two arguments: (handler, data),
-#    where `handler` is the calling web.RequestHandler,
-#    and `data` is the POST form data from the login page.
-#c.JupyterHub.authenticator_class = 'jupyterhub.auth.PAMAuthenticator'
 
 ## The base URL of the entire application.
 #  
