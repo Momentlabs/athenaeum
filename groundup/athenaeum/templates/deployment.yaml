@@ -1,0 +1,60 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: {{ template "athenaeum.fullname" . }}
+  labels:
+    app: {{ template "athenaeum.name" . }}
+    component: hub
+    chart: {{ template "athenaeum.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ template "athenaeum.name" . }}
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "athenaeum.name" . }}
+        release: {{ .Release.Name }}
+    spec:
+      volumes:
+        - name: hub-db
+          persistentVolumeClaim:
+            claimName: hub-db
+      containers:
+        - name: {{ .Chart.Name }}
+          # image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          image: gcr.io/momentlabs-jupyter/athenaeum-hub
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: hub
+              containerPort: 8000
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8000
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8000
+          volumeMounts:
+          - mountPath: /srv/jupyterhub
+            name: hub-db
+          # resources:
+# {{ toYaml .Values.resources | indent 12 }}
+#     {{- with .Values.nodeSelector }}
+#       nodeSelector:
+# {{ toYaml . | indent 8 }}
+#     {{- end }}
+#     {{- with .Values.affinity }}
+#       affinity:
+# {{ toYaml . | indent 8 }}
+#     {{- end }}
+#     {{- with .Values.tolerations }}
+#       tolerations:
+# {{ toYaml . | indent 8 }}
+#     {{- end }}
