@@ -8,9 +8,9 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
-  type: {{ .Values.service.type }}
+  type: {{ .Values.hub.service.type }}
   ports:
-    - port: {{ .Values.service.port }}
+    - port: {{ .Values.hub.service.port }}
       targetPort: 8000
       protocol: TCP
       name: jupyterhub

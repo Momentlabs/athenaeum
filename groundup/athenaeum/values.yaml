@@ -2,16 +2,23 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-# replicaCount: 1
 
-image:
-#   repository: nginx
-#   tag: stable
-  pullPolicy: IfNotPresent
-
-service:
-  type: ClusterIP
-  port: 8000
+# This is configuration for a jupyterhub Deployment
+# and the persistent volumes for the DB running on the Deployment.
+# Note: The Jupyterhub configuration comes along with the image.
+hub:
+  image:
+    repository: gcr.io/momentlabs-jupyter/athenaeum-hub
+    tag: dev
+    pullPolicy: IfNotPresent
+  # This will disapear as we make the hub a separate entity
+  # from the proxy. 
+  service:
+    type: ClusterIP
+    port: 8000
+  db:
+    pvc:
+      name: hub-db
 
 ingress:
   enabled: false

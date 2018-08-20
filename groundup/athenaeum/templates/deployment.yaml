@@ -21,14 +21,14 @@ spec:
         release: {{ .Release.Name }}
     spec:
       volumes:
-        - name: hub-db
+        - name: hub-db-volume
           persistentVolumeClaim:
-            claimName: hub-db
+            claimName: {{ .Values.hub.db.pvc.name }}
       containers:
         - name: {{ .Chart.Name }}
-          # image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          image: gcr.io/momentlabs-jupyter/athenaeum-hub
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          image: "{{ .Values.hub.image.repository }}:{{ .Values.hub.image.tag }}"
+          # image: gcr.io/momentlabs-jupyter/athenaeum-hub
+          imagePullPolicy: {{ .Values.hub.image.pullPolicy }}
           ports:
             - name: hub
               containerPort: 8000
@@ -43,7 +43,7 @@ spec:
               port: 8000
           volumeMounts:
           - mountPath: /srv/jupyterhub
-            name: hub-db
+            name: hub-db-volume
           # resources:
 # {{ toYaml .Values.resources | indent 12 }}
 #     {{- with .Values.nodeSelector }}
