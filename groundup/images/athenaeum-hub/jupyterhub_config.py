@@ -1,23 +1,243 @@
+import os
+import sys
+
+
+def log_debug(mesg):
+    print(mesg, file=sys.stderr)
+
+log_debug("Configuration startup.")
+log_debug("Environment: {}".format(os.environ))
+
+# How much commuication in the logs?
+c.JupyterHub.log_level = 10
+c.Spawner.debug = True
+
+
 # Configuration file for jupyterhub.
 # geenrated new from juppyterhub on: Tue Aug 14 17:58:30 PDT 2018
 
-## Class for authenticating users.
-#  
-#  This should be a class with the following form:
-#  
-#  - constructor takes one kwarg: `config`, the IPython config object.
-#  
-#  with an authenticate method that:
-#  
-#  - is a coroutine (asyncio or tornado)
-#  - returns username on success, None on failure
-#  - takes two arguments: (handler, data),
-#    where `handler` is the calling web.RequestHandler,
-#    and `data` is the POST form data from the login page.
-#c.JupyterHub.authenticator_class = 'jupyterhub.auth.PAMAuthenticator'
-c.JupyterHub.authenticator_class = 'dummyautenticator.DummyAuthenticator'
-c.DummyAuthenticator.password = None
+# Definition of application level configuration paramaters: 
+# https://jupyterhub.readthedocs.io/en/stable/api/app.html#module-jupyterhub.app
 
+##
+# Authentication
+##
+#c.JupyterHub.authenticator_class = 'jupyterhub.auth.PAMAuthenticator'
+
+# No, proper authenatication here.
+c.JupyterHub.authenticator_class = 'dummyauthenticator.DummyAuthenticator'
+# c.DummyAuthenticator.password = None
+# c.Authenticator.whitelist = {"jdr"}
+
+##
+# Spawning Notebook Severs
+#
+# Configurefd to use KubeSpawner for creating notebooks on Kubernetes clusters.
+#
+##
+c.JupyterHub.spawner_class = 'kubespawner.KubeSpawner'
+
+
+# KubeSpawner Conifig
+#
+
+c.JupyterHub.cleanup_servers = False
+
+# First pulls are slow, so long time out at least For Now
+c.KubeSpanwner.start_timeout = 60 * 5 
+
+
+###
+# Connect / Service Discovery
+###
+
+# TODO : 
+# # Check the documentaiton and then the code (again), but if hub_ip is not set
+# then the hub_connect_ip is used as the bind ip. Go figure, it didn't really
+# look that way in the code. (jpuyterhub 0.92)
+#
+# At any rate, we bind/listen the hub process to all IP
+# as it's on the container then we set up the hub_conenct to
+# point to point ot the service we set up.
+c.JupyterHub.hub_ip = "0.0.0.0"
+# c.JupyterHub.hub_bind_url="0.0.0.0"
+
+# This is using environment variables injected by Kubernetes 
+# at container startup.
+hub_host_ip = "0.0.0.0"
+hub_service_host_env = "KUBE_SPAWN_ATHENAEUM_SERVICE_HOST"
+if hub_service_host_env in os.environ:
+    hub_host_ip = os.environ[hub_service_host_env]
+    log_debug("Using ${} = {}".format(hub_service_host_env, hub_host_ip))
+log_debug("Setting hub_connect_ip to: {}".format(hub_host_ip))
+c.JupyterHub.hub_connect_ip = hub_host_ip
+c.KubeSpawner.hub_connect_ip = hub_host_ip
+
+hub_service_port_env = "KUBE_SPAWN_ATHENAEUM_SERVICE_PORT"
+if hub_service_port_env in os.environ:
+    hub_host_port = os.environ[hub_service_port_env]
+    log_debug("Using ${}= {}".format(hub_service_port_env, hub_host_port))
+log_debug("setting hub_connect_port to : {}".format(hub_host_port))
+c.JupyterHub.hub_connect_port = int(hub_host_port)
+c.KubeSpawner.hub_connect_port = int(hub_host_port)
+log_debug("Hub connect is: {}:{}".format(hub_host_ip, hub_host_port))
+
+# Provide access to the Hub API.
+# We're using the defaults for now.
+# c.KubeSpawner.hub_connect_ip = os.environ['HUB_SERVICE_HOST']
+# c.KubeSpawner.hub_connect_port = int(os.environ['HUB_SERVICE_PORT'])
+# c.JupyterHub.hub_connect_ip = os.environ('HUB_SERVICE_HOST')
+# c.JupyterHub.hub_connect_port = os.environ('HUB_SERVICE_PORT')
+
+
+
+# TODO: A notebook SA strategy is quite critical.
+# This default case can't last.
+# service_account_name = None
+# if service_account_name:
+#     c.KubeSpawner.service_account = service_account_name
+
+# TODO: Similarly with namespaces.    
+# c.KubeSpawner.namespace = 'default'
+
+
+##
+# Notebook Storage Volumes and Mounts
+## 
+
+c.KubeSpawner.uid = 1000  
+
+# Pods will have mount filesystems owned as this group.
+c.KubeSpawner.fs_gid = 1000
+
+c.KubeSpawner.user_storage_pvc_ensure = True
+c.KubeSpawner.user_storage_capacity = '10Gi'
+c.KubeSpawner.storage_access_modes = ["ReadWriteOnce"]
+
+home_volume_name = 'home'
+pvc_name_template = 'claim-{username}{servername}'
+
+c.KubeSpanwer.pvc_name_template = pvc_name_template
+c.KubeSpawner.volumes = [{
+    'name': home_volume_name,
+    'persistentVolumeClaim': {
+        'claimName': pvc_name_template
+    }
+}]
+c.KubeSpawner.volume_mounts = [{
+    'name': home_volume_name,
+    'mountPath': '/home/jovyan'
+}]
+
+##
+# Notebook container configuration
+## 
+
+# c.KubeSpawner.image_pull_secrets = None
+# c.KubeSpawner.events_enabled = False
+c.KubeSpawner.image_pull_policy = 'Always'
+
+
+# This should be an environment variable, since we want the 
+# hub to restart when this changes.
+c.KubeSpawner.image_spec = 'jupyterhub/singleuser:0.9.2'
+# c.Spawner.cmd = ['jupyterhub-singleuser']
+# c.Spawner.cmd = '/bin/sleep'
+# c.Spawner.args = ['3600']
+# c.KubeSpawner.extra_labels = {}
+
+c.KubeSpawner.profile_list = [
+    {
+        'display_name': 'juptyerhub/singleuser:0.8',
+        'default': True,
+        'kubespawner_override': {
+            'image_spec': 'jupyterhub/singleuser:0.8',
+            'cpu_limit': 0.2,
+        },
+        'description': 'Something description of what is going on here, maybe a <a href="#">link too!</a>'
+    }, {
+        'display_name': 'juptyerhub/singleuser:0.9.2',
+        'kubespawner_override': {
+            'image_spec': 'jupyterhub/singleuser:0.9.2',
+            'cpu_limit': 0.2,
+        },
+        'description': 'Something description of what is going on here, maybe a <a href="#">link too!</a>'
+    }, {
+        'display_name': 'jupyter/datascience-notebook',
+        'kubespawner_override': {
+            'image_spec': 'jupyter/datascience-notebook',
+            'cpu_limit': 0.2,
+        },
+        'description': 'Something description of how this is different, maybe a <a href="#">link too!</a>'
+    }
+]
+
+
+# used to determine which nodes to run a notebook on.
+# c.KubeSpawner.node_selector = 
+
+## 
+# Kubernetes resource Management
+## 
+# c.KubeSpawner.mem_limit = get_config('singleuser.memory.limit')
+# c.KubeSpawner.mem_guarantee = get_config('singleuser.memory.guarantee')
+# c.KubeSpawner.cpu_limit = get_config('singleuser.cpu.limit')
+# c.KubeSpawner.cpu_guarantee = get_config('singleuser.cpu.guarantee')
+# c.KubeSpawner.extra_resource_limits = get_config('singleuser.extra-resource.limits', {})
+# c.KubeSpawner.extra_resource_guarantees = get_config('singleuser.extra-resource.guarantees', {})
+
+##
+# Notebook user configuration
+## 
+# TODO: Macic Numbers please remove.
+# Probably best to set this as an ENV variable where
+# the user is created in the Dockerfile.
+# NOTE: This user needs to exist.
+# c.KubeSpawner.uid = 1000  
+# c.KubeSpawner.fs_gid = 1000
+
+
+
+# Notebook's Perssitent Volume Configuration
+# 
+# There are two ways to do this:
+# 1. Sattically: Create the claim/store outside of the  KubeSpawner
+#    providing configuration to KS to access this static claim.
+#
+# 2. Dyanmically: Ensure that the claim exists before spawning. Create
+#    a PVC for this user (named KubeSpawner.pvc_name_template) if a pbc
+#    does not exist.
+
+# This is what enables dynamic deployment of the PVC by this KS.
+# c.KubeSpawner.storage_pvc_ensure = False
+
+
+# Volume configuration REQUIRED for KubeSpawner to create a PVC
+# c.KubeSpanwer.storage_access_modes = ['ReadWriteOnce']
+# c.KubeSpawner.storage_capacity = '10Gi'
+# c.KubeSpawner.storage_class = 
+# c.KubeSpawner.storage_extra_labes = Dict()
+
+# also used in creating a PVC
+# This forms the notebooks user's pvc.
+# c.KubeSpawner.pvc_name_template = 'notebook-{username}{servername}'
+
+# List of which volumes are avilable for mounting on 
+# the user's pod.
+# volume_name = 'home-{username}'
+# pvc_claim = 'notebook-jdr'
+# c.KubeSpawner.volumes =[{
+#     'name': volume_name,
+#     'persistent_volume_claim': pvc_claim
+# }]
+
+# List of volume mounts and the path on the user's pod to mount
+# the volume.
+# c.KubeSpawner.volume_mounts = [{
+#     'mountPath': '/home/jovyan',
+#     'name': volume_name,
+#     # 'subPath': '{username}'
+# }]
 
 #------------------------------------------------------------------------------
 # Application(SingletonConfigurable) configuration

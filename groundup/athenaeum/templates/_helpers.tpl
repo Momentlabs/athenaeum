@@ -24,9 +24,43 @@ If release name contains chart name it will be used as a full name.
 {{- end -}}
 {{- end -}}
 
-{{/*
-Create chart name and version as used by the chart label.
+{{- /*
+     athenaeum.chart
+     Defines chart name and with version.
 */}}
 {{- define "athenaeum.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
+
+{{- /*
+     athenaeum.component
+     Component is a short name used to identify Kubernbetes resources related to 
+     the a partcular architectural role (e.g. Hub, Proxy etc.)
+
+     This is using the file system to help (thanks again, Zero-To-Jupyterhub).
+*/}}
+{{- define "athenaeum.component" -}}
+{{- $file := .Template.Name | base | trimSuffix ".yaml" -}}
+{{- $parent := .Template.Name | dir | base | trimPrefix "templates" -}}
+{{- $component := printf "%s" $parent | trunc 63 -}}
+component: {{ $component }}
+{{- end -}}
+
+{{- /*
+     athenaeum.labels
+     Defines a set of default labels: (app, chart, heritage, component, release ).
+*/}}
+{{- define "athenaeum.labels" -}}
+{{- /*
+{{- $file := .Template.Name | base | trimSuffix ".yaml" -}}
+{{- $parent := .Template.Name | dir | trimPrefix "templates" -}}
+{{- $component := printf "%s-%s" $parent $file | trunc 63 -}}
+*/}}
+app: {{ .Chart.Name }}
+release: {{ .Release.Name }}
+{{ include "athenaeum.component" . }}
+chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+heritage: {{ .Release.Service }}
+{{- end -}}
+
+

@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ template "athenaeum.fullname" . }}
+  name: proxy
   labels:
     app: {{ template "athenaeum.name" . }}
     chart: {{ template "athenaeum.chart" . }}
@@ -10,10 +10,8 @@ metadata:
 spec:
   type: {{ .Values.hub.service.type }}
   ports:
-    - port: {{ .Values.hub.service.port }}
+    - port: 8000
       targetPort: 8000
       protocol: TCP
-      name: jupyterhub
   selector:
-    app: {{ template "athenaeum.name" . }}
-    release: {{ .Release.Name }}
+    {{- include "athenaeum.labels" . | nindent 4 }}

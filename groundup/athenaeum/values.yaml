@@ -10,7 +10,7 @@ hub:
   image:
     repository: gcr.io/momentlabs-jupyter/athenaeum-hub
     tag: dev
-    pullPolicy: IfNotPresent
+    pullPolicy: Always
   # This will disapear as we make the hub a separate entity
   # from the proxy. 
   service:

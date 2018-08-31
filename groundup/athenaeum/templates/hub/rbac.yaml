@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: hub
+  labels: 
+    {{- include "athenaeum.labels" . | nindent 4 }}
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: Role
+metadata:
+  name: hub
+  namespace: {{ .Release.Namespace }}
+  labels: 
+    {{- include "athenaeum.labels" . | nindent 4 }}
+rules:
+- apiGroups: [""]     # core apis
+  resources: ["pods", "persistentvolumeclaims"]
+  verbs: ["get", "watch", "list", "create", "delete"]
+- apiGroups: [""]
+  resources: ["events"]
+  verbs: ["get", "watch", "list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: RoleBinding
+metadata:
+  name: hub
+  namespace: {{ .Release.Namespace }}
+  labels: 
+    {{- include "athenaeum.labels" . | nindent 4 }}
+subjects:
+  - kind: ServiceAccount
+    name: hub
+    namespace: {{ .Release.Namespace }}
+roleRef:
+  kind: Role
+  name: hub
+  apiGroup: rbac.authorization.k8s.io
+
+

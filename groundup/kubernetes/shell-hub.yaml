@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hub-shell
+spec:
+  containers:
+    - mane: hub-shell
+      image: gcr.io/momentlabs-jupyter/athenaeum-hub:dev
+      command: /bin/bash
+      args: ""
+    restartPolicy: Never

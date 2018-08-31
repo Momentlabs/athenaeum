@@ -1,0 +1,2374 @@
+[D 2018-08-23 01:08:54.769 JupyterHub application:555] Looking for /srv/jupyterhub_config in /srv/jupyterhub
+[D 2018-08-23 01:08:54.770 JupyterHub application:577] Loaded config file: /srv/jupyterhub_config.py
+[I 2018-08-23 01:08:55.203 JupyterHub app:1667] Using Authenticator: dummyauthenticator.dummyauthenticator.DummyAuthenticator
+[I 2018-08-23 01:08:55.204 JupyterHub app:1667] Using Spawner: kubespawner.spawner.KubeSpawner
+[D 2018-08-23 01:08:55.208 JupyterHub app:1048] Generating new cookie_secret
+[I 2018-08-23 01:08:55.209 JupyterHub app:1053] Writing cookie_secret to /srv/jupyterhub/jupyterhub_cookie_secret
+[D 2018-08-23 01:08:55.211 JupyterHub app:1069] Connecting to db: sqlite:///jupyterhub.sqlite
+[D 2018-08-23 01:08:55.229 JupyterHub orm:656] Stamping empty database with alembic revision 896818069c98
+[I 2018-08-23 01:08:55.237 alembic.runtime.migration migration:117] Context impl SQLiteImpl.
+[I 2018-08-23 01:08:55.237 alembic.runtime.migration migration:122] Will assume non-transactional DDL.
+[I 2018-08-23 01:08:55.248 alembic.runtime.migration migration:327] Running stamp_revision  -> 896818069c98
+[D 2018-08-23 01:08:55.249 alembic.runtime.migration migration:516] new branch insert 896818069c98
+[I 2018-08-23 01:08:55.351 JupyterHub proxy:431] Generating new CONFIGPROXY_AUTH_TOKEN
+[W 2018-08-23 01:08:55.352 JupyterHub app:1171] No admin users, admin interface will be unavailable.
+[W 2018-08-23 01:08:55.352 JupyterHub app:1172] Add any administrative users to `c.Authenticator.admin_users` in config.
+[I 2018-08-23 01:08:55.352 JupyterHub app:1199] Not using whitelist. Any authenticated user will be allowed.
+[D 2018-08-23 01:08:55.389 JupyterHub app:1487] Loaded users:
+    
+[I 2018-08-23 01:08:55.398 JupyterHub app:1849] Hub API listening on http://127.0.0.1:8081/hub/
+[W 2018-08-23 01:08:55.400 JupyterHub proxy:552] Running JupyterHub without SSL.  I hope there is SSL termination happening somewhere else...
+[I 2018-08-23 01:08:55.400 JupyterHub proxy:554] Starting proxy @ http://:8000
+[D 2018-08-23 01:08:55.400 JupyterHub proxy:555] Proxy cmd: ['configurable-http-proxy', '--ip', '', '--port', '8000', '--api-ip', '127.0.0.1', '--api-port', '8001', '--error-target', 'http://127.0.0.1:8081/hub/error']
+[D 2018-08-23 01:08:55.403 JupyterHub proxy:504] Writing proxy pid file: jupyterhub-proxy.pid
+01:08:55.850 - info: [ConfigProxy] Proxying http://*:8000 to (no default)
+01:08:55.854 - info: [ConfigProxy] Proxy API at http://127.0.0.1:8001/api/routes
+[D 2018-08-23 01:08:56.328 JupyterHub proxy:590] Proxy started and appears to be up
+[D 2018-08-23 01:08:56.329 JupyterHub proxy:296] Fetching routes to check
+[D 2018-08-23 01:08:56.330 JupyterHub proxy:670] Proxy: Fetching GET http://127.0.0.1:8001/api/routes
+[I 2018-08-23 01:08:56.344 JupyterHub proxy:301] Checking routes
+[I 2018-08-23 01:08:56.344 JupyterHub proxy:370] Adding default route for Hub: / => http://127.0.0.1:8081
+[D 2018-08-23 01:08:56.345 JupyterHub proxy:670] Proxy: Fetching POST http://127.0.0.1:8001/api/routes/
+01:08:56.346 - info: [ConfigProxy] 200 GET /api/routes 
+01:08:56.348 - info: [ConfigProxy] Adding route / -> http://127.0.0.1:8081
+[I 2018-08-23 01:08:56.350 JupyterHub app:1906] JupyterHub is now running at http://:8000
+01:08:56.350 - info: [ConfigProxy] 201 POST /api/routes/ 
+[I 2018-08-23 01:10:34.288 JupyterHub log:158] 302 GET / -> /hub (@::ffff:127.0.0.1) 0.98ms
+[I 2018-08-23 01:10:34.346 JupyterHub log:158] 302 GET /hub -> /hub/ (@::ffff:127.0.0.1) 0.67ms
+[W 2018-08-23 01:10:34.391 JupyterHub base:242] Invalid or expired cookie token
+[I 2018-08-23 01:10:34.393 JupyterHub log:158] 302 GET /hub/ -> /hub/login (@::ffff:127.0.0.1) 2.76ms
+[I 2018-08-23 01:10:34.479 JupyterHub log:158] 200 GET /hub/login (@::ffff:127.0.0.1) 36.84ms
+[I 2018-08-23 01:10:36.765 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLKri -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLKri (@::ffff:127.0.0.1) 1.76ms
+[W 2018-08-23 01:10:36.910 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLKri (@::ffff:127.0.0.1) 10.79ms
+[D 2018-08-23 01:10:37.015 JupyterHub base:362] Setting cookie for jdr: jupyterhub-hub-login
+[D 2018-08-23 01:10:37.015 JupyterHub base:357] Setting cookie jupyterhub-hub-login: {'httponly': True, 'path': '/hub/'}
+[I 2018-08-23 01:10:37.016 JupyterHub base:499] User logged in: jdr
+[I 2018-08-23 01:10:37.018 JupyterHub log:158] 302 POST /hub/login?next= -> /user/jdr/ (jdr@::ffff:127.0.0.1) 50.69ms
+[I 2018-08-23 01:10:37.158 JupyterHub log:158] 302 GET /user/jdr/ -> /hub/user/jdr/ (@::ffff:127.0.0.1) 1.94ms
+[D 2018-08-23 01:10:37.286 JupyterHub user:190] Creating <class 'kubespawner.spawner.KubeSpawner'> for jdr:
+[D 2018-08-23 01:10:37.316 JupyterHub base:603] Initiating spawn for jdr
+[D 2018-08-23 01:10:37.317 JupyterHub base:609] 0/100 concurrent spawns
+[D 2018-08-23 01:10:37.317 JupyterHub base:612] 0 active servers
+[I 2018-08-23 01:10:37.322 JupyterHub reflector:187] watching for pods with label selector='component=singleuser-server' in namespace default
+[D 2018-08-23 01:10:37.322 JupyterHub reflector:190] Connecting pods watcher
+[E 2018-08-23 01:10:37.378 JupyterHub spawner:1702] Failed for {'api_version': 'v1',
+     'kind': 'Pod',
+     'metadata': {'annotations': {'hub.jupyter.org/username': 'jdr'},
+                  'cluster_name': None,
+                  'creation_timestamp': None,
+                  'deletion_grace_period_seconds': None,
+                  'deletion_timestamp': None,
+                  'finalizers': None,
+                  'generate_name': None,
+                  'generation': None,
+                  'initializers': None,
+                  'labels': {'app': 'jupyterhub',
+                             'component': 'singleuser-server',
+                             'heritage': 'jupyterhub'},
+                  'name': 'jupyter-jdr',
+                  'namespace': None,
+                  'owner_references': None,
+                  'resource_version': None,
+                  'self_link': None,
+                  'uid': None},
+     'spec': {'active_deadline_seconds': None,
+              'affinity': None,
+              'automount_service_account_token': False,
+              'containers': [{'args': ['jupyterhub-single-user',
+                                       '--ip="0.0.0.0"',
+                                       '--port=8888',
+                                       '--debug'],
+                              'command': None,
+                              'env': [{'name': 'JUPYTERHUB_API_TOKEN',
+                                       'value': '355a0f0ee616409aab4bcf9043ef084b',
+                                       'value_from': None},
+                                      {'name': 'JPY_API_TOKEN',
+                                       'value': '355a0f0ee616409aab4bcf9043ef084b',
+                                       'value_from': None},
+                                      {'name': 'JUPYTERHUB_CLIENT_ID',
+                                       'value': 'jupyterhub-user-jdr',
+                                       'value_from': None},
+                                      {'name': 'JUPYTERHUB_HOST',
+                                       'value': '',
+                                       'value_from': None},
+                                      {'name': 'JUPYTERHUB_OAUTH_CALLBACK_URL',
+                                       'value': '/user/jdr/oauth_callback',
+                                       'value_from': None},
+                                      {'name': 'JUPYTERHUB_USER',
+                                       'value': 'jdr',
+                                       'value_from': None},
+                                      {'name': 'JUPYTERHUB_API_URL',
+                                       'value': 'http://127.0.0.1:8081/hub/api',
+                                       'value_from': None},
+                                      {'name': 'JUPYTERHUB_BASE_URL',
+                                       'value': '/',
+                                       'value_from': None},
+                                      {'name': 'JUPYTERHUB_SERVICE_PREFIX',
+                                       'value': '/user/jdr/',
+                                       'value_from': None},
+                                      {'name': 'JUPYTER_IMAGE_SPEC',
+                                       'value': 'jupyterhub/k8s-singleuser-sample:0.7.0-beta.2',
+                                       'value_from': None}],
+                              'env_from': None,
+                              'image': 'jupyterhub/k8s-singleuser-sample:0.7.0-beta.2',
+                              'image_pull_policy': 'IfNotPresent',
+                              'lifecycle': {},
+                              'liveness_probe': None,
+                              'name': 'notebook',
+                              'ports': [{'container_port': 8888,
+                                         'host_ip': None,
+                                         'host_port': None,
+                                         'name': 'notebook-port',
+                                         'protocol': None}],
+                              'readiness_probe': None,
+                              'resources': {'limits': {}, 'requests': {}},
+                              'security_context': None,
+                              'stdin': None,
+                              'stdin_once': None,
+                              'termination_message_path': None,
+                              'termination_message_policy': None,
+                              'tty': None,
+                              'volume_devices': None,
+                              'volume_mounts': [{'mount_path': '/home/jdr',
+                                                 'mount_propagation': None,
+                                                 'name': 'home-jdr',
+                                                 'read_only': None,
+                                                 'sub_path': None}],
+                              'working_dir': None}],
+              'dns_config': None,
+              'dns_policy': None,
+              'host_aliases': None,
+              'host_ipc': None,
+              'host_network': None,
+              'host_pid': None,
+              'hostname': None,
+              'image_pull_secrets': None,
+              'init_containers': None,
+              'node_name': None,
+              'node_selector': None,
+              'priority': None,
+              'priority_class_name': None,
+              'restart_policy': None,
+              'scheduler_name': None,
+              'security_context': {'fs_group': 1000,
+                                   'run_as_group': 0,
+                                   'run_as_non_root': None,
+                                   'run_as_user': 1000,
+                                   'se_linux_options': None,
+                                   'supplemental_groups': None},
+              'service_account': None,
+              'service_account_name': None,
+              'share_process_namespace': None,
+              'subdomain': None,
+              'termination_grace_period_seconds': None,
+              'tolerations': None,
+              'volumes': [{'aws_elastic_block_store': None,
+                           'azure_disk': None,
+                           'azure_file': None,
+                           'cephfs': None,
+                           'cinder': None,
+                           'config_map': None,
+                           'downward_api': None,
+                           'empty_dir': None,
+                           'fc': None,
+                           'flex_volume': None,
+                           'flocker': None,
+                           'gce_persistent_disk': None,
+                           'git_repo': None,
+                           'glusterfs': None,
+                           'host_path': None,
+                           'iscsi': None,
+                           'name': 'home-jdr',
+                           'nfs': None,
+                           'persistent_volume_claim': 'notebook-jdr',
+                           'photon_persistent_disk': None,
+                           'portworx_volume': None,
+                           'projected': None,
+                           'quobyte': None,
+                           'rbd': None,
+                           'scale_io': None,
+                           'secret': None,
+                           'storageos': None,
+                           'vsphere_volume': None}]},
+     'status': None}
+    Traceback (most recent call last):
+      File "/opt/conda/lib/python3.6/site-packages/kubespawner/spawner.py", line 1696, in _start
+        pod,
+      File "/opt/conda/lib/python3.6/concurrent/futures/_base.py", line 425, in result
+        return self.__get_result()
+      File "/opt/conda/lib/python3.6/concurrent/futures/_base.py", line 384, in __get_result
+        raise self._exception
+      File "/opt/conda/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+        result = self.fn(*self.args, **self.kwargs)
+      File "/opt/conda/lib/python3.6/site-packages/kubespawner/spawner.py", line 1489, in asynchronize
+        return method(*args, **kwargs)
+      File "/opt/conda/lib/python3.6/site-packages/kubernetes/client/apis/core_v1_api.py", line 6057, in create_namespaced_pod
+        (data) = self.create_namespaced_pod_with_http_info(namespace, body, **kwargs)
+      File "/opt/conda/lib/python3.6/site-packages/kubernetes/client/apis/core_v1_api.py", line 6142, in create_namespaced_pod_with_http_info
+        collection_formats=collection_formats)
+      File "/opt/conda/lib/python3.6/site-packages/kubernetes/client/api_client.py", line 321, in call_api
+        _return_http_data_only, collection_formats, _preload_content, _request_timeout)
+      File "/opt/conda/lib/python3.6/site-packages/kubernetes/client/api_client.py", line 155, in __call_api
+        _request_timeout=_request_timeout)
+      File "/opt/conda/lib/python3.6/site-packages/kubernetes/client/api_client.py", line 364, in request
+        body=body)
+      File "/opt/conda/lib/python3.6/site-packages/kubernetes/client/rest.py", line 266, in POST
+        body=body)
+      File "/opt/conda/lib/python3.6/site-packages/kubernetes/client/rest.py", line 222, in request
+        raise ApiException(http_resp=r)
+    kubernetes.client.rest.ApiException: (400)
+    Reason: Bad Request
+    HTTP response headers: HTTPHeaderDict({'Audit-Id': '08e200e9-41dd-4ef0-9303-60efbb3cc956', 'Content-Type': 'application/json', 'Date': 'Thu, 23 Aug 2018 01:10:37 GMT', 'Content-Length': '2004'})
+    HTTP response body: {"kind":"Status","apiVersion":"v1","metadata":{},"status":"Failure","message":"Pod in version \"v1\" cannot be handled as a Pod: v1.Pod: Spec: v1.PodSpec: Volumes: []v1.Volume: v1.Volume: VolumeSource: PersistentVolumeClaim: readObjectStart: expect { or n, parsing 1467 ...eClaim\": \"... at {\"apiVersion\": \"v1\", \"kind\": \"Pod\", \"metadata\": {\"annotations\": {\"hub.jupyter.org/username\": \"jdr\"}, \"labels\": {\"app\": \"jupyterhub\", \"heritage\": \"jupyterhub\", \"component\": \"singleuser-server\"}, \"name\": \"jupyter-jdr\"}, \"spec\": {\"automountServiceAccountToken\": false, \"containers\": [{\"args\": [\"jupyterhub-single-user\", \"--ip=\\\"0.0.0.0\\\"\", \"--port=8888\", \"--debug\"], \"env\": [{\"name\": \"JUPYTERHUB_API_TOKEN\", \"value\": \"355a0f0ee616409aab4bcf9043ef084b\"}, {\"name\": \"JPY_API_TOKEN\", \"value\": \"355a0f0ee616409aab4bcf9043ef084b\"}, {\"name\": \"JUPYTERHUB_CLIENT_ID\", \"value\": \"jupyterhub-user-jdr\"}, {\"name\": \"JUPYTERHUB_HOST\", \"value\": \"\"}, {\"name\": \"JUPYTERHUB_OAUTH_CALLBACK_URL\", \"value\": \"/user/jdr/oauth_callback\"}, {\"name\": \"JUPYTERHUB_USER\", \"value\": \"jdr\"}, {\"name\": \"JUPYTERHUB_API_URL\", \"value\": \"http://127.0.0.1:8081/hub/api\"}, {\"name\": \"JUPYTERHUB_BASE_URL\", \"value\": \"/\"}, {\"name\": \"JUPYTERHUB_SERVICE_PREFIX\", \"value\": \"/user/jdr/\"}, {\"name\": \"JUPYTER_IMAGE_SPEC\", \"value\": \"jupyterhub/k8s-singleuser-sample:0.7.0-beta.2\"}], \"image\": \"jupyterhub/k8s-singleuser-sample:0.7.0-beta.2\", \"imagePullPolicy\": \"IfNotPresent\", \"lifecycle\": {}, \"name\": \"notebook\", \"ports\": [{\"containerPort\": 8888, \"name\": \"notebook-port\"}], \"resources\": {\"limits\": {}, \"requests\": {}}, \"volumeMounts\": [{\"mountPath\": \"/home/jdr\", \"name\": \"home-jdr\"}]}], \"securityContext\": {\"fsGroup\": 1000, \"runAsGroup\": 0, \"runAsUser\": 1000}, \"volumes\": [{\"name\": \"home-jdr\", \"persistentVolumeClaim\": \"notebook-jdr\"}]}}","reason":"BadRequest","code":400}
+    
+    
+    
+[E 2018-08-23 01:10:37.388 JupyterHub user:474] Unhandled error starting jdr's server: (400)
+    Reason: Bad Request
+    HTTP response headers: HTTPHeaderDict({'Audit-Id': '08e200e9-41dd-4ef0-9303-60efbb3cc956', 'Content-Type': 'application/json', 'Date': 'Thu, 23 Aug 2018 01:10:37 GMT', 'Content-Length': '2004'})
+    HTTP response body: {"kind":"Status","apiVersion":"v1","metadata":{},"status":"Failure","message":"Pod in version \"v1\" cannot be handled as a Pod: v1.Pod: Spec: v1.PodSpec: Volumes: []v1.Volume: v1.Volume: VolumeSource: PersistentVolumeClaim: readObjectStart: expect { or n, parsing 1467 ...eClaim\": \"... at {\"apiVersion\": \"v1\", \"kind\": \"Pod\", \"metadata\": {\"annotations\": {\"hub.jupyter.org/username\": \"jdr\"}, \"labels\": {\"app\": \"jupyterhub\", \"heritage\": \"jupyterhub\", \"component\": \"singleuser-server\"}, \"name\": \"jupyter-jdr\"}, \"spec\": {\"automountServiceAccountToken\": false, \"containers\": [{\"args\": [\"jupyterhub-single-user\", \"--ip=\\\"0.0.0.0\\\"\", \"--port=8888\", \"--debug\"], \"env\": [{\"name\": \"JUPYTERHUB_API_TOKEN\", \"value\": \"355a0f0ee616409aab4bcf9043ef084b\"}, {\"name\": \"JPY_API_TOKEN\", \"value\": \"355a0f0ee616409aab4bcf9043ef084b\"}, {\"name\": \"JUPYTERHUB_CLIENT_ID\", \"value\": \"jupyterhub-user-jdr\"}, {\"name\": \"JUPYTERHUB_HOST\", \"value\": \"\"}, {\"name\": \"JUPYTERHUB_OAUTH_CALLBACK_URL\", \"value\": \"/user/jdr/oauth_callback\"}, {\"name\": \"JUPYTERHUB_USER\", \"value\": \"jdr\"}, {\"name\": \"JUPYTERHUB_API_URL\", \"value\": \"http://127.0.0.1:8081/hub/api\"}, {\"name\": \"JUPYTERHUB_BASE_URL\", \"value\": \"/\"}, {\"name\": \"JUPYTERHUB_SERVICE_PREFIX\", \"value\": \"/user/jdr/\"}, {\"name\": \"JUPYTER_IMAGE_SPEC\", \"value\": \"jupyterhub/k8s-singleuser-sample:0.7.0-beta.2\"}], \"image\": \"jupyterhub/k8s-singleuser-sample:0.7.0-beta.2\", \"imagePullPolicy\": \"IfNotPresent\", \"lifecycle\": {}, \"name\": \"notebook\", \"ports\": [{\"containerPort\": 8888, \"name\": \"notebook-port\"}], \"resources\": {\"limits\": {}, \"requests\": {}}, \"volumeMounts\": [{\"mountPath\": \"/home/jdr\", \"name\": \"home-jdr\"}]}], \"securityContext\": {\"fsGroup\": 1000, \"runAsGroup\": 0, \"runAsUser\": 1000}, \"volumes\": [{\"name\": \"home-jdr\", \"persistentVolumeClaim\": \"notebook-jdr\"}]}}","reason":"BadRequest","code":400}
+    
+    
+[E 2018-08-23 01:10:37.407 JupyterHub web:1621] Uncaught exception GET /hub/user/jdr/ (::ffff:127.0.0.1)
+    HTTPServerRequest(protocol='http', host='localhost:8000', method='GET', uri='/hub/user/jdr/', version='HTTP/1.1', remote_ip='::ffff:127.0.0.1')
+    Traceback (most recent call last):
+      File "/opt/conda/lib/python3.6/site-packages/tornado/web.py", line 1543, in _execute
+        result = yield result
+      File "/opt/conda/lib/python3.6/site-packages/jupyterhub/handlers/base.py", line 1012, in get
+        await self.spawn_single_user(user)
+      File "/opt/conda/lib/python3.6/site-packages/jupyterhub/handlers/base.py", line 671, in spawn_single_user
+        await gen.with_timeout(timedelta(seconds=self.slow_spawn_timeout), finish_spawn_future)
+      File "/opt/conda/lib/python3.6/site-packages/jupyterhub/handlers/base.py", line 626, in finish_user_spawn
+        await spawn_future
+      File "/opt/conda/lib/python3.6/site-packages/jupyterhub/user.py", line 486, in spawn
+        raise e
+      File "/opt/conda/lib/python3.6/site-packages/jupyterhub/user.py", line 406, in spawn
+        url = await gen.with_timeout(timedelta(seconds=spawner.start_timeout), f)
+      File "/opt/conda/lib/python3.6/site-packages/kubespawner/spawner.py", line 1696, in _start
+        pod,
+      File "/opt/conda/lib/python3.6/concurrent/futures/_base.py", line 425, in result
+        return self.__get_result()
+      File "/opt/conda/lib/python3.6/concurrent/futures/_base.py", line 384, in __get_result
+        raise self._exception
+      File "/opt/conda/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+        result = self.fn(*self.args, **self.kwargs)
+      File "/opt/conda/lib/python3.6/site-packages/kubespawner/spawner.py", line 1489, in asynchronize
+        return method(*args, **kwargs)
+      File "/opt/conda/lib/python3.6/site-packages/kubernetes/client/apis/core_v1_api.py", line 6057, in create_namespaced_pod
+        (data) = self.create_namespaced_pod_with_http_info(namespace, body, **kwargs)
+      File "/opt/conda/lib/python3.6/site-packages/kubernetes/client/apis/core_v1_api.py", line 6142, in create_namespaced_pod_with_http_info
+        collection_formats=collection_formats)
+      File "/opt/conda/lib/python3.6/site-packages/kubernetes/client/api_client.py", line 321, in call_api
+        _return_http_data_only, collection_formats, _preload_content, _request_timeout)
+      File "/opt/conda/lib/python3.6/site-packages/kubernetes/client/api_client.py", line 155, in __call_api
+        _request_timeout=_request_timeout)
+      File "/opt/conda/lib/python3.6/site-packages/kubernetes/client/api_client.py", line 364, in request
+        body=body)
+      File "/opt/conda/lib/python3.6/site-packages/kubernetes/client/rest.py", line 266, in POST
+        body=body)
+      File "/opt/conda/lib/python3.6/site-packages/kubernetes/client/rest.py", line 222, in request
+        raise ApiException(http_resp=r)
+    kubernetes.client.rest.ApiException: (400)
+    Reason: error
+    HTTP response headers: HTTPHeaderDict({'Audit-Id': '08e200e9-41dd-4ef0-9303-60efbb3cc956', 'Content-Type': 'application/json', 'Date': 'Thu, 23 Aug 2018 01:10:37 GMT', 'Content-Length': '2004'})
+    HTTP response body: {"kind":"Status","apiVersion":"v1","metadata":{},"status":"Failure","message":"Pod in version \"v1\" cannot be handled as a Pod: v1.Pod: Spec: v1.PodSpec: Volumes: []v1.Volume: v1.Volume: VolumeSource: PersistentVolumeClaim: readObjectStart: expect { or n, parsing 1467 ...eClaim\": \"... at {\"apiVersion\": \"v1\", \"kind\": \"Pod\", \"metadata\": {\"annotations\": {\"hub.jupyter.org/username\": \"jdr\"}, \"labels\": {\"app\": \"jupyterhub\", \"heritage\": \"jupyterhub\", \"component\": \"singleuser-server\"}, \"name\": \"jupyter-jdr\"}, \"spec\": {\"automountServiceAccountToken\": false, \"containers\": [{\"args\": [\"jupyterhub-single-user\", \"--ip=\\\"0.0.0.0\\\"\", \"--port=8888\", \"--debug\"], \"env\": [{\"name\": \"JUPYTERHUB_API_TOKEN\", \"value\": \"355a0f0ee616409aab4bcf9043ef084b\"}, {\"name\": \"JPY_API_TOKEN\", \"value\": \"355a0f0ee616409aab4bcf9043ef084b\"}, {\"name\": \"JUPYTERHUB_CLIENT_ID\", \"value\": \"jupyterhub-user-jdr\"}, {\"name\": \"JUPYTERHUB_HOST\", \"value\": \"\"}, {\"name\": \"JUPYTERHUB_OAUTH_CALLBACK_URL\", \"value\": \"/user/jdr/oauth_callback\"}, {\"name\": \"JUPYTERHUB_USER\", \"value\": \"jdr\"}, {\"name\": \"JUPYTERHUB_API_URL\", \"value\": \"http://127.0.0.1:8081/hub/api\"}, {\"name\": \"JUPYTERHUB_BASE_URL\", \"value\": \"/\"}, {\"name\": \"JUPYTERHUB_SERVICE_PREFIX\", \"value\": \"/user/jdr/\"}, {\"name\": \"JUPYTER_IMAGE_SPEC\", \"value\": \"jupyterhub/k8s-singleuser-sample:0.7.0-beta.2\"}], \"image\": \"jupyterhub/k8s-singleuser-sample:0.7.0-beta.2\", \"imagePullPolicy\": \"IfNotPresent\", \"lifecycle\": {}, \"name\": \"notebook\", \"ports\": [{\"containerPort\": 8888, \"name\": \"notebook-port\"}], \"resources\": {\"limits\": {}, \"requests\": {}}, \"volumeMounts\": [{\"mountPath\": \"/home/jdr\", \"name\": \"home-jdr\"}]}], \"securityContext\": {\"fsGroup\": 1000, \"runAsGroup\": 0, \"runAsUser\": 1000}, \"volumes\": [{\"name\": \"home-jdr\", \"persistentVolumeClaim\": \"notebook-jdr\"}]}}","reason":"BadRequest","code":400}
+    
+    
+    
+[D 2018-08-23 01:10:37.410 JupyterHub base:845] No template for 500
+[E 2018-08-23 01:10:37.414 JupyterHub log:150] {
+      "X-Forwarded-Host": "localhost:8000",
+      "X-Forwarded-Proto": "http",
+      "X-Forwarded-Port": "8000",
+      "X-Forwarded-For": "::ffff:127.0.0.1",
+      "Cookie": "jupyterhub-hub-login=\"2|1:0|10:1534986637|20:jupyterhub-hub-login|44:ODk5YjZiODFjNmIyNDU3MGEzYzUwZjRiNjM0ZTQ0MDk=|0e5ca200f06f384b8c41812f57c8f137a04ecfe79aa7604debdd8d39add3e251\"; _xsrf=2|17b25acc|c7ce867f88255cc9c74db5e49ffb5e79|1533247012; io=sbDMkjrpI0BH5VUVACRK; jupyterhub-session-id=9281bfe90ae741a9b6f94b6eba78590e",
+      "Accept-Language": "en-US,en;q=0.9",
+      "Accept-Encoding": "gzip, deflate, br",
+      "Referer": "http://localhost:8000/hub/login",
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+      "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36",
+      "Upgrade-Insecure-Requests": "1",
+      "Cache-Control": "max-age=0",
+      "Connection": "close",
+      "Host": "localhost:8000"
+    }
+[E 2018-08-23 01:10:37.414 JupyterHub log:158] 500 GET /hub/user/jdr/ (jdr@::ffff:127.0.0.1) 136.48ms
+[I 2018-08-23 01:10:38.765 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLLKx -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLLKx (@::ffff:127.0.0.1) 1.26ms
+[W 2018-08-23 01:10:38.909 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLLKx (jdr@::ffff:127.0.0.1) 12.95ms
+[I 2018-08-23 01:10:43.767 JupyterHub log:158] 302 GET /__webpack_hmr -> /hub/__webpack_hmr (@::ffff:127.0.0.1) 1.85ms
+[W 2018-08-23 01:10:43.906 JupyterHub log:158] 404 GET /hub/__webpack_hmr (jdr@::ffff:127.0.0.1) 13.19ms
+[I 2018-08-23 01:10:45.769 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLN2J -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLN2J (@::ffff:127.0.0.1) 1.51ms
+[W 2018-08-23 01:10:45.916 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLN2J (jdr@::ffff:127.0.0.1) 12.68ms
+[D 2018-08-23 01:10:47.329 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:10:47.329 JupyterHub reflector:190] Connecting pods watcher
+[I 2018-08-23 01:10:52.761 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLOli -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLOli (@::ffff:127.0.0.1) 2.48ms
+[W 2018-08-23 01:10:52.903 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLOli (jdr@::ffff:127.0.0.1) 12.61ms
+[I 2018-08-23 01:10:54.765 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLPEy -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLPEy (@::ffff:127.0.0.1) 2.21ms
+[W 2018-08-23 01:10:54.902 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLPEy (jdr@::ffff:127.0.0.1) 13.77ms
+[I 2018-08-23 01:10:56.775 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLPkD -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLPkD (@::ffff:127.0.0.1) 1.51ms
+[W 2018-08-23 01:10:56.915 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLPkD (jdr@::ffff:127.0.0.1) 13.13ms
+[D 2018-08-23 01:10:57.338 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:10:57.338 JupyterHub reflector:190] Connecting pods watcher
+[I 2018-08-23 01:11:03.767 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLRRb -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLRRb (@::ffff:127.0.0.1) 2.68ms
+[W 2018-08-23 01:11:03.903 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLRRb (jdr@::ffff:127.0.0.1) 14.30ms
+[I 2018-08-23 01:11:04.759 JupyterHub log:158] 302 GET /__webpack_hmr -> /hub/__webpack_hmr (@::ffff:127.0.0.1) 2.08ms
+[W 2018-08-23 01:11:04.894 JupyterHub log:158] 404 GET /hub/__webpack_hmr (jdr@::ffff:127.0.0.1) 12.38ms
+[D 2018-08-23 01:11:07.346 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:11:07.347 JupyterHub reflector:190] Connecting pods watcher
+[I 2018-08-23 01:11:10.769 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLT8z -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLT8z (@::ffff:127.0.0.1) 2.35ms
+[W 2018-08-23 01:11:10.908 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLT8z (jdr@::ffff:127.0.0.1) 15.74ms
+[I 2018-08-23 01:11:12.764 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLTeA -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLTeA (@::ffff:127.0.0.1) 1.77ms
+[W 2018-08-23 01:11:12.909 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLTeA (jdr@::ffff:127.0.0.1) 13.82ms
+[I 2018-08-23 01:11:14.770 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLU7Q -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLU7Q (@::ffff:127.0.0.1) 1.86ms
+[W 2018-08-23 01:11:14.910 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLU7Q (jdr@::ffff:127.0.0.1) 11.80ms
+[I 2018-08-23 01:11:16.773 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLUci -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLUci (@::ffff:127.0.0.1) 1.24ms
+[W 2018-08-23 01:11:16.915 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLUci (jdr@::ffff:127.0.0.1) 11.99ms
+[D 2018-08-23 01:11:17.356 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:11:17.356 JupyterHub reflector:190] Connecting pods watcher
+[I 2018-08-23 01:11:23.760 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLWK2 -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLWK2 (@::ffff:127.0.0.1) 1.85ms
+[W 2018-08-23 01:11:23.902 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLWK2 (jdr@::ffff:127.0.0.1) 12.16ms
+[I 2018-08-23 01:11:25.773 JupyterHub log:158] 302 GET /__webpack_hmr -> /hub/__webpack_hmr (@::ffff:127.0.0.1) 1.29ms
+[W 2018-08-23 01:11:25.920 JupyterHub log:158] 404 GET /hub/__webpack_hmr (jdr@::ffff:127.0.0.1) 16.74ms
+[D 2018-08-23 01:11:27.364 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:11:27.364 JupyterHub reflector:190] Connecting pods watcher
+[I 2018-08-23 01:11:30.770 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLY1T -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLY1T (@::ffff:127.0.0.1) 1.27ms
+[W 2018-08-23 01:11:30.916 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLY1T (jdr@::ffff:127.0.0.1) 14.44ms
+[I 2018-08-23 01:11:32.769 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLYWi -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLYWi (@::ffff:127.0.0.1) 1.25ms
+[W 2018-08-23 01:11:32.914 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLYWi (jdr@::ffff:127.0.0.1) 15.04ms
+[I 2018-08-23 01:11:34.767 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLY_w -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLY_w (@::ffff:127.0.0.1) 1.30ms
+[W 2018-08-23 01:11:34.905 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLY_w (jdr@::ffff:127.0.0.1) 12.19ms
+[I 2018-08-23 01:11:36.769 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLZVC -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLZVC (@::ffff:127.0.0.1) 1.36ms
+[W 2018-08-23 01:11:36.902 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLZVC (jdr@::ffff:127.0.0.1) 11.58ms
+[D 2018-08-23 01:11:37.372 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:11:37.373 JupyterHub reflector:190] Connecting pods watcher
+[I 2018-08-23 01:11:38.765 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLZ-R -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLZ-R (@::ffff:127.0.0.1) 1.22ms
+[W 2018-08-23 01:11:38.900 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLZ-R (jdr@::ffff:127.0.0.1) 13.12ms
+[I 2018-08-23 01:11:40.761 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLaTj -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLaTj (@::ffff:127.0.0.1) 1.20ms
+[W 2018-08-23 01:11:40.899 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLaTj (jdr@::ffff:127.0.0.1) 11.65ms
+[I 2018-08-23 01:11:46.793 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLbxU -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLbxU (@::ffff:127.0.0.1) 1.24ms
+[I 2018-08-23 01:11:46.798 JupyterHub log:158] 302 GET /__webpack_hmr -> /hub/__webpack_hmr (@::ffff:127.0.0.1) 1.71ms
+[W 2018-08-23 01:11:46.965 JupyterHub log:158] 404 GET /hub/__webpack_hmr (jdr@::ffff:127.0.0.1) 12.83ms
+[W 2018-08-23 01:11:46.981 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLbxU (jdr@::ffff:127.0.0.1) 12.73ms
+[D 2018-08-23 01:11:47.381 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:11:47.381 JupyterHub reflector:190] Connecting pods watcher
+[I 2018-08-23 01:11:53.773 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLdep -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLdep (@::ffff:127.0.0.1) 1.81ms
+[W 2018-08-23 01:11:53.915 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLdep (jdr@::ffff:127.0.0.1) 12.27ms
+[D 2018-08-23 01:11:57.391 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:11:57.391 JupyterHub reflector:190] Connecting pods watcher
+[I 2018-08-23 01:12:00.781 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLfMF -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLfMF (@::ffff:127.0.0.1) 1.43ms
+[W 2018-08-23 01:12:00.921 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLfMF (jdr@::ffff:127.0.0.1) 12.33ms
+[D 2018-08-23 01:12:07.400 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:12:07.400 JupyterHub reflector:190] Connecting pods watcher
+[I 2018-08-23 01:12:07.767 JupyterHub log:158] 302 GET /__webpack_hmr -> /hub/__webpack_hmr (@::ffff:127.0.0.1) 1.74ms
+[I 2018-08-23 01:12:07.771 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLh3Z -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLh3Z (@::ffff:127.0.0.1) 1.57ms
+[W 2018-08-23 01:12:07.916 JupyterHub log:158] 404 GET /hub/__webpack_hmr (jdr@::ffff:127.0.0.1) 13.81ms
+[W 2018-08-23 01:12:07.929 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLh3Z (jdr@::ffff:127.0.0.1) 11.71ms
+[I 2018-08-23 01:12:14.765 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLimx -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLimx (@::ffff:127.0.0.1) 1.30ms
+[W 2018-08-23 01:12:14.904 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLimx (jdr@::ffff:127.0.0.1) 12.05ms
+[D 2018-08-23 01:12:17.409 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:12:17.409 JupyterHub reflector:190] Connecting pods watcher
+[I 2018-08-23 01:12:21.767 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLkUM -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLkUM (@::ffff:127.0.0.1) 1.27ms
+[W 2018-08-23 01:12:21.914 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLkUM (jdr@::ffff:127.0.0.1) 17.52ms
+[I 2018-08-23 01:12:23.779 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLkzc -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLkzc (@::ffff:127.0.0.1) 2.21ms
+[W 2018-08-23 01:12:23.910 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLkzc (jdr@::ffff:127.0.0.1) 13.02ms
+[I 2018-08-23 01:12:25.764 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLlSr -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLlSr (@::ffff:127.0.0.1) 1.91ms
+[W 2018-08-23 01:12:25.911 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLlSr (jdr@::ffff:127.0.0.1) 12.26ms
+[D 2018-08-23 01:12:27.418 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:12:27.418 JupyterHub reflector:190] Connecting pods watcher
+[I 2018-08-23 01:12:27.761 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLly6 -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLly6 (@::ffff:127.0.0.1) 1.78ms
+[W 2018-08-23 01:12:27.902 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLly6 (jdr@::ffff:127.0.0.1) 11.84ms
+[I 2018-08-23 01:12:28.794 JupyterHub log:158] 302 GET /__webpack_hmr -> /hub/__webpack_hmr (@::ffff:127.0.0.1) 1.22ms
+[W 2018-08-23 01:12:28.932 JupyterHub log:158] 404 GET /hub/__webpack_hmr (jdr@::ffff:127.0.0.1) 15.98ms
+[I 2018-08-23 01:12:34.765 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLnfU -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLnfU (@::ffff:127.0.0.1) 1.80ms
+[W 2018-08-23 01:12:34.909 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLnfU (jdr@::ffff:127.0.0.1) 12.39ms
+[D 2018-08-23 01:12:37.427 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:12:37.427 JupyterHub reflector:190] Connecting pods watcher
+[I 2018-08-23 01:12:41.764 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLpMp -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLpMp (@::ffff:127.0.0.1) 2.13ms
+[W 2018-08-23 01:12:41.904 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLpMp (jdr@::ffff:127.0.0.1) 17.06ms
+[I 2018-08-23 01:12:43.767 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLps5 -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLps5 (@::ffff:127.0.0.1) 1.77ms
+[W 2018-08-23 01:12:43.900 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLps5 (jdr@::ffff:127.0.0.1) 12.31ms
+[D 2018-08-23 01:12:47.436 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:12:47.436 JupyterHub reflector:190] Connecting pods watcher
+[I 2018-08-23 01:12:49.765 JupyterHub log:158] 302 GET /__webpack_hmr -> /hub/__webpack_hmr (@::ffff:127.0.0.1) 1.28ms
+[W 2018-08-23 01:12:49.909 JupyterHub log:158] 404 GET /hub/__webpack_hmr (jdr@::ffff:127.0.0.1) 11.40ms
+[I 2018-08-23 01:12:50.753 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLrZV -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLrZV (@::ffff:127.0.0.1) 1.29ms
+[W 2018-08-23 01:12:50.892 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLrZV (jdr@::ffff:127.0.0.1) 12.68ms
+[D 2018-08-23 01:12:57.472 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:12:57.473 JupyterHub reflector:190] Connecting pods watcher
+[I 2018-08-23 01:12:57.762 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLtGp -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLtGp (@::ffff:127.0.0.1) 1.28ms
+[W 2018-08-23 01:12:57.954 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLtGp (jdr@::ffff:127.0.0.1) 12.30ms
+[I 2018-08-23 01:12:59.783 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLtm2 -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLtm2 (@::ffff:127.0.0.1) 1.22ms
+[W 2018-08-23 01:12:59.935 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLtm2 (jdr@::ffff:127.0.0.1) 17.21ms
+[I 2018-08-23 01:13:01.780 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLuFK -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLuFK (@::ffff:127.0.0.1) 1.22ms
+[W 2018-08-23 01:13:01.910 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLuFK (jdr@::ffff:127.0.0.1) 11.79ms
+[D 2018-08-23 01:13:07.481 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:13:07.482 JupyterHub reflector:190] Connecting pods watcher
+[I 2018-08-23 01:13:08.763 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLvyh -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLvyh (@::ffff:127.0.0.1) 1.41ms
+[W 2018-08-23 01:13:08.902 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLvyh (jdr@::ffff:127.0.0.1) 13.29ms
+[I 2018-08-23 01:13:10.766 JupyterHub log:158] 302 GET /__webpack_hmr -> /hub/__webpack_hmr (@::ffff:127.0.0.1) 1.18ms
+[W 2018-08-23 01:13:10.920 JupyterHub log:158] 404 GET /hub/__webpack_hmr (jdr@::ffff:127.0.0.1) 12.31ms
+[I 2018-08-23 01:13:15.765 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLxg4 -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLxg4 (@::ffff:127.0.0.1) 1.27ms
+[W 2018-08-23 01:13:15.908 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLxg4 (jdr@::ffff:127.0.0.1) 13.99ms
+[D 2018-08-23 01:13:17.490 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:13:17.490 JupyterHub reflector:190] Connecting pods watcher
+[I 2018-08-23 01:13:17.766 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLy9L -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLy9L (@::ffff:127.0.0.1) 1.48ms
+[W 2018-08-23 01:13:17.907 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLy9L (jdr@::ffff:127.0.0.1) 12.18ms
+[I 2018-08-23 01:13:24.773 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaLzsl -> /hub/socket.io/?EIO=3&transport=polling&t=MLaLzsl (@::ffff:127.0.0.1) 1.93ms
+[W 2018-08-23 01:13:24.910 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaLzsl (jdr@::ffff:127.0.0.1) 12.86ms
+[D 2018-08-23 01:13:27.551 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:13:27.553 JupyterHub reflector:190] Connecting pods watcher
+[I 2018-08-23 01:13:31.769 JupyterHub log:158] 302 GET /__webpack_hmr -> /hub/__webpack_hmr (@::ffff:127.0.0.1) 2.46ms
+[I 2018-08-23 01:13:31.771 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaL_a4 -> /hub/socket.io/?EIO=3&transport=polling&t=MLaL_a4 (@::ffff:127.0.0.1) 1.51ms
+[W 2018-08-23 01:13:31.910 JupyterHub log:158] 404 GET /hub/__webpack_hmr (jdr@::ffff:127.0.0.1) 12.03ms
+[W 2018-08-23 01:13:31.930 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaL_a4 (jdr@::ffff:127.0.0.1) 11.99ms
+[D 2018-08-23 01:13:37.679 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:13:37.679 JupyterHub reflector:190] Connecting pods watcher
+[I 2018-08-23 01:13:38.771 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaM1HR -> /hub/socket.io/?EIO=3&transport=polling&t=MLaM1HR (@::ffff:127.0.0.1) 1.34ms
+[W 2018-08-23 01:13:38.910 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaM1HR (jdr@::ffff:127.0.0.1) 12.05ms
+[I 2018-08-23 01:13:45.775 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaM2-t -> /hub/socket.io/?EIO=3&transport=polling&t=MLaM2-t (@::ffff:127.0.0.1) 2.09ms
+[W 2018-08-23 01:13:45.929 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaM2-t (jdr@::ffff:127.0.0.1) 21.80ms
+[D 2018-08-23 01:13:47.687 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:13:47.688 JupyterHub reflector:190] Connecting pods watcher
+[I 2018-08-23 01:13:52.774 JupyterHub log:158] 302 GET /__webpack_hmr -> /hub/__webpack_hmr (@::ffff:127.0.0.1) 1.37ms
+[I 2018-08-23 01:13:52.788 JupyterHub log:158] 302 GET /socket.io/?EIO=3&transport=polling&t=MLaM4iE -> /hub/socket.io/?EIO=3&transport=polling&t=MLaM4iE (@::ffff:127.0.0.1) 1.88ms
+[W 2018-08-23 01:13:52.921 JupyterHub log:158] 404 GET /hub/__webpack_hmr (jdr@::ffff:127.0.0.1) 14.05ms
+[W 2018-08-23 01:13:52.934 JupyterHub log:158] 404 GET /hub/socket.io/?EIO=3&transport=polling&t=MLaM4iE (jdr@::ffff:127.0.0.1) 11.79ms
+01:13:56.352 - info: [ConfigProxy] 200 GET /api/routes 
+[D 2018-08-23 01:13:56.351 JupyterHub proxy:670] Proxy: Fetching GET http://127.0.0.1:8001/api/routes
+[I 2018-08-23 01:13:56.353 JupyterHub proxy:301] Checking routes
+[D 2018-08-23 01:13:57.701 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:13:57.701 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:14:07.710 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:14:07.710 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:14:17.718 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:14:17.719 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:14:27.728 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:14:27.728 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:14:37.736 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:14:37.736 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:14:47.773 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:14:47.773 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:14:57.781 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:14:57.781 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:15:07.788 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:15:07.789 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:15:17.796 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:15:17.796 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:15:27.804 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:15:27.804 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:15:37.812 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:15:37.813 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:15:47.822 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:15:47.823 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:15:57.832 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:15:57.832 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:16:07.844 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:16:07.844 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:16:17.859 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:16:17.859 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:16:27.868 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:16:27.868 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:16:37.876 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:16:37.877 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:16:47.888 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:16:47.888 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:16:57.900 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:16:57.901 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:17:07.909 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:17:07.909 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:17:17.918 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:17:17.918 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:17:27.926 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:17:27.926 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:17:37.934 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:17:37.934 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:17:47.943 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:17:47.943 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:17:57.951 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:17:57.951 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:18:07.968 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:18:07.968 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:18:17.976 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:18:17.976 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:18:27.999 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:18:27.999 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:18:38.101 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:18:38.102 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:18:48.112 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:18:48.113 JupyterHub reflector:190] Connecting pods watcher
+01:18:56.352 - info: [ConfigProxy] 200 GET /api/routes 
+[D 2018-08-23 01:18:56.350 JupyterHub proxy:670] Proxy: Fetching GET http://127.0.0.1:8001/api/routes
+[I 2018-08-23 01:18:56.353 JupyterHub proxy:301] Checking routes
+[D 2018-08-23 01:18:58.121 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:18:58.121 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:19:08.129 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:19:08.130 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:19:18.138 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:19:18.139 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:19:28.147 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:19:28.147 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:19:38.157 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:19:38.157 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:19:48.166 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:19:48.167 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:19:58.175 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:19:58.175 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:20:08.184 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:20:08.184 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:20:18.192 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:20:18.192 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:20:28.200 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:20:28.200 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:20:38.208 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:20:38.209 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:20:48.217 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:20:48.217 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:20:58.225 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:20:58.225 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:21:08.234 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:21:08.234 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:21:18.242 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:21:18.243 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:21:28.250 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:21:28.251 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:21:38.259 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:21:38.259 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:21:48.268 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:21:48.268 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:21:58.275 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:21:58.275 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:22:08.283 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:22:08.284 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:22:18.296 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:22:18.296 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:22:28.304 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:22:28.304 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:22:38.312 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:22:38.313 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:22:48.321 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:22:48.321 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:22:58.329 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:22:58.329 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:23:08.338 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:23:08.338 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:23:18.345 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:23:18.345 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:23:28.390 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:23:28.390 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:23:38.514 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:23:38.514 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:23:48.523 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:23:48.523 JupyterHub reflector:190] Connecting pods watcher
+01:23:56.353 - info: [ConfigProxy] 200 GET /api/routes 
+[D 2018-08-23 01:23:56.351 JupyterHub proxy:670] Proxy: Fetching GET http://127.0.0.1:8001/api/routes
+[I 2018-08-23 01:23:56.354 JupyterHub proxy:301] Checking routes
+[D 2018-08-23 01:23:58.531 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:23:58.531 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:24:08.539 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:24:08.540 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:24:18.547 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:24:18.548 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:24:28.555 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:24:28.556 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:24:38.564 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:24:38.564 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:24:48.573 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:24:48.574 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:24:58.581 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:24:58.581 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:25:08.589 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:25:08.589 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:25:18.598 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:25:18.598 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:25:28.606 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:25:28.606 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:25:38.614 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:25:38.614 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:25:48.658 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:25:48.658 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:25:58.669 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:25:58.669 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:26:08.677 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:26:08.677 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:26:18.687 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:26:18.687 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:26:28.699 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:26:28.699 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:26:38.707 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:26:38.707 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:26:48.715 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:26:48.716 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:26:58.728 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:26:58.728 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:27:08.736 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:27:08.736 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:27:18.744 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:27:18.744 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:27:28.752 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:27:28.752 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:27:38.759 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:27:38.759 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:27:48.768 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:27:48.768 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:27:58.776 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:27:58.776 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:28:08.784 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:28:08.784 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:28:18.792 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:28:18.792 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:28:28.838 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:28:28.838 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:28:38.980 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:28:38.980 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:28:48.988 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:28:48.989 JupyterHub reflector:190] Connecting pods watcher
+01:28:56.353 - info: [ConfigProxy] 200 GET /api/routes 
+[D 2018-08-23 01:28:56.351 JupyterHub proxy:670] Proxy: Fetching GET http://127.0.0.1:8001/api/routes
+[I 2018-08-23 01:28:56.354 JupyterHub proxy:301] Checking routes
+[D 2018-08-23 01:28:58.997 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:28:58.997 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:29:09.005 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:29:09.005 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:29:19.013 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:29:19.013 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:29:29.021 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:29:29.021 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:29:39.029 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:29:39.029 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:29:49.037 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:29:49.038 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:29:59.046 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:29:59.046 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:30:09.054 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:30:09.054 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:30:19.062 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:30:19.063 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:30:29.070 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:30:29.071 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:30:39.080 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:30:39.081 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:30:49.089 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:30:49.090 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:30:59.098 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:30:59.098 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:31:09.106 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:31:09.106 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:31:19.115 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:31:19.115 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:31:29.123 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:31:29.123 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:31:39.132 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:31:39.133 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:31:49.142 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:31:49.143 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:31:59.151 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:31:59.152 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:32:09.160 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:32:09.160 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:32:19.169 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:32:19.170 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:32:29.178 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:32:29.179 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:32:39.187 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:32:39.187 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:32:49.195 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:32:49.196 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:32:59.205 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:32:59.205 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:33:09.214 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:33:09.215 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:33:19.223 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:33:19.224 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:33:29.231 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:33:29.232 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:33:39.240 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:33:39.240 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:33:49.248 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:33:49.248 JupyterHub reflector:190] Connecting pods watcher
+01:33:56.353 - info: [ConfigProxy] 200 GET /api/routes 
+[D 2018-08-23 01:33:56.351 JupyterHub proxy:670] Proxy: Fetching GET http://127.0.0.1:8001/api/routes
+[I 2018-08-23 01:33:56.353 JupyterHub proxy:301] Checking routes
+[D 2018-08-23 01:33:59.257 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:33:59.257 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:34:09.288 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:34:09.289 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:34:19.297 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:34:19.298 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:34:29.306 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:34:29.307 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:34:39.314 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:34:39.315 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:34:49.323 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:34:49.324 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:34:59.332 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:34:59.333 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:35:09.342 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:35:09.343 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:35:19.352 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:35:19.352 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:35:29.362 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:35:29.362 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:35:39.412 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:35:39.413 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:35:49.420 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:35:49.421 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:35:59.429 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:35:59.430 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:36:09.438 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:36:09.438 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:36:19.447 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:36:19.448 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:36:29.456 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:36:29.457 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:36:39.465 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:36:39.466 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:36:49.474 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:36:49.474 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:36:59.482 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:36:59.482 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:37:09.490 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:37:09.490 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:37:19.498 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:37:19.498 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:37:29.506 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:37:29.507 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:37:39.514 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:37:39.514 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:37:49.565 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:37:49.566 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:37:59.576 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:37:59.576 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:38:09.583 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:38:09.584 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:38:19.592 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:38:19.592 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:38:29.653 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:38:29.653 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:38:39.756 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:38:39.756 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:38:49.763 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:38:49.764 JupyterHub reflector:190] Connecting pods watcher
+01:38:56.353 - info: [ConfigProxy] 200 GET /api/routes 
+[D 2018-08-23 01:38:56.351 JupyterHub proxy:670] Proxy: Fetching GET http://127.0.0.1:8001/api/routes
+[I 2018-08-23 01:38:56.353 JupyterHub proxy:301] Checking routes
+[D 2018-08-23 01:38:59.770 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:38:59.771 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:39:09.779 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:39:09.779 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:39:19.787 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:39:19.787 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:39:29.795 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:39:29.795 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:39:39.803 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:39:39.803 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:39:49.811 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:39:49.811 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:39:59.819 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:39:59.819 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:40:09.828 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:40:09.828 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:40:19.836 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:40:19.837 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:40:29.873 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:40:29.873 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:40:39.881 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:40:39.881 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:40:49.889 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:40:49.890 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:40:59.897 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:40:59.898 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:41:09.906 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:41:09.906 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:41:19.914 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:41:19.914 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:41:29.922 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:41:29.922 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:41:39.930 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:41:39.930 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:41:49.942 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:41:49.942 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:41:59.957 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:41:59.957 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:42:09.965 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:42:09.965 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:42:19.973 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:42:19.973 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:42:29.992 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:42:29.992 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:42:39.999 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:42:40.000 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:42:50.008 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:42:50.008 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:43:00.016 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:43:00.016 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:43:10.024 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:43:10.024 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:43:20.032 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:43:20.032 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:43:30.040 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:43:30.041 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:43:40.048 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:43:40.048 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:43:50.056 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:43:50.056 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:43:56.351 JupyterHub proxy:670] Proxy: Fetching GET http://127.0.0.1:8001/api/routes
+[I 2018-08-23 01:43:56.354 JupyterHub proxy:301] Checking routes
+01:43:56.353 - info: [ConfigProxy] 200 GET /api/routes 
+[D 2018-08-23 01:44:00.064 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:44:00.064 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:44:10.072 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:44:10.072 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:44:20.080 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:44:20.080 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:44:30.088 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:44:30.088 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:44:40.097 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:44:40.097 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:44:50.105 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:44:50.105 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:45:00.113 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:45:00.113 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:45:10.121 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:45:10.121 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:45:20.129 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:45:20.129 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:45:30.138 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:45:30.139 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:45:40.149 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:45:40.149 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:45:50.157 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:45:50.157 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:46:00.165 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:46:00.166 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:46:10.174 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:46:10.174 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:46:20.182 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:46:20.182 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:46:30.189 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:46:30.190 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:46:40.198 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:46:40.198 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:46:50.206 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:46:50.206 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:47:00.239 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:47:00.239 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:47:10.248 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:47:10.248 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:47:20.256 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:47:20.256 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:47:30.264 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:47:30.265 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:47:40.273 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:47:40.273 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:47:50.280 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:47:50.281 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:48:00.288 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:48:00.289 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:48:10.301 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:48:10.301 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:48:20.308 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:48:20.308 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:48:30.316 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:48:30.317 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:48:40.329 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:48:40.330 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:48:50.339 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:48:50.339 JupyterHub reflector:190] Connecting pods watcher
+01:48:56.353 - info: [ConfigProxy] 200 GET /api/routes 
+[D 2018-08-23 01:48:56.351 JupyterHub proxy:670] Proxy: Fetching GET http://127.0.0.1:8001/api/routes
+[I 2018-08-23 01:48:56.354 JupyterHub proxy:301] Checking routes
+[D 2018-08-23 01:49:00.347 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:49:00.347 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:49:10.355 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:49:10.355 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:49:20.363 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:49:20.363 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:49:30.371 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:49:30.372 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:49:40.379 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:49:40.380 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:49:50.387 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:49:50.388 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:50:00.395 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:50:00.395 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:50:10.404 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:50:10.404 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:50:20.412 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:50:20.412 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:50:30.420 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:50:30.420 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:50:40.428 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:50:40.428 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:50:50.436 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:50:50.436 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:51:00.444 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:51:00.444 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:51:10.452 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:51:10.452 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:51:20.460 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:51:20.460 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:51:30.469 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:51:30.469 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:51:40.478 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:51:40.478 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:51:50.486 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:51:50.486 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:52:00.495 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:52:00.495 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:52:10.504 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:52:10.504 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:52:20.513 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:52:20.514 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:52:30.522 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:52:30.522 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:52:40.530 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:52:40.530 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:52:50.538 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:52:50.538 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:53:00.546 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:53:00.547 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:53:10.554 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:53:10.555 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:53:20.563 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:53:20.563 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:53:30.572 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:53:30.572 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:53:40.580 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:53:40.581 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:53:50.589 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:53:50.589 JupyterHub reflector:190] Connecting pods watcher
+01:53:56.352 - info: [ConfigProxy] 200 GET /api/routes 
+[D 2018-08-23 01:53:56.351 JupyterHub proxy:670] Proxy: Fetching GET http://127.0.0.1:8001/api/routes
+[I 2018-08-23 01:53:56.353 JupyterHub proxy:301] Checking routes
+[D 2018-08-23 01:54:00.597 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:54:00.597 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:54:10.606 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:54:10.606 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:54:20.614 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:54:20.615 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:54:30.623 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:54:30.623 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:54:40.631 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:54:40.632 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:54:50.640 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:54:50.641 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:55:00.650 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:55:00.650 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:55:10.658 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:55:10.658 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:55:20.666 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:55:20.666 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:55:30.675 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:55:30.675 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:55:40.683 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:55:40.684 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:55:50.692 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:55:50.692 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:56:00.699 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:56:00.700 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:56:10.707 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:56:10.708 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:56:20.716 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:56:20.717 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:56:30.725 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:56:30.725 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:56:40.733 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:56:40.734 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:56:50.742 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:56:50.742 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:57:00.751 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:57:00.752 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:57:10.762 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:57:10.762 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:57:20.771 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:57:20.771 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:57:30.779 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:57:30.780 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:57:40.788 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:57:40.788 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:57:50.796 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:57:50.796 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:58:00.804 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:58:00.804 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:58:10.812 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:58:10.813 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:58:20.820 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:58:20.820 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:58:30.828 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:58:30.828 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:58:40.836 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:58:40.836 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:58:50.845 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:58:50.845 JupyterHub reflector:190] Connecting pods watcher
+01:58:56.353 - info: [ConfigProxy] 200 GET /api/routes 
+[D 2018-08-23 01:58:56.351 JupyterHub proxy:670] Proxy: Fetching GET http://127.0.0.1:8001/api/routes
+[I 2018-08-23 01:58:56.354 JupyterHub proxy:301] Checking routes
+[D 2018-08-23 01:59:00.854 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:59:00.854 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:59:10.862 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:59:10.862 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:59:20.870 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:59:20.870 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:59:30.878 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:59:30.878 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:59:40.886 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:59:40.887 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 01:59:50.894 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 01:59:50.895 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:00:00.902 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:00:00.903 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:00:10.911 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:00:10.911 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:00:20.919 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:00:20.919 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:00:30.927 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:00:30.927 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:00:40.937 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:00:40.938 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:00:50.946 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:00:50.946 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:01:00.955 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:01:00.955 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:01:10.963 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:01:10.964 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:01:20.971 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:01:20.971 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:01:30.980 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:01:30.980 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:01:40.989 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:01:40.989 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:01:50.997 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:01:50.997 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:02:01.005 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:02:01.005 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:02:11.013 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:02:11.013 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:02:21.021 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:02:21.021 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:02:31.030 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:02:31.030 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:02:41.038 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:02:41.038 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:02:51.046 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:02:51.046 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:03:01.054 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:03:01.054 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:03:11.061 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:03:11.062 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:03:21.071 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:03:21.071 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:03:31.079 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:03:31.079 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:03:41.087 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:03:41.087 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:03:51.095 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:03:51.095 JupyterHub reflector:190] Connecting pods watcher
+02:03:56.352 - info: [ConfigProxy] 200 GET /api/routes 
+[D 2018-08-23 02:03:56.351 JupyterHub proxy:670] Proxy: Fetching GET http://127.0.0.1:8001/api/routes
+[I 2018-08-23 02:03:56.353 JupyterHub proxy:301] Checking routes
+[D 2018-08-23 02:04:01.108 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:04:01.108 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:04:11.115 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:04:11.116 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:04:21.124 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:04:21.124 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:04:31.133 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:04:31.133 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:04:41.141 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:04:41.141 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:04:51.149 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:04:51.150 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:05:01.158 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:05:01.159 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:05:11.166 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:05:11.167 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:05:21.175 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:05:21.175 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:05:31.183 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:05:31.183 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:05:41.192 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:05:41.192 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:05:51.202 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:05:51.202 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:06:01.211 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:06:01.211 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:06:11.220 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:06:11.220 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:06:21.230 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:06:21.230 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:06:31.238 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:06:31.238 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:06:41.246 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:06:41.246 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:06:51.254 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:06:51.254 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:07:01.262 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:07:01.262 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:07:11.270 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:07:11.271 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:07:21.279 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:07:21.280 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:07:31.288 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:07:31.288 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:07:41.297 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:07:41.297 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:07:51.305 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:07:51.306 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:08:01.316 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:08:01.316 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:08:11.324 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:08:11.324 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:08:21.331 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:08:21.332 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:08:31.340 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:08:31.340 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:08:41.348 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:08:41.349 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:08:51.360 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:08:51.360 JupyterHub reflector:190] Connecting pods watcher
+02:08:56.352 - info: [ConfigProxy] 200 GET /api/routes 
+[D 2018-08-23 02:08:56.351 JupyterHub proxy:670] Proxy: Fetching GET http://127.0.0.1:8001/api/routes
+[I 2018-08-23 02:08:56.353 JupyterHub proxy:301] Checking routes
+[D 2018-08-23 02:09:01.367 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:09:01.368 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:09:11.376 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:09:11.376 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:09:21.384 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:09:21.385 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:09:31.392 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:09:31.392 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:09:41.400 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:09:41.400 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:09:51.407 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:09:51.407 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:10:01.415 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:10:01.415 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:10:11.422 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:10:11.422 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:10:21.430 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:10:21.430 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:10:31.437 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:10:31.438 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:10:41.446 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:10:41.446 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:10:51.454 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:10:51.454 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:11:01.462 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:11:01.462 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:11:11.469 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:11:11.469 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:11:21.478 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:11:21.478 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:11:31.486 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:11:31.486 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:11:41.494 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:11:41.494 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:11:51.501 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:11:51.501 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:12:01.509 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:12:01.509 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:12:11.517 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:12:11.517 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:12:21.525 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:12:21.525 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:12:31.532 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:12:31.533 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:12:41.541 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:12:41.541 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:12:51.549 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:12:51.549 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:13:01.557 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:13:01.557 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:13:11.565 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:13:11.565 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:13:21.572 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:13:21.573 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:13:31.580 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:13:31.580 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:13:41.588 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:13:41.588 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:13:51.595 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:13:51.595 JupyterHub reflector:190] Connecting pods watcher
+02:13:56.352 - info: [ConfigProxy] 200 GET /api/routes 
+[D 2018-08-23 02:13:56.350 JupyterHub proxy:670] Proxy: Fetching GET http://127.0.0.1:8001/api/routes
+[I 2018-08-23 02:13:56.353 JupyterHub proxy:301] Checking routes
+[D 2018-08-23 02:14:01.603 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:14:01.603 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:14:11.611 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:14:11.611 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:14:21.619 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:14:21.620 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:14:31.628 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:14:31.628 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:14:41.636 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:14:41.636 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:14:51.644 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:14:51.644 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:15:01.652 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:15:01.652 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:15:11.660 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:15:11.660 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:15:21.668 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:15:21.668 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:15:31.676 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:15:31.676 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:15:41.703 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:15:41.704 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:15:51.712 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:15:51.712 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:16:01.720 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:16:01.720 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:16:11.728 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:16:11.728 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:16:21.736 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:16:21.736 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:16:31.745 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:16:31.745 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:16:41.754 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:16:41.754 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:16:51.762 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:16:51.762 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:17:01.770 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:17:01.771 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:17:11.779 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:17:11.779 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:17:21.787 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:17:21.787 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:17:31.798 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:17:31.798 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:17:41.811 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:17:41.811 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:17:51.820 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:17:51.820 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:18:01.828 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:18:01.829 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:18:11.838 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:18:11.838 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:18:21.846 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:18:21.847 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:18:31.864 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:18:31.864 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:18:41.877 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:18:41.877 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:18:51.887 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:18:51.887 JupyterHub reflector:190] Connecting pods watcher
+02:18:56.353 - info: [ConfigProxy] 200 GET /api/routes 
+[D 2018-08-23 02:18:56.351 JupyterHub proxy:670] Proxy: Fetching GET http://127.0.0.1:8001/api/routes
+[I 2018-08-23 02:18:56.354 JupyterHub proxy:301] Checking routes
+[D 2018-08-23 02:19:01.898 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:19:01.899 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:19:11.907 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:19:11.907 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:19:21.949 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:19:21.949 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:19:31.966 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:19:31.966 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:19:42.027 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:19:42.027 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:19:52.036 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:19:52.036 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:20:02.053 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:20:02.053 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:20:12.062 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:20:12.062 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:20:22.071 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:20:22.071 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:20:32.079 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:20:32.079 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:20:42.087 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:20:42.087 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:20:52.095 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:20:52.095 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:21:02.103 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:21:02.104 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:21:12.113 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:21:12.113 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:21:22.121 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:21:22.121 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:21:32.131 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:21:32.132 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:21:42.140 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:21:42.140 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:21:52.149 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:21:52.150 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:22:02.159 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:22:02.160 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:22:12.169 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:22:12.170 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:22:22.180 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:22:22.180 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:22:32.188 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:22:32.188 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:22:42.196 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:22:42.196 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:22:52.204 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:22:52.204 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:23:02.212 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:23:02.212 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:23:12.221 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:23:12.221 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:23:22.231 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:23:22.231 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:23:32.239 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:23:32.239 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:23:42.248 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:23:42.248 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:23:52.256 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:23:52.256 JupyterHub reflector:190] Connecting pods watcher
+02:23:56.353 - info: [ConfigProxy] 200 GET /api/routes 
+[D 2018-08-23 02:23:56.351 JupyterHub proxy:670] Proxy: Fetching GET http://127.0.0.1:8001/api/routes
+[I 2018-08-23 02:23:56.354 JupyterHub proxy:301] Checking routes
+[D 2018-08-23 02:24:02.264 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:24:02.264 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:24:12.272 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:24:12.272 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:24:22.280 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:24:22.280 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:24:32.289 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:24:32.289 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:24:42.297 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:24:42.297 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:24:52.305 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:24:52.305 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:25:02.313 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:25:02.313 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:25:12.321 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:25:12.321 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:25:22.329 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:25:22.329 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:25:32.337 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:25:32.337 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:25:42.345 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:25:42.345 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:25:52.353 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:25:52.353 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:26:02.360 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:26:02.360 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:26:12.369 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:26:12.369 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:26:22.378 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:26:22.378 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:26:32.387 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:26:32.387 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:26:42.407 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:26:42.407 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:26:52.415 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:26:52.415 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:27:02.423 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:27:02.423 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:27:12.431 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:27:12.431 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:27:22.440 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:27:22.440 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:27:32.448 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:27:32.449 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:27:42.456 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:27:42.457 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:27:52.464 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:27:52.464 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:28:02.472 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:28:02.472 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:28:12.480 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:28:12.480 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:28:22.489 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:28:22.489 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:28:32.497 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:28:32.498 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:28:42.506 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:28:42.506 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:28:52.514 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:28:52.514 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:28:56.350 JupyterHub proxy:670] Proxy: Fetching GET http://127.0.0.1:8001/api/routes
+[I 2018-08-23 02:28:56.353 JupyterHub proxy:301] Checking routes
+02:28:56.352 - info: [ConfigProxy] 200 GET /api/routes 
+[D 2018-08-23 02:29:02.522 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:29:02.522 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:29:12.530 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:29:12.530 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:29:22.538 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:29:22.539 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:29:32.547 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:29:32.547 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:29:42.556 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:29:42.557 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:29:52.565 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:29:52.565 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:30:02.573 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:30:02.573 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:30:12.582 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:30:12.582 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:30:22.591 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:30:22.591 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:30:32.599 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:30:32.599 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:30:42.612 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:30:42.612 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:30:52.620 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:30:52.621 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:31:02.629 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:31:02.629 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:31:12.638 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:31:12.638 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:31:22.646 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:31:22.646 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:31:32.654 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:31:32.655 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:31:42.663 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:31:42.663 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:31:52.672 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:31:52.672 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:32:02.681 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:32:02.681 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:32:12.690 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:32:12.690 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:32:22.698 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:32:22.699 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:32:32.707 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:32:32.707 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:32:42.716 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:32:42.716 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:32:52.725 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:32:52.725 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:33:02.734 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:33:02.734 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:33:12.742 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:33:12.743 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:33:22.751 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:33:22.752 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:33:32.760 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:33:32.761 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:33:42.769 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:33:42.770 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:33:52.778 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:33:52.778 JupyterHub reflector:190] Connecting pods watcher
+02:33:56.353 - info: [ConfigProxy] 200 GET /api/routes 
+[D 2018-08-23 02:33:56.351 JupyterHub proxy:670] Proxy: Fetching GET http://127.0.0.1:8001/api/routes
+[I 2018-08-23 02:33:56.354 JupyterHub proxy:301] Checking routes
+[D 2018-08-23 02:34:02.786 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:34:02.787 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:34:12.795 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:34:12.796 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:34:22.810 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:34:22.810 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:34:32.819 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:34:32.819 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:34:42.828 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:34:42.829 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:34:52.837 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:34:52.838 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:35:02.846 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:35:02.846 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:35:12.855 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:35:12.856 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:35:22.864 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:35:22.864 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:35:32.873 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:35:32.873 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:35:42.885 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:35:42.885 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:35:52.893 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:35:52.893 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:36:02.902 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:36:02.903 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:36:12.914 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:36:12.914 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:36:22.927 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:36:22.927 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:36:32.941 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:36:32.941 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:36:42.958 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:36:42.959 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:36:52.967 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:36:52.968 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:37:02.978 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:37:02.978 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:37:12.988 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:37:12.989 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:37:22.998 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:37:22.999 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:37:33.051 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:37:33.052 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:37:43.060 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:37:43.060 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:37:53.070 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:37:53.070 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:38:03.083 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:38:03.084 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:38:13.092 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:38:13.093 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:38:23.100 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:38:23.100 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:38:33.108 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:38:33.109 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:38:43.119 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:38:43.120 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:38:53.129 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:38:53.129 JupyterHub reflector:190] Connecting pods watcher
+02:38:56.353 - info: [ConfigProxy] 200 GET /api/routes 
+[D 2018-08-23 02:38:56.351 JupyterHub proxy:670] Proxy: Fetching GET http://127.0.0.1:8001/api/routes
+[I 2018-08-23 02:38:56.354 JupyterHub proxy:301] Checking routes
+[D 2018-08-23 02:39:03.138 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:39:03.139 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:39:13.147 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:39:13.148 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:39:23.156 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:39:23.157 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:39:33.164 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:39:33.165 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:39:43.172 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:39:43.173 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:39:53.182 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:39:53.182 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:40:03.190 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:40:03.191 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:40:13.199 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:40:13.199 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:40:23.212 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:40:23.213 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:40:33.221 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:40:33.221 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:40:43.229 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:40:43.230 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:40:53.238 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:40:53.239 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:41:03.248 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:41:03.248 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:41:13.256 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:41:13.257 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:41:23.265 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:41:23.266 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:41:33.274 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:41:33.274 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:41:43.281 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:41:43.282 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:41:53.289 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:41:53.289 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:42:03.297 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:42:03.297 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:42:13.305 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:42:13.305 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:42:23.313 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:42:23.314 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:42:33.321 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:42:33.322 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:42:43.330 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:42:43.330 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:42:53.338 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:42:53.338 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:43:03.346 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:43:03.346 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:43:13.354 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:43:13.354 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:43:23.362 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:43:23.362 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:43:33.370 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:43:33.370 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:43:43.382 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:43:43.382 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:43:53.391 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:43:53.392 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:43:56.350 JupyterHub proxy:670] Proxy: Fetching GET http://127.0.0.1:8001/api/routes
+02:43:56.352 - info: [ConfigProxy] 200 GET /api/routes 
+[I 2018-08-23 02:43:56.353 JupyterHub proxy:301] Checking routes
+[D 2018-08-23 02:44:03.401 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:44:03.402 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:44:13.416 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:44:13.417 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:44:23.424 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:44:23.424 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:44:33.432 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:44:33.432 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:44:43.440 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:44:43.440 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:44:53.447 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:44:53.447 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:45:03.455 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:45:03.455 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:45:13.463 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:45:13.464 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:45:23.471 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:45:23.472 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:45:33.487 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:45:33.487 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:45:43.494 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:45:43.494 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:45:53.502 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:45:53.502 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:46:03.511 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:46:03.511 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:46:13.520 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:46:13.520 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:46:23.527 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:46:23.528 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:46:33.546 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:46:33.546 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:46:43.554 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:46:43.554 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:46:53.562 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:46:53.562 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:47:03.570 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:47:03.570 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:47:13.577 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:47:13.577 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:47:23.586 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:47:23.586 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:47:33.594 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:47:33.594 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:47:43.601 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:47:43.602 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:47:53.610 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:47:53.610 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:48:03.618 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:48:03.618 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:48:13.626 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:48:13.626 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:48:23.635 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:48:23.635 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:48:33.643 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:48:33.643 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:48:43.652 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:48:43.652 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:48:53.660 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:48:53.661 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:48:56.351 JupyterHub proxy:670] Proxy: Fetching GET http://127.0.0.1:8001/api/routes
+[I 2018-08-23 02:48:56.354 JupyterHub proxy:301] Checking routes
+02:48:56.353 - info: [ConfigProxy] 200 GET /api/routes 
+[D 2018-08-23 02:49:03.669 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:49:03.669 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:49:13.678 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:49:13.678 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:49:23.686 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:49:23.687 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:49:33.694 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:49:33.695 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:49:43.703 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:49:43.704 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:49:53.711 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:49:53.712 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:50:03.719 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:50:03.720 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:50:13.727 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:50:13.728 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:50:23.735 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:50:23.736 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:50:33.752 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:50:33.752 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:50:43.760 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:50:43.760 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:50:53.769 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:50:53.769 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:51:03.776 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:51:03.777 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:51:13.784 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:51:13.785 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:51:23.792 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:51:23.792 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:51:33.801 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:51:33.801 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:51:43.809 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:51:43.809 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:51:53.819 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:51:53.819 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:52:03.826 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:52:03.827 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:52:13.836 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:52:13.836 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:52:23.845 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:52:23.845 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:52:33.859 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:52:33.860 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:52:43.869 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:52:43.869 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:52:53.879 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:52:53.879 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:53:03.888 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:53:03.888 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:53:13.896 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:53:13.897 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:53:23.908 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:53:23.908 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:53:33.917 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:53:33.917 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:53:43.924 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:53:43.925 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:53:53.934 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:53:53.935 JupyterHub reflector:190] Connecting pods watcher
+02:53:56.353 - info: [ConfigProxy] 200 GET /api/routes 
+[D 2018-08-23 02:53:56.351 JupyterHub proxy:670] Proxy: Fetching GET http://127.0.0.1:8001/api/routes
+[I 2018-08-23 02:53:56.354 JupyterHub proxy:301] Checking routes
+[D 2018-08-23 02:54:03.943 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:54:03.944 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:54:13.952 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:54:13.952 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:54:23.961 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:54:23.961 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:54:33.969 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:54:33.970 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:54:43.978 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:54:43.978 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:54:53.986 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:54:53.986 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:55:03.994 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:55:03.994 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:55:14.002 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:55:14.002 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:55:24.011 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:55:24.012 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:55:34.025 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:55:34.025 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:55:44.033 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:55:44.033 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:55:54.040 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:55:54.041 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:56:04.049 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:56:04.049 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:56:14.056 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:56:14.057 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:56:24.064 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:56:24.065 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:56:34.073 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:56:34.073 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:56:44.081 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:56:44.081 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:56:54.089 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:56:54.089 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:57:04.097 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:57:04.097 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:57:14.107 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:57:14.107 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:57:24.115 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:57:24.115 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:57:34.123 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:57:34.123 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:57:44.133 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:57:44.134 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:57:54.144 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:57:54.144 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:58:04.153 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:58:04.154 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:58:14.162 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:58:14.163 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:58:24.203 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:58:24.204 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:58:34.212 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:58:34.212 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:58:44.220 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:58:44.221 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:58:54.229 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:58:54.229 JupyterHub reflector:190] Connecting pods watcher
+02:58:56.352 - info: [ConfigProxy] 200 GET /api/routes 
+[D 2018-08-23 02:58:56.351 JupyterHub proxy:670] Proxy: Fetching GET http://127.0.0.1:8001/api/routes
+[I 2018-08-23 02:58:56.353 JupyterHub proxy:301] Checking routes
+[D 2018-08-23 02:59:04.237 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:59:04.238 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:59:14.246 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:59:14.247 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:59:24.256 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:59:24.256 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:59:34.264 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:59:34.264 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:59:44.274 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:59:44.275 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 02:59:54.283 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 02:59:54.284 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:00:04.295 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:00:04.295 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:00:14.303 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:00:14.303 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:00:24.312 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:00:24.312 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:00:34.320 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:00:34.320 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:00:44.328 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:00:44.328 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:00:54.336 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:00:54.336 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:01:04.344 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:01:04.345 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:01:14.354 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:01:14.354 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:01:24.362 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:01:24.362 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:01:34.372 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:01:34.372 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:01:44.381 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:01:44.382 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:01:54.390 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:01:54.390 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:02:04.398 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:02:04.398 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:02:14.406 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:02:14.407 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:02:24.415 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:02:24.415 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:02:34.423 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:02:34.424 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:02:44.431 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:02:44.431 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:02:54.440 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:02:54.441 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:03:04.454 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:03:04.454 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:03:14.462 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:03:14.462 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:03:24.471 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:03:24.471 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:03:34.479 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:03:34.479 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:03:44.486 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:03:44.486 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:03:54.495 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:03:54.496 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:03:56.351 JupyterHub proxy:670] Proxy: Fetching GET http://127.0.0.1:8001/api/routes
+03:03:56.362 - info: [ConfigProxy] 200 GET /api/routes 
+[I 2018-08-23 03:03:56.363 JupyterHub proxy:301] Checking routes
+[D 2018-08-23 03:04:04.503 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:04:04.503 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:04:14.516 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:04:14.516 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:04:24.531 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:04:24.531 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:04:34.539 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:04:34.539 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:04:44.548 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:04:44.549 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:04:54.557 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:04:54.557 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:05:04.565 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:05:04.565 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:05:14.573 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:05:14.574 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:05:24.582 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:05:24.582 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:05:34.590 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:05:34.590 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:05:44.599 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:05:44.599 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:05:54.607 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:05:54.607 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:06:04.615 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:06:04.615 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:06:14.623 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:06:14.623 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:06:24.631 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:06:24.631 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:06:34.639 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:06:34.639 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:06:44.648 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:06:44.648 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:06:54.656 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:06:54.656 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:07:04.664 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:07:04.664 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:07:14.672 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:07:14.672 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:07:24.681 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:07:24.682 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:07:34.693 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:07:34.693 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:07:44.701 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:07:44.701 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:07:54.710 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:07:54.710 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:08:04.718 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:08:04.718 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:08:14.727 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:08:14.727 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:08:24.737 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:08:24.737 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:08:34.745 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:08:34.746 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:08:44.754 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:08:44.754 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:08:54.763 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:08:54.763 JupyterHub reflector:190] Connecting pods watcher
+03:08:56.352 - info: [ConfigProxy] 200 GET /api/routes 
+[D 2018-08-23 03:08:56.350 JupyterHub proxy:670] Proxy: Fetching GET http://127.0.0.1:8001/api/routes
+[I 2018-08-23 03:08:56.353 JupyterHub proxy:301] Checking routes
+[D 2018-08-23 03:09:04.771 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:09:04.771 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:09:14.778 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:09:14.778 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:09:24.787 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:09:24.787 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:09:34.830 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:09:34.830 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:09:44.837 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:09:44.838 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:09:54.845 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:09:54.845 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:10:04.854 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:10:04.854 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:10:14.864 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:10:14.864 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:10:24.871 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:10:24.872 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:10:34.881 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:10:34.881 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:10:44.892 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:10:44.892 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:10:54.904 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:10:54.905 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:11:04.913 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:11:04.913 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:11:14.921 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:11:14.921 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:11:24.928 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:11:24.928 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:11:34.936 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:11:34.937 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:11:44.945 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:11:44.945 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:11:54.953 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:11:54.953 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:12:04.962 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:12:04.962 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:12:14.970 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:12:14.970 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:12:24.978 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:12:24.978 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:12:34.986 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:12:34.987 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:12:44.995 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:12:44.995 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:12:55.004 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:12:55.004 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:13:05.012 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:13:05.012 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:13:15.020 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:13:15.020 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:13:25.028 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:13:25.028 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:13:35.036 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:13:35.036 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:13:45.044 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:13:45.045 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:13:55.053 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:13:55.053 JupyterHub reflector:190] Connecting pods watcher
+03:13:56.353 - info: [ConfigProxy] 200 GET /api/routes 
+[D 2018-08-23 03:13:56.351 JupyterHub proxy:670] Proxy: Fetching GET http://127.0.0.1:8001/api/routes
+[I 2018-08-23 03:13:56.354 JupyterHub proxy:301] Checking routes
+[D 2018-08-23 03:14:05.062 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:14:05.062 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:14:15.072 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:14:15.072 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:14:25.093 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:14:25.094 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:14:35.102 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:14:35.103 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:14:45.111 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:14:45.112 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:14:55.119 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:14:55.119 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:15:05.128 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:15:05.128 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:15:15.136 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:15:15.136 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:15:25.145 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:15:25.145 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:15:35.153 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:15:35.153 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:15:45.162 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:15:45.163 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:15:55.170 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:15:55.170 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:16:05.178 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:16:05.178 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:16:15.186 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:16:15.186 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:16:25.193 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:16:25.194 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:16:35.202 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:16:35.202 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:16:45.210 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:16:45.211 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:16:55.218 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:16:55.219 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:17:05.226 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:17:05.226 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:17:15.234 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:17:15.234 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:17:25.243 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:17:25.243 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:17:35.251 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:17:35.251 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:17:45.259 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:17:45.260 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:17:55.268 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:17:55.268 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:18:05.275 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:18:05.275 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:18:15.283 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:18:15.283 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:18:25.311 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:18:25.311 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:18:35.407 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:18:35.407 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:18:45.415 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:18:45.415 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:18:55.424 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:18:55.424 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:18:56.351 JupyterHub proxy:670] Proxy: Fetching GET http://127.0.0.1:8001/api/routes
+03:18:56.353 - info: [ConfigProxy] 200 GET /api/routes 
+[I 2018-08-23 03:18:56.353 JupyterHub proxy:301] Checking routes
+[D 2018-08-23 03:19:05.433 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:19:05.433 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:19:15.441 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:19:15.441 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:19:25.487 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:19:25.488 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:19:35.495 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:19:35.495 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:19:45.502 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:19:45.503 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:19:55.510 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:19:55.510 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:20:05.517 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:20:05.518 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:20:15.568 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:20:15.568 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:20:25.576 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:20:25.576 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:20:35.584 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:20:35.584 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:20:45.592 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:20:45.592 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:20:55.601 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:20:55.601 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:21:05.617 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:21:05.617 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:21:15.625 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:21:15.625 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:21:25.632 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:21:25.633 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:21:35.640 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:21:35.641 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:21:45.648 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:21:45.648 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:21:55.659 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:21:55.659 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:22:05.667 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:22:05.667 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:22:15.675 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:22:15.675 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:22:25.692 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:22:25.692 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:22:35.699 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:22:35.700 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:22:45.707 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:22:45.708 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:22:55.719 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:22:55.719 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:23:05.726 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:23:05.726 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:23:15.735 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:23:15.735 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:23:25.752 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:23:25.752 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:23:35.759 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:23:35.760 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:23:45.772 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:23:45.773 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:23:55.782 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:23:55.782 JupyterHub reflector:190] Connecting pods watcher
+03:23:56.353 - info: [ConfigProxy] 200 GET /api/routes 
+[D 2018-08-23 03:23:56.351 JupyterHub proxy:670] Proxy: Fetching GET http://127.0.0.1:8001/api/routes
+[I 2018-08-23 03:23:56.353 JupyterHub proxy:301] Checking routes
+[D 2018-08-23 03:24:05.789 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:24:05.789 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:24:15.797 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:24:15.797 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:24:25.805 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:24:25.805 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:24:35.813 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:24:35.813 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:24:45.820 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:24:45.821 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:24:55.829 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:24:55.829 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:25:05.836 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:25:05.837 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:25:15.844 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:25:15.845 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:25:25.856 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:25:25.857 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:25:35.864 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:25:35.865 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:25:45.873 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:25:45.874 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:25:55.883 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:25:55.883 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:26:05.891 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:26:05.891 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:26:15.898 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:26:15.899 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:26:25.906 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:26:25.906 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:26:35.914 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:26:35.914 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:26:45.922 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:26:45.923 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:26:55.930 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:26:55.931 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:27:05.938 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:27:05.939 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:27:15.946 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:27:15.946 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:27:25.954 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:27:25.954 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:27:35.962 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:27:35.963 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:27:45.970 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:27:45.971 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:27:55.978 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:27:55.979 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:28:05.986 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:28:05.986 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:28:15.994 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:28:15.994 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:28:26.049 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:28:26.049 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:28:36.151 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:28:36.151 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:28:46.159 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:28:46.159 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:28:56.166 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:28:56.167 JupyterHub reflector:190] Connecting pods watcher
+03:28:56.352 - info: [ConfigProxy] 200 GET /api/routes 
+[D 2018-08-23 03:28:56.350 JupyterHub proxy:670] Proxy: Fetching GET http://127.0.0.1:8001/api/routes
+[I 2018-08-23 03:28:56.353 JupyterHub proxy:301] Checking routes
+[D 2018-08-23 03:29:06.175 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:29:06.175 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:29:16.183 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:29:16.183 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:29:26.190 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:29:26.190 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:29:36.198 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:29:36.198 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:29:46.206 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:29:46.206 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:29:56.214 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:29:56.214 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:30:06.222 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:30:06.222 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:30:16.229 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:30:16.230 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:30:26.238 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:30:26.238 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:30:36.246 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:30:36.247 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:30:46.259 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:30:46.260 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:30:56.267 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:30:56.268 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:31:06.275 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:31:06.275 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:31:16.284 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:31:16.285 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:31:26.292 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:31:26.292 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:31:36.299 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:31:36.299 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:31:46.307 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:31:46.307 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:31:56.315 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:31:56.315 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:32:06.323 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:32:06.324 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:32:16.331 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:32:16.332 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:32:26.340 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:32:26.341 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:32:36.348 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:32:36.348 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:32:46.356 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:32:46.356 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:32:56.364 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:32:56.364 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:33:06.382 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:33:06.382 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:33:16.391 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:33:16.392 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:33:26.399 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:33:26.399 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:33:36.407 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:33:36.407 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:33:46.415 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:33:46.415 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:33:56.351 JupyterHub proxy:670] Proxy: Fetching GET http://127.0.0.1:8001/api/routes
+03:33:56.353 - info: [ConfigProxy] 200 GET /api/routes 
+[I 2018-08-23 03:33:56.354 JupyterHub proxy:301] Checking routes
+[D 2018-08-23 03:33:56.423 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:33:56.423 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:34:06.432 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:34:06.432 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:34:16.440 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:34:16.441 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:34:26.448 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:34:26.449 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:34:36.456 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:34:36.456 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:34:46.464 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:34:46.464 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:34:56.473 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:34:56.473 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:35:06.480 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:35:06.481 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:35:16.489 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:35:16.489 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:35:26.496 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:35:26.496 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:35:36.504 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:35:36.504 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:35:46.512 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:35:46.512 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:35:56.524 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:35:56.525 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:36:06.539 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:36:06.539 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:36:16.547 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:36:16.547 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:36:26.555 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:36:26.555 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:36:36.563 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:36:36.563 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:36:46.571 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:36:46.571 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:36:56.579 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:36:56.580 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:37:06.588 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:37:06.588 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:37:16.596 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:37:16.596 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:37:26.605 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:37:26.605 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:37:36.612 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:37:36.613 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:37:46.621 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:37:46.621 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:37:56.630 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:37:56.630 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:38:06.638 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:38:06.638 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:38:16.646 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:38:16.646 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:38:26.680 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:38:26.680 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:38:36.797 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:38:36.797 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:38:46.807 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:38:46.807 JupyterHub reflector:190] Connecting pods watcher
+03:38:56.352 - info: [ConfigProxy] 200 GET /api/routes 
+[D 2018-08-23 03:38:56.350 JupyterHub proxy:670] Proxy: Fetching GET http://127.0.0.1:8001/api/routes
+[I 2018-08-23 03:38:56.353 JupyterHub proxy:301] Checking routes
+[D 2018-08-23 03:38:56.816 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:38:56.816 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:39:06.824 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:39:06.824 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:39:16.832 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:39:16.833 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:39:26.841 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:39:26.841 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:39:36.852 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:39:36.852 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:39:46.861 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:39:46.861 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:39:56.869 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:39:56.870 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:40:06.878 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:40:06.878 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:40:16.887 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:40:16.887 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:40:26.895 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:40:26.896 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:40:36.903 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:40:36.904 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:40:46.913 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:40:46.913 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:40:56.921 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:40:56.922 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:41:06.930 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:41:06.930 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:41:16.938 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:41:16.938 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:41:26.948 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:41:26.948 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:41:36.966 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:41:36.966 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:41:46.974 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:41:46.975 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:41:56.982 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:41:56.982 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:42:06.990 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:42:06.990 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:42:16.998 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:42:16.998 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:42:27.006 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:42:27.006 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:42:37.014 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:42:37.014 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:42:47.023 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:42:47.023 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:42:57.031 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:42:57.031 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:43:07.040 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:43:07.040 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:43:17.049 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:43:17.050 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:43:27.065 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:43:27.065 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:43:37.167 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:43:37.167 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:43:47.177 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:43:47.177 JupyterHub reflector:190] Connecting pods watcher
+03:43:56.353 - info: [ConfigProxy] 200 GET /api/routes 
+[D 2018-08-23 03:43:56.351 JupyterHub proxy:670] Proxy: Fetching GET http://127.0.0.1:8001/api/routes
+[I 2018-08-23 03:43:56.353 JupyterHub proxy:301] Checking routes
+[D 2018-08-23 03:43:57.184 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:43:57.185 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:44:07.194 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:44:07.194 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:44:17.203 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:44:17.203 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:44:27.212 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:44:27.212 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:44:37.221 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:44:37.221 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:44:47.229 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:44:47.229 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:44:57.237 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:44:57.237 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:45:07.245 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:45:07.245 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:45:17.254 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:45:17.254 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:45:27.262 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:45:27.262 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:45:37.271 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:45:37.272 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:45:47.280 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:45:47.281 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:45:57.289 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:45:57.290 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:46:07.297 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:46:07.298 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:46:17.307 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:46:17.307 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:46:27.315 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:46:27.315 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:46:37.324 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:46:37.325 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:46:47.332 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:46:47.332 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:46:57.340 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:46:57.341 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:47:07.348 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:47:07.348 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:47:17.358 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:47:17.359 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:47:27.367 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:47:27.367 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:47:37.375 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:47:37.375 JupyterHub reflector:190] Connecting pods watcher
+[D 2018-08-23 03:47:47.383 JupyterHub reflector:243] pods watcher timeout
+[D 2018-08-23 03:47:47.384 JupyterHub reflector:190] Connecting pods watcher
