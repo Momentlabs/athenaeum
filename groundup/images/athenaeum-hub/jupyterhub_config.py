@@ -1,31 +1,29 @@
+# Definition of application level configuration paramaters: 
+# https://jupyterhub.readthedocs.io/en/stable/api/app.html#module-jupyterhub.app
+
 import os
 import sys
 
-
+# Useful to report out.
+# It looks like, to do this 'right', I'd have to get and
+# configure a Logger. 
+debug = True
 def log_debug(mesg):
-    print(mesg, file=sys.stderr)
+    if debug:
+        print(mesg, file=sys.stderr)
 
 log_debug("Configuration startup.")
-log_debug("Environment: {}".format(os.environ))
+# log_debug("Environment: {}".format(os.environ))
 
 # How much commuication in the logs?
 c.JupyterHub.log_level = 10
 c.Spawner.debug = True
 
 
-# Configuration file for jupyterhub.
-# geenrated new from juppyterhub on: Tue Aug 14 17:58:30 PDT 2018
-
-# Definition of application level configuration paramaters: 
-# https://jupyterhub.readthedocs.io/en/stable/api/app.html#module-jupyterhub.app
-
 ##
 # Authentication
 ##
-#c.JupyterHub.authenticator_class = 'jupyterhub.auth.PAMAuthenticator'
-
-# No, proper authenatication here.
-c.JupyterHub.authenticator_class = 'dummyauthenticator.DummyAuthenticator'
+c.JupyterHub.authenticator_class = 'dummyauthenticator.DummyAuthenticator' # Not Authentication
 # c.DummyAuthenticator.password = None
 # c.Authenticator.whitelist = {"jdr"}
 
@@ -37,59 +35,42 @@ c.JupyterHub.authenticator_class = 'dummyauthenticator.DummyAuthenticator'
 ##
 c.JupyterHub.spawner_class = 'kubespawner.KubeSpawner'
 
-
+#
 # KubeSpawner Conifig
 #
-
 c.JupyterHub.cleanup_servers = False
 
-# First pulls are slow, so long time out at least For Now
+# First pulls are slow, so long time out.
 c.KubeSpanwner.start_timeout = 60 * 5 
-
 
 ###
 # Connect / Service Discovery
 ###
 
 # TODO : 
-# # Check the documentaiton and then the code (again), but if hub_ip is not set
+# Check the documentaiton and then the code (again), but if hub_bind_url (or hub_ip) is not set
 # then the hub_connect_ip is used as the bind ip. Go figure, it didn't really
-# look that way in the code. (jpuyterhub 0.92)
+# look that way in the code (jpuyterhub 0.92), but that's what I've been seeing.
+hub_port = 8081
+proxy_bind_url = "http://0.0.0.0:{}".format(hub_port)
+c.JupyterHub.hub_bind_url = proxy_bind_url
+
 #
-# At any rate, we bind/listen the hub process to all IP
-# as it's on the container then we set up the hub_conenct to
-# point to point ot the service we set up.
-c.JupyterHub.hub_ip = "0.0.0.0"
-# c.JupyterHub.hub_bind_url="0.0.0.0"
+# Service Discovery: Environment variables injected by Kubernetes 
+# at container start up.
+hub_service = "KUBE_SPAWN_ATHENAEUM"
 
-# This is using environment variables injected by Kubernetes 
-# at container startup.
-hub_host_ip = "0.0.0.0"
-hub_service_host_env = "KUBE_SPAWN_ATHENAEUM_SERVICE_HOST"
-if hub_service_host_env in os.environ:
-    hub_host_ip = os.environ[hub_service_host_env]
-    log_debug("Using ${} = {}".format(hub_service_host_env, hub_host_ip))
-log_debug("Setting hub_connect_ip to: {}".format(hub_host_ip))
-c.JupyterHub.hub_connect_ip = hub_host_ip
-c.KubeSpawner.hub_connect_ip = hub_host_ip
-
-hub_service_port_env = "KUBE_SPAWN_ATHENAEUM_SERVICE_PORT"
-if hub_service_port_env in os.environ:
-    hub_host_port = os.environ[hub_service_port_env]
-    log_debug("Using ${}= {}".format(hub_service_port_env, hub_host_port))
-log_debug("setting hub_connect_port to : {}".format(hub_host_port))
-c.JupyterHub.hub_connect_port = int(hub_host_port)
-c.KubeSpawner.hub_connect_port = int(hub_host_port)
-log_debug("Hub connect is: {}:{}".format(hub_host_ip, hub_host_port))
-
-# Provide access to the Hub API.
-# We're using the defaults for now.
-# c.KubeSpawner.hub_connect_ip = os.environ['HUB_SERVICE_HOST']
-# c.KubeSpawner.hub_connect_port = int(os.environ['HUB_SERVICE_PORT'])
-# c.JupyterHub.hub_connect_ip = os.environ('HUB_SERVICE_HOST')
-# c.JupyterHub.hub_connect_port = os.environ('HUB_SERVICE_PORT')
-
-
+# Compute URLs from the service name and the environment variables.
+hub_service_host_env = "{}_SERVICE_HOST".format(hub_service)
+hub_service_host = os.environ[hub_service_host_env] if hub_service_host_env in os.environ else None
+hub_service_port_env = "{}_SERVICE_PORT".format(hub_service)
+hub_service_port = os.environ[hub_service_port_env] if hub_service_port_env in os.environ else None
+hub_service_url = "http://{}:{}".format(hub_service_host, hub_service_port)
+if hub_service_host and hub_service_port:
+    c.JupyterHub.hub_connect_url = hub_service_url
+    c.KubeSpawner.hub_connect_url = hub_service_url
+else:
+    log_debug("ERROR: Service environment variable not set for service {}, resulting URL: {}".format(hub_service, hub_service_url))
 
 # TODO: A notebook SA strategy is quite critical.
 # This default case can't last.
@@ -100,7 +81,6 @@ log_debug("Hub connect is: {}:{}".format(hub_host_ip, hub_host_port))
 # TODO: Similarly with namespaces.    
 # c.KubeSpawner.namespace = 'default'
 
-
 ##
 # Notebook Storage Volumes and Mounts
 ## 
@@ -110,10 +90,12 @@ c.KubeSpawner.uid = 1000
 # Pods will have mount filesystems owned as this group.
 c.KubeSpawner.fs_gid = 1000
 
+# Build out the PVC
 c.KubeSpawner.user_storage_pvc_ensure = True
 c.KubeSpawner.user_storage_capacity = '10Gi'
 c.KubeSpawner.storage_access_modes = ["ReadWriteOnce"]
 
+# And the volume and volume mounts.
 home_volume_name = 'home'
 pvc_name_template = 'claim-{username}{servername}'
 
@@ -146,6 +128,7 @@ c.KubeSpawner.image_spec = 'jupyterhub/singleuser:0.9.2'
 # c.Spawner.args = ['3600']
 # c.KubeSpawner.extra_labels = {}
 
+# This obviates that need for image_spec above.
 c.KubeSpawner.profile_list = [
     {
         'display_name': 'juptyerhub/singleuser:0.8',
@@ -185,16 +168,6 @@ c.KubeSpawner.profile_list = [
 # c.KubeSpawner.cpu_guarantee = get_config('singleuser.cpu.guarantee')
 # c.KubeSpawner.extra_resource_limits = get_config('singleuser.extra-resource.limits', {})
 # c.KubeSpawner.extra_resource_guarantees = get_config('singleuser.extra-resource.guarantees', {})
-
-##
-# Notebook user configuration
-## 
-# TODO: Macic Numbers please remove.
-# Probably best to set this as an ENV variable where
-# the user is created in the Dockerfile.
-# NOTE: This user needs to exist.
-# c.KubeSpawner.uid = 1000  
-# c.KubeSpawner.fs_gid = 1000
 
 
 
