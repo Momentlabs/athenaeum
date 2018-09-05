@@ -73,8 +73,14 @@ def get_env(env_key, default=None):
     return os.environ[env_key] if env_key in os.environ else default
 
 def pod_service_vars(service_name):
-    n = service_name.upper()
+    n = service_name.upper().replace('-','_')
     return ("{}_SERVICE_HOST".format(n), "{}_SERVICE_PORT".format(n))
+
+
+debug = config.hub.debug
+def log_debug(mesg):
+    if debug:
+        print(mesg, file=sys.stderr)
 
 
 ####
@@ -87,8 +93,9 @@ log_debug("Configuration startup.")
 # log_debug("Environment: {}".format(os.environ))
 
 # How much commuication in the logs?
-c.JupyterHub.log_level = 10
-c.Spawner.debug = True
+if config.hub.debug:
+    c.JupyterHub.log_level = 10
+    c.Spawner.debug = True
 
 ##
 # Authentication
@@ -103,7 +110,8 @@ c.JupyterHub.authenticator_class = 'dummyauthenticator.DummyAuthenticator' # Not
 # Configurefd to use KubeSpawner for creating notebooks on Kubernetes clusters.
 #
 ##
-c.JupyterHub.spawner_class = 'kubespawner.KubeSpawner'
+# c.JupyterHub.spawner_class = 'kubespawner.KubeSpawner'
+c.JupyterHub.spawner_class = config.hub.spawner.spawner_class
 
 #
 # KubeSpawner Conifig
@@ -111,7 +119,7 @@ c.JupyterHub.spawner_class = 'kubespawner.KubeSpawner'
 c.JupyterHub.cleanup_servers = False
 
 # First pulls are slow, so long time out.
-c.KubeSpanwner.start_timeout = 60 * 5 
+c.KubeSpanwner.start_timeout = config.hub.spawner.start_timeout
 
 ###
 # Connect / Service Discovery
@@ -127,28 +135,16 @@ c.JupyterHub.hub_bind_url = "http://0.0.0.0:8081"
 #
 # Service Discovery: Environment variables injected by Kubernetes 
 # at container start up.
-(host_env, port_env) = pod_service_vars(config.hub.service_name)
+(host_env, port_env) = pod_service_vars(config.hub.service.name)
+log_debug("Looking for environemnt variables: {} and  {}".format(host_env, port_env))
 hub_service_host = get_env(host_env)
 hub_service_port = get_env(port_env)
 hub_service_url = "http://{}:{}".format(hub_service_host, hub_service_port)
 if hub_service_host and hub_service_port:
     c.JupyterHub.hub_connect_url = hub_service_url
+    log_debug("Set hub_connect_url to: {}".format(hub_service_url))
 else: 
-    log_debug("ERROR: Service environment variable not set for: {}, bad URL: {}".format(config.hub_service_name, hub_service_url))
-
-# hub_service = "KUBE_SPAWN_ATHENAEUM"
-
-# Compute URLs from the service name and the environment variables.
-# hub_service_host_env = "{}_SERVICE_HOST".format(hub_service)
-# hub_service_host = os.environ[hub_service_host_env] if hub_service_host_env in os.environ else None
-# hub_service_port_env = "{}_SERVICE_PORT".format(hub_service)
-# hub_service_port = os.environ[hub_service_port_env] if hub_service_port_env in os.environ else None
-# hub_service_url = "http://{}:{}".format(hub_service_host, hub_service_port)
-# if hub_service_host and hub_service_port:
-#     c.JupyterHub.hub_connect_url = hub_service_url
-#     c.KubeSpawner.hub_connect_url = hub_service_url
-# else:
-#     log_debug("ERROR: Service environment variable not set for service {}, bad URL: {}".format(hub_service, hub_service_url))
+    log_debug("ERROR: Service environment variable not set for: {}, bad URL: {}".format(config.hub.service.name, hub_service_url))
 
 # TODO: A notebook SA strategy is quite critical.
 # This default case can't last.
@@ -163,19 +159,21 @@ else:
 # Notebook Storage Volumes and Mounts
 ## 
 
-c.KubeSpawner.uid = 1000  
-
+# c.KubeSpawner.uid = 1000  
+c.KubeSpawner.uid = config.hub.uid
 # Pods will have mount filesystems owned as this group.
-c.KubeSpawner.fs_gid = 1000
+c.KubeSpawner.fs_gid = config.hub.fs_gid
+
 
 # Build out the PVC
-c.KubeSpawner.user_storage_pvc_ensure = True
-c.KubeSpawner.user_storage_capacity = '10Gi'
-c.KubeSpawner.storage_access_modes = ["ReadWriteOnce"]
+c.KubeSpawner.user_storage_pvc_ensure = config.hub.spawner.storage.user_storage_pvc_ensure
+c.KubeSpawner.user_storage_capacity = config.hub.spawner.storage.user_storage_capacity
+# c.KubeSpawner.storage_access_modes = ["ReadWriteOnce"]
+c.KubeSpawner.storage_access_modes = config.hub.spawner.storage.storage_access_modes
 
 # And the volume and volume mounts.
 home_volume_name = 'home'
-pvc_name_template = 'claim-{username}{servername}'
+pvc_name_template = config.hub.spawner.storage.pvc_name_template
 
 c.KubeSpanwer.pvc_name_template = pvc_name_template
 c.KubeSpawner.volumes = [{

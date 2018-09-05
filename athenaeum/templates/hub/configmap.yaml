@@ -7,8 +7,18 @@ metadata:
 data:
   config: |-
     hub:
-      service_name: kube_spawn_athenaeum
+      debug: {{ .Values.hub.debug }}
       uid: {{ .Values.hub.uid }}
-      gsGid: {{ .Values.hub.fsGid }}
+      fs_gid: {{ .Values.hub.fs_gid }}
+      service:
+        name: {{ .Values.hub.service.name }}
+      spawner:
+        spawner_class: {{ .Values.hub.spawner.spawner_class }}
+        start_timeout: {{ .Values.hub.spawner.start_time_out }}
+        storage:
+          user_storage_pvc_ensure: {{ .Values.hub.spawner.storage.user_storage_pvc_ensure }}
+          user_storage_capacity: {{ .Values.hub.spawner.storage.user_storage_capacity }}
+          storage_access_modes: {{ .Values.hub.spawner.storage.storage_access_modes }}
+          pvc_name_template: {{ .Values.hub.spawner.storage.pvc_name_template }}
 
 

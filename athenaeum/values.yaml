@@ -7,8 +7,9 @@
 # and the persistent volumes for the DB running on the Deployment.
 # Note: The Jupyterhub configuration comes along with the image.
 hub:
+  debug: True
   uid: 1000
-  fsGid: 1000
+  fs_gid: 1000
   image:
     repository: gcr.io/momentlabs-jupyter/athenaeum-hub
     tag: dev
@@ -16,11 +17,22 @@ hub:
   # This will disapear as we make the hub a separate entity
   # from the proxy. 
   service:
+    name: kube-spawner-athenaeum
     type: ClusterIP
-    port: 8000
+    host: 0.0.0.0
+    port: 8081
   db:
     pvc:
       name: hub-db
+  spawner:
+    spawner_class: 'kubespawner.KubeSpawner'
+    start_timeout: "300"
+    storage:
+      user_storage_pvc_ensure: True
+      user_storage_capacity: "10Gi"
+      storage_access_modes:
+      - ReadWriteOnce
+      pvc_name_template: 'claim-{username}{servername}'
 
 
 ingress:
