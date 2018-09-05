@@ -1,0 +1,14 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: hub-configmap
+  labels:
+    app: athenaeum
+data:
+  config: |-
+    hub:
+      service_name: kube_spawn_athenaeum
+      uid: {{ .Values.hub.uid }}
+      gsGid: {{ .Values.hub.fsGid }}
+
+

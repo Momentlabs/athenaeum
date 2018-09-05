@@ -19,6 +19,12 @@ spec:
         - name: hub-db-volume
           persistentVolumeClaim:
             claimName: {{ .Values.hub.db.pvc.name }}
+        - name: hub-config
+          configMap:
+            name: hub-configmap
+            items:
+            - key: config
+              path: config.yaml
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.hub.image.repository }}:{{ .Values.hub.image.tag }}"
@@ -39,6 +45,8 @@ spec:
           volumeMounts:
           - mountPath: /srv/jupyterhub
             name: hub-db-volume
+          - mountPath: /etc/athenaeum/
+            name: hub-config
           # resources:
 # {{ toYaml .Values.resources | indent 12 }}
 #     {{- with .Values.nodeSelector }}

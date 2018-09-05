@@ -7,6 +7,8 @@
 # and the persistent volumes for the DB running on the Deployment.
 # Note: The Jupyterhub configuration comes along with the image.
 hub:
+  uid: 1000
+  fsGid: 1000
   image:
     repository: gcr.io/momentlabs-jupyter/athenaeum-hub
     tag: dev
@@ -19,6 +21,7 @@ hub:
   db:
     pvc:
       name: hub-db
+
 
 ingress:
   enabled: false

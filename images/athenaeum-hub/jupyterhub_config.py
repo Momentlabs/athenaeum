@@ -3,14 +3,85 @@
 
 import os
 import sys
+import yaml
+
+
+###
+# Internal functions
+# Should certainly pull these out into their own module.
+###
 
 # Useful to report out.
 # It looks like, to do this 'right', I'd have to get and
-# configure a Logger. 
+# configure a Logger.
 debug = True
 def log_debug(mesg):
     if debug:
         print(mesg, file=sys.stderr)
+
+#
+# Dynamic Configuration
+#
+
+# Want to access the YAML as attributes on an object.
+# We could argue that this is too much magic ....
+# But frankly the syntax feels right.
+class ObjectDictionary(dict):
+    def __init__(self, d):
+        for k, v in d.items():
+            # print("Key: {}, Value: {}".format(k, v))
+            if isinstance(v, dict):
+                v = ObjectDictionary(v)
+            elif isinstance(v, list):
+                v = ObjectList(v)
+            # print("View: Setting {}: {} of type {}".format(k,v, type(v)))
+            self.setdefault(k,v)
+            setattr(self, k, v)
+
+
+class ObjectList(list):
+    def __init__(self, l):
+        # print("Building a list view.")
+        for i, val in enumerate(l):
+            # print("Working on [{}] = {}".format(i, val))
+            if isinstance(val, dict):
+                # print("It's a dict")
+                val = ObjectDictionary(val)
+                # print("Turned it into a {}".format(type(val)))
+            elif isinstance(val, list):
+                val = ObjectList(val)
+            self.append(val)
+            # print("List: Setting [{}] to {} of type {}".format(i,val, type(val)))
+            setattr(self,"l{}".format(i), val)
+
+
+# TODO: The config_path is a Magic Value, it would be nice to find a way to 
+# put this in one place and referecnce it there.
+# Currently it has to be defined here and 
+# in the ConfigMap that puts this yaml file here.
+config_path = '/etc/athenaeum/config.yaml'
+config = object()
+try: 
+    with open(config_path) as f:
+        config = ObjectDictionary(yaml.safe_load(f))
+except FileNotFoundError:
+    log_debug("Couldn't find the configuration file: {}".config_path)
+
+log_debug("Dynamic configuration input: {}".format(config))
+
+def get_env(env_key, default=None):
+    return os.environ[env_key] if env_key in os.environ else default
+
+def pod_service_vars(service_name):
+    n = service_name.upper()
+    return ("{}_SERVICE_HOST".format(n), "{}_SERVICE_PORT".format(n))
+
+
+####
+# Configuration
+#
+#
+###
 
 log_debug("Configuration startup.")
 # log_debug("Environment: {}".format(os.environ))
@@ -18,7 +89,6 @@ log_debug("Configuration startup.")
 # How much commuication in the logs?
 c.JupyterHub.log_level = 10
 c.Spawner.debug = True
-
 
 ##
 # Authentication
@@ -51,26 +121,34 @@ c.KubeSpanwner.start_timeout = 60 * 5
 # Check the documentaiton and then the code (again), but if hub_bind_url (or hub_ip) is not set
 # then the hub_connect_ip is used as the bind ip. Go figure, it didn't really
 # look that way in the code (jpuyterhub 0.92), but that's what I've been seeing.
-hub_port = 8081
-proxy_bind_url = "http://0.0.0.0:{}".format(hub_port)
-c.JupyterHub.hub_bind_url = proxy_bind_url
+# hub_port = 8081
+c.JupyterHub.hub_bind_url = "http://0.0.0.0:8081"
 
 #
 # Service Discovery: Environment variables injected by Kubernetes 
 # at container start up.
-hub_service = "KUBE_SPAWN_ATHENAEUM"
-
-# Compute URLs from the service name and the environment variables.
-hub_service_host_env = "{}_SERVICE_HOST".format(hub_service)
-hub_service_host = os.environ[hub_service_host_env] if hub_service_host_env in os.environ else None
-hub_service_port_env = "{}_SERVICE_PORT".format(hub_service)
-hub_service_port = os.environ[hub_service_port_env] if hub_service_port_env in os.environ else None
+(host_env, port_env) = pod_service_vars(config.hub.service_name)
+hub_service_host = get_env(host_env)
+hub_service_port = get_env(port_env)
 hub_service_url = "http://{}:{}".format(hub_service_host, hub_service_port)
 if hub_service_host and hub_service_port:
     c.JupyterHub.hub_connect_url = hub_service_url
-    c.KubeSpawner.hub_connect_url = hub_service_url
-else:
-    log_debug("ERROR: Service environment variable not set for service {}, resulting URL: {}".format(hub_service, hub_service_url))
+else: 
+    log_debug("ERROR: Service environment variable not set for: {}, bad URL: {}".format(config.hub_service_name, hub_service_url))
+
+# hub_service = "KUBE_SPAWN_ATHENAEUM"
+
+# Compute URLs from the service name and the environment variables.
+# hub_service_host_env = "{}_SERVICE_HOST".format(hub_service)
+# hub_service_host = os.environ[hub_service_host_env] if hub_service_host_env in os.environ else None
+# hub_service_port_env = "{}_SERVICE_PORT".format(hub_service)
+# hub_service_port = os.environ[hub_service_port_env] if hub_service_port_env in os.environ else None
+# hub_service_url = "http://{}:{}".format(hub_service_host, hub_service_port)
+# if hub_service_host and hub_service_port:
+#     c.JupyterHub.hub_connect_url = hub_service_url
+#     c.KubeSpawner.hub_connect_url = hub_service_url
+# else:
+#     log_debug("ERROR: Service environment variable not set for service {}, bad URL: {}".format(hub_service, hub_service_url))
 
 # TODO: A notebook SA strategy is quite critical.
 # This default case can't last.
@@ -124,7 +202,13 @@ c.KubeSpawner.image_pull_policy = 'Always'
 # hub to restart when this changes.
 c.KubeSpawner.image_spec = 'jupyterhub/singleuser:0.9.2'
 # c.Spawner.cmd = ['jupyterhub-singleuser']
-# c.Spawner.cmd = '/bin/sleep'
+# c.KubeSpawner.mem_limit = get_config('singleuser.memory.limit')
+# c.KubeSpawner.mem_guarantee = get_config('singleuser.memory.guarantee')
+# c.KubeSpawner.cpu_limit = get_config('singleuser.cpu.limit')
+# c.KubeSpawner.cpu_guarantee = get_config('singleuser.cpu.guarantee')
+# c.KubeSpawner.extra_resource_limits = get_config('singleuser.extra-resource.limits', {})
+# c.KubeSpawner.extra_resource_guarantees = get_config('singleuser.extra-resource.guarantees', {})
+
 # c.Spawner.args = ['3600']
 # c.KubeSpawner.extra_labels = {}
 
@@ -162,12 +246,6 @@ c.KubeSpawner.profile_list = [
 ## 
 # Kubernetes resource Management
 ## 
-# c.KubeSpawner.mem_limit = get_config('singleuser.memory.limit')
-# c.KubeSpawner.mem_guarantee = get_config('singleuser.memory.guarantee')
-# c.KubeSpawner.cpu_limit = get_config('singleuser.cpu.limit')
-# c.KubeSpawner.cpu_guarantee = get_config('singleuser.cpu.guarantee')
-# c.KubeSpawner.extra_resource_limits = get_config('singleuser.extra-resource.limits', {})
-# c.KubeSpawner.extra_resource_guarantees = get_config('singleuser.extra-resource.guarantees', {})
 
 
 
