@@ -14,7 +14,7 @@ data:
         name: {{ .Values.hub.service.name }}
       spawner:
         spawner_class: {{ .Values.hub.spawner.spawner_class }}
-        start_timeout: {{ .Values.hub.spawner.start_time_out }}
+        start_timeout: {{ .Values.hub.spawner.start_timeout }}
         storage:
           user_storage_pvc_ensure: {{ .Values.hub.spawner.storage.user_storage_pvc_ensure }}
           user_storage_capacity: {{ .Values.hub.spawner.storage.user_storage_capacity }}
