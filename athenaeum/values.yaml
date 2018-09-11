@@ -38,8 +38,11 @@ hub:
       pvc_name_template: 'claim-{username}{servername}'
 
 proxy:
+  hub_should_start: True
   service:
-    name: proxy
+    name:
+    type: LoadBalancer
+
 
 ingress:
   enabled: false

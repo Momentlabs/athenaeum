@@ -32,5 +32,10 @@ data:
           user_storage_capacity: {{ .Values.hub.spawner.storage.user_storage_capacity }}
           storage_access_modes: {{ .Values.hub.spawner.storage.storage_access_modes }}
           pvc_name_template: {{ .Values.hub.spawner.storage.pvc_name_template }}
+    proxy:
+      hub_should_start: {{ .Values.proxy.hub_should_start }}
+      service:
+        name: {{ include "athenaeum.proxy.service.name" . }}
+        type: {{ .Values.proxy.service.type }}
 
 

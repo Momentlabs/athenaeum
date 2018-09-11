@@ -46,35 +46,63 @@ If release name contains chart name it will be used as a full name.
 component: {{ $component }}
 {{- end -}}
 
-{{- /*
-     athenaeum.labels
-     Defines a set of default labels: (app, chart, heritage, component, release ).
-*/}}
-{{- define "athenaeum.labels" -}}
-{{- /*
-{{- $file := .Template.Name | base | trimSuffix ".yaml" -}}
-{{- $parent := .Template.Name | dir | trimPrefix "templates" -}}
-{{- $component := printf "%s-%s" $parent $file | trunc 63 -}}
-*/}}
+{{- define "athenaeum.common_labels" -}}
 app: {{ .Chart.Name }}
 release: {{ .Release.Name }}
-{{ include "athenaeum.component" . }}
 chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
 heritage: {{ .Release.Service }}
 {{- end -}}
 
+{{- /*
+     athenaeum.labels
+     Defines a set of default labels: (app, chart, heritage, component, release).
+*/}}
+{{- define "athenaeum.labels" -}}
+{{ include "athenaeum.common_labels" . }}
+{{ include "athenaeum.component" . }}
+{{- end -}}
+
+{{- /* 
+     athenaeum.service.selector
+     Defines the labels we use to select a service, making allowance
+     for the hub to be the deployment/pod that also contains the proxy.
+     Note: the line with the if does NOT want an initial white space from the
+     previous values.
+*/}}
+{{- define "athenaeum.service.selector" -}}
+{{ include "athenaeum.common_labels" . }}
+{{ if .Values.proxy.hub_should_start -}}
+component: "hub"
+{{- else -}}
+{{ include "athenaeum.component" . -}}
+{{- end -}}
+{{- end -}}
+
 {{- /* 
      athenaeum.hub.service.name
-     Compute the name of the service. If it's defined in Values then use that,
+     Compute the name of the service. If it is defined in Values then use that,
      otherwise compute using the release and chartname.
      
 */}}
 {{- define "athenaeum.hub.service.name" -}}
-{{- if .Values.hub.service.name }}
+{{- if .Values.hub.service.name -}}
 {{ .Values.hub.service.name }}
 {{- else -}}
 {{ printf "%s-%s-hub" .Chart.Name .Release.Name }}
 {{- end -}}
 {{- end -}}
 
+{{- /* 
+     athenaeum.proxy.service.name
+     Compute the name of the service. If it iπs defined in Values then use that,
+     otherwise compute using the release and chartname.
+     
+*/}}
+{{- define "athenaeum.proxy.service.name" -}}
+{{- if .Values.proxy.service.name -}}
+{{ .Values.proxy.service.name }}
+{{- else -}}
+{{ printf "%s-%s-proxy" .Chart.Name .Release.Name }}
+{{- end -}}
+{{- end -}}
 

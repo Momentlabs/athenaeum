@@ -3,10 +3,7 @@ kind: Service
 metadata:
   name: {{ include "athenaeum.hub.service.name" . }}
   labels:
-    app: {{ template "athenaeum.name" . }}
-    chart: {{ template "athenaeum.chart" . }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
+    {{- include "athenaeum.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.hub.service.type }}
   ports:
@@ -14,5 +11,4 @@ spec:
       targetPort: 8081
       protocol: TCP
   selector:
-    {{- include "athenaeum.labels" . | nindent 4 }}
-### _
+    {{- include "athenaeum.service.selector" . | nindent 4 }}
