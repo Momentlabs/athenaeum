@@ -10,11 +10,23 @@ data:
       debug: {{ .Values.hub.debug }}
       uid: {{ .Values.hub.uid }}
       fs_gid: {{ .Values.hub.fs_gid }}
+      image:
+        repository: {{ .Values.hub.image.repository }}
+        tag: {{ .Values.hub.image.tag }}
+        pullPolicy: {{ .Values.hub.image.pullPolicy }}
       service:
-        name: {{ .Values.hub.service.name }}
+        name: {{ include "athenaeum.hub.service.name" . }}
+        type: {{ .Values.hub.service.type }}
+      db:
+        pvc:
+          name: {{ .Values.hub.db.pvc.name }}
+      auth:
+        authenticator_class: {{ .Values.hub.auth.athenticator_class }}
       spawner:
         spawner_class: {{ .Values.hub.spawner.spawner_class }}
         start_timeout: {{ .Values.hub.spawner.start_timeout }}
+        image_pull_policy: {{ .Values.hub.spawner.image_pull_policy }}
+        image_spec: {{ .Values.hub.spawner.image_spec }}
         storage:
           user_storage_pvc_ensure: {{ .Values.hub.spawner.storage.user_storage_pvc_ensure }}
           user_storage_capacity: {{ .Values.hub.spawner.storage.user_storage_capacity }}

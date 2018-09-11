@@ -63,4 +63,18 @@ chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
 heritage: {{ .Release.Service }}
 {{- end -}}
 
+{{- /* 
+     athenaeum.hub.service.name
+     Compute the name of the service. If it's defined in Values then use that,
+     otherwise compute using the release and chartname.
+     
+*/}}
+{{- define "athenaeum.hub.service.name" -}}
+{{- if .Values.hub.service.name }}
+{{ .Values.hub.service.name }}
+{{- else -}}
+{{ printf "%s-%s-hub" .Chart.Name .Release.Name }}
+{{- end -}}
+{{- end -}}
+
 

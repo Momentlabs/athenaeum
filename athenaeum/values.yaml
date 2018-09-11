@@ -14,26 +14,32 @@ hub:
     repository: gcr.io/momentlabs-jupyter/athenaeum-hub
     tag: dev
     pullPolicy: Always
-  # This will disapear as we make the hub a separate entity
-  # from the proxy. 
   service:
-    name: kube-spawner-athenaeum
-    type: ClusterIP
-    host: 0.0.0.0
-    port: 8081
-  db:
+#    name: athenaeum-hub
+    name:
+    type: ClusterIP  # This needs to be used, it's not currently.
+#    host: 0.0.0.0
+#    port: 8081
+  db: # THIS IS NOT YET USED.
     pvc:
       name: hub-db
+  auth:
+    authenticator_class: dummyauthenticator.DummyAuthenticator
   spawner:
-    spawner_class: 'kubespawner.KubeSpawner'
-    start_timeout: "300"
+    spawner_class: kubespawner.KubeSpawner
+    start_timeout: '300'
+    image_pull_policy: Always
+    image_spec: jupyterhub/singleuser:0.9.2
     storage:
       user_storage_pvc_ensure: True
-      user_storage_capacity: "10Gi"
+      user_storage_capacity: '10Gi'
       storage_access_modes:
       - ReadWriteOnce
       pvc_name_template: 'claim-{username}{servername}'
 
+proxy:
+  service:
+    name: proxy
 
 ingress:
   enabled: false

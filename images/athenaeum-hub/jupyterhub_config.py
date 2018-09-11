@@ -59,6 +59,7 @@ class ObjectList(list):
 # put this in one place and referecnce it there.
 # Currently it has to be defined here and 
 # in the ConfigMap that puts this yaml file here.
+# We could make it a configuration Environment Variable ....
 config_path = '/etc/athenaeum/config.yaml'
 config = object()
 try: 
@@ -75,7 +76,6 @@ def get_env(env_key, default=None):
 def pod_service_vars(service_name):
     n = service_name.upper().replace('-','_')
     return ("{}_SERVICE_HOST".format(n), "{}_SERVICE_PORT".format(n))
-
 
 debug = config.hub.debug
 def log_debug(mesg):
@@ -193,12 +193,12 @@ c.KubeSpawner.volume_mounts = [{
 
 # c.KubeSpawner.image_pull_secrets = None
 # c.KubeSpawner.events_enabled = False
-c.KubeSpawner.image_pull_policy = 'Always'
+c.KubeSpawner.image_pull_policy = config.hub.spawner.image_pull_policy
 
 
 # This should be an environment variable, since we want the 
 # hub to restart when this changes.
-c.KubeSpawner.image_spec = 'jupyterhub/singleuser:0.9.2'
+c.KubeSpawner.image_spec = config.hub.spawner.image_spec
 # c.Spawner.cmd = ['jupyterhub-singleuser']
 # c.KubeSpawner.mem_limit = get_config('singleuser.memory.limit')
 # c.KubeSpawner.mem_guarantee = get_config('singleuser.memory.guarantee')

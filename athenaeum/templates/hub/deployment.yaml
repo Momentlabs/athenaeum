@@ -1,7 +1,7 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: {{ include "athenaeum.fullname" . }}
+  name: {{ include "athenaeum.hub.service.name" . }}
   labels:
     {{- include "athenaeum.labels" . | nindent 4}}
 spec:
@@ -26,9 +26,8 @@ spec:
             - key: config
               path: config.yaml
       containers:
-        - name: {{ .Chart.Name }}
+        - name: {{ include "athenaeum.hub.service.name" . }}
           image: "{{ .Values.hub.image.repository }}:{{ .Values.hub.image.tag }}"
-          # image: gcr.io/momentlabs-jupyter/athenaeum-hub
           imagePullPolicy: {{ .Values.hub.image.pullPolicy }}
           ports:
             - name: hub
