@@ -79,6 +79,13 @@ component: "hub"
 {{- end -}}
 
 {{- /* 
+     athenaeum.default.name_preamble
+*/}}
+{{- define "athenaeum.default.name_preamble" -}}
+{{ printf "%s-%s" .Chart.Name .Release.Name }}
+{{- end -}}
+
+{{- /* 
      athenaeum.hub.service.name
      Compute the name of the service. If it is defined in Values then use that,
      otherwise compute using the release and chartname.
@@ -106,3 +113,14 @@ component: "hub"
 {{- end -}}
 {{- end -}}
 
+{{- /*
+     athenaeum.proxy.tls.secret_name
+     Compute the value of the secret where the TLS key/cert will be stored.
+*/}}
+{{- define "athenaeum.proxy.tls.secret_name" }}
+{{- if .Values.proxy.tls.secretName -}}
+{{ .Values.proxy.tls.secretName }}
+{{- else -}}
+{{ printf "%s-tls" (include "athenaeum.default.name_preamble" .) }}
+{{- end -}}
+{{- end -}}

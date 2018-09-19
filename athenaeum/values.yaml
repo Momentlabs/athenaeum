@@ -41,8 +41,11 @@ proxy:
   hub_should_start: True
   service:
     name:
-    type: LoadBalancer
-
+    type: ClusterIP
+  ingress:
+    port: 80
+  tls:
+    secretName: 
 
 ingress:
   enabled: false

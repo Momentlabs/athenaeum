@@ -7,7 +7,7 @@ metadata:
 spec:
   type: {{ .Values.proxy.service.type }}
   ports:
-    - port: 8000
+    - port: 80
       targetPort: 8000
       protocol: TCP
   selector:

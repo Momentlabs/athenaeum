@@ -1,0 +1,20 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+    name: notebooks.staging.athenaeumnb.com
+    namespace: default
+spec: 
+    secretName: {{ include "athenaeum.proxy.tls.secret_name" . }}
+    issuerRef:
+        name: letsencrypt-production
+        kind: Issuer
+    commonName: notebooks.staging.athenaeumnb.com
+    dnsNames:
+    - notebooks.staging.athenaeumnb.com
+    acme:
+        config:
+        - http01:
+            ingressClass: nginx
+          domains:
+          - notebooks.staging.athenaeumnb.com
+
