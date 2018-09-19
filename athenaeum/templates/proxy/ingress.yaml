@@ -2,13 +2,15 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ printf "%s-ingress" (include "athenaeum.proxy.service.name" .) }}
+  labels:
+    {{- include "athenaeum.labels" . | nindent 4 }}
   annotations:
-    kubernetes.io/ingress.class: nginx
+    kubernetes.io/ingress.class: {{ .Values.proxy.ingress.class }}
 spec:
   tls:
     - secretName: {{ include "athenaeum.proxy.tls.secret_name" . }}
   rules:
-    - host: notebooks.staging.athenaeumnb.com
+    - host: {{ .Values.proxy.hostname }}
       http:
         paths:
           - path: "/"

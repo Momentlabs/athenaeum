@@ -39,11 +39,13 @@ hub:
 
 proxy:
   hub_should_start: True
+  hostname: notebooks.staging.athenaeumnb.com
   service:
     name:
     type: ClusterIP
   ingress:
     port: 80
+    class: nginx
   tls:
     secretName: 
 
