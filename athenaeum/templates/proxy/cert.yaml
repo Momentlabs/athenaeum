@@ -16,7 +16,7 @@ spec:
     acme:
         config:
         - http01:
-            ingressClass: {{ .Values.ingress.class }}
+            ingressClass: {{ .Values.proxy.ingress.class }}
           domains:
           - {{ .Values.proxy.hostname }}
 

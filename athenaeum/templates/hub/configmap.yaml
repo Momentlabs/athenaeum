@@ -21,7 +21,18 @@ data:
         pvc:
           name: {{ .Values.hub.db.pvc.name }}
       auth:
-        authenticator_class: {{ .Values.hub.auth.athenticator_class }}
+        type: {{ .Values.hub.auth.type }}
+        dummy:
+          authenticator_class: {{ .Values.hub.auth.dummy.authenticator_class }}
+          password: {{ .Values.hub.auth.dummy.password }}
+          whitelist: {{ .Values.hub.auth.dummy.whitelist }}
+        auth0:
+          authenticator_class: {{ .Values.hub.auth.auth0.authenticator_class }}
+          client_id: {{ .Values.hub.auth.auth0.client_id }}
+          client_secret: {{ .Values.hub.auth.auth0.client_secret }}
+          oauth_callback_url: {{ .Values.hub.auth.auth0.oauth_callback_url }}
+          auth0_subdomain: {{ .Values.hub.auth.auth0.auth0_subdomain }}
+          client_redirect_base_url: {{ .Values.hub.auth.auth0.client_redirect_base_url }}
       spawner:
         spawner_class: {{ .Values.hub.spawner.spawner_class }}
         start_timeout: {{ .Values.hub.spawner.start_timeout }}

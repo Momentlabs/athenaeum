@@ -29,6 +29,9 @@ spec:
         - name: {{ include "athenaeum.hub.service.name" . }}
           image: "{{ .Values.hub.image.repository }}:{{ .Values.hub.image.tag }}"
           imagePullPolicy: {{ .Values.hub.image.pullPolicy }}
+          env:
+            - name: AUTH0_SUBDOMAIN 
+              value: {{ .Values.hub.auth.auth0.subdomain }}
           ports:
             - name: hub
               containerPort: 8000

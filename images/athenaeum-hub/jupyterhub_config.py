@@ -100,7 +100,27 @@ if config.hub.debug:
 ##
 # Authentication
 ##
-c.JupyterHub.authenticator_class = 'dummyauthenticator.DummyAuthenticator' # Not Authentication
+
+auth_type = config.hub.auth.type
+auth_class = None
+log_debug("Configuring authentication: {}".format(auth_type))
+if auth_type == 'dummy':
+    auth_class = config.hub.auth.dummy.authenticator_class
+    c.JupyterHub.authenticator_class = auth_class
+    # c.DummyAuthenticator.password = config.hub.auth.dummy.password
+    # c.DummyAuthenticator.whitelist = config.hub.auth.dummy.whitelist
+elif auth_type == 'auth0':
+    auth_class = config.hub.auth.auth0.authenticator_class
+    c.JupyterHub.authenticator_class = auth_class
+    c.Auth0OAuthenticator.client_id = config.hub.auth.auth0.client_id
+    c.Auth0OAuthenticator.client_secret = config.hub.auth.auth0.client_secret
+    c.Auth0OAuthenticator.oauth_subdomain = config.hub.auth.auth0.auth0_subdomain
+    c.Auth0OAuthenticator.oauth_callback_url = config.hub.auth.auth0.oauth_callback_url
+    c.Auth0OAuthenticator.client_redirect_base_url = config.hub.auth.auth0.client_redirect_base_url
+else:
+    raise ValueError("Unhandled auth type: {} with class: {}", auth_type, auth_class)
+log_debug("Authentication class: {}".format(auth_class))
+
 # c.DummyAuthenticator.password = None
 # c.Authenticator.whitelist = {"jdr"}
 
