@@ -12,7 +12,8 @@ RUN pip install -r ${CONFIG_PATH}/requirements.txt
 
 # Install the local version of Oauthenticator
 # USER root
-RUN pip install "oauthenticator>=0.8.1.dev-jdr0" --extra-index-url https://pypi.fury.io/yBaYGxYxSuitsF7y7ppn/momentlabs/
+# RUN pip install "oauthenticator>=0.8.1.dev-jdr0" --extra-index-url https://pypi.fury.io/yBaYGxYxSuitsF7y7ppn/momentlabs/
+RUN pip install git+https://github.com/Momentlabs/oauthenticator.git
 
 # Testing user
 # Geocos stops this from asking for finger informaiton.
