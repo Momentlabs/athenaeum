@@ -184,6 +184,8 @@ c.KubeSpawner.uid = config.hub.uid
 # Pods will have mount filesystems owned as this group.
 c.KubeSpawner.fs_gid = config.hub.fs_gid
 
+c.KubeSpawner.default_url = config.hub.spawner.default_url
+c.KubeSpawner.extra_labels = config.hub.spawner.extra_labels
 
 # Build out the PVC
 c.KubeSpawner.user_storage_pvc_ensure = config.hub.spawner.storage.user_storage_pvc_ensure

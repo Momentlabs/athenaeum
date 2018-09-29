@@ -39,9 +39,12 @@ hub:
       client_redirect_base_url: "https://notebooks.staging.athenaeumnb.com"  # This is used for adding redirects (e.g. logout) from auth0 to us.
   spawner:
     spawner_class: kubespawner.KubeSpawner
+    extra_labels:
+      notebook_user: "{username}"
     start_timeout: '300'
     image_pull_policy: Always
     image_spec: jupyterhub/singleuser:0.9.2
+    default_url: /lab
     storage:
       user_storage_pvc_ensure: True
       user_storage_capacity: '10Gi'

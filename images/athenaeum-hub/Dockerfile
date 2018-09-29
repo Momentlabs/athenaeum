@@ -16,6 +16,9 @@ RUN pip install -r ${CONFIG_PATH}/requirements.txt
 # TODO: Add a release identifier to this.
 RUN pip install git+https://github.com/Momentlabs/oauthenticator.git
 
+# This is sometimes useful for debug.
+# RUN pip install git+https://github.com/Momentlabs/kubespawner.git@dev-90
+
 # Testing user
 # Geocos stops this from asking for finger informaiton.
 ARG TEST_USER=jdr
