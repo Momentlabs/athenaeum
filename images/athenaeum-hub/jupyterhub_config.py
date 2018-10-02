@@ -139,7 +139,7 @@ c.JupyterHub.spawner_class = config.hub.spawner.spawner_class
 c.JupyterHub.cleanup_servers = False
 
 # First pulls are slow, so long time out.
-c.KubeSpanwner.start_timeout = config.hub.spawner.start_timeout
+c.KubeSpawner.start_timeout = config.hub.spawner.start_timeout
 
 ###
 # Connect / Service Discovery
@@ -184,6 +184,7 @@ c.KubeSpawner.uid = config.hub.uid
 # Pods will have mount filesystems owned as this group.
 c.KubeSpawner.fs_gid = config.hub.fs_gid
 
+c.Spawner.default_url = config.hub.spawner.default_url
 c.KubeSpawner.default_url = config.hub.spawner.default_url
 c.KubeSpawner.extra_labels = config.hub.spawner.extra_labels
 
