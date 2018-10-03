@@ -11,42 +11,23 @@ data:
       uid: {{ .Values.hub.uid }}
       fs_gid: {{ .Values.hub.fs_gid }}
       image: {{ toJson .Values.hub.image }}
-        # repository: {{ .Values.hub.image.repository }}
-        # tag: {{ .Values.hub.image.tag }}
-        # pullPolicy: {{ .Values.hub.image.pullPolicy }}
       service:
         name: {{ include "athenaeum.hub.service.name" . }}
         type: {{ .Values.hub.service.type }}
       db: {{ toJson .Values.hub.db }}
-        # pvc:
-        #   name: {{ .Values.hub.db.pvc.name }}
       auth: {{ toJson .Values.hub.auth }}
-        # type: {{ .Values.hub.auth.type }}
-        # dummy:
-        #   authenticator_class: {{ .Values.hub.auth.dummy.authenticator_class }}
-        #   password: {{ .Values.hub.auth.dummy.password }}
-        #   whitelist: {{ .Values.hub.auth.dummy.whitelist }}
-        # auth0:
-        #   authenticator_class: {{ .Values.hub.auth.auth0.authenticator_class }}
-        #   client_id: {{ .Values.hub.auth.auth0.client_id }}
-        #   client_secret: {{ .Values.hub.auth.auth0.client_secret }}
-        #   oauth_callback_url: {{ .Values.hub.auth.auth0.oauth_callback_url }}
-        #   auth0_subdomain: {{ .Values.hub.auth.auth0.auth0_subdomain }}
-        #   client_redirect_base_url: {{ .Values.hub.auth.auth0.client_redirect_base_url }}
       spawner: {{ toJson .Values.hub.spawner }}
-        # spawner_class: {{ .Values.hub.spawner.spawner_class }}
-        # start_timeout: {{ .Values.hub.spawner.start_timeout }}
-        # image_pull_policy: {{ .Values.hub.spawner.image_pull_policy }}
-        # image_spec: {{ .Values.hub.spawner.image_spec }}
-        # storage:
-        #   user_storage_pvc_ensure: {{ .Values.hub.spawner.storage.user_storage_pvc_ensure }}
-        #   user_storage_capacity: {{ .Values.hub.spawner.storage.user_storage_capacity }}
-        #   storage_access_modes: {{ .Values.hub.spawner.storage.storage_access_modes }}
-        #   pvc_name_template: {{ .Values.hub.spawner.storage.pvc_name_template }}
     proxy:
       hub_should_start: {{ .Values.proxy.hub_should_start }}
+      hostname: {{ .Values.proxyhostname }}
+      image: {{ toJson .Values.proxy.image }}
       service:
         name: {{ include "athenaeum.proxy.service.name" . }}
         type: {{ .Values.proxy.service.type }}
-
-
+      api:
+        service:
+            name: {{ include "athenaeum.proxy.api.service.name" . }}
+            type: {{ .Values.proxy.api.service.type }}
+            port: {{ .Values.proxy.api.service.port }}
+            targetPort: {{ .Values.proxy.api.service.targetPort }}
+      ingress: {{ .Values.proxy.ingress }}

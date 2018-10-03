@@ -21,11 +21,11 @@ hub:
     type: ClusterIP  # This needs to be used, it's not currently.
 #    host: 0.0.0.0
 #    port: 8081
-  db: # THIS IS NOT YET USED.
+  db:
     pvc:
       name: hub-db
   auth:
-    type: auth0
+    type: dummy
     dummy:
       authenticator_class: dummyauthenticator.DummyAuthenticator
       password:
@@ -42,9 +42,9 @@ hub:
     spawner_class: kubespawner.KubeSpawner
     extra_labels:
       notebook_user: "{username}"
-    start_timeout: '300'
+    start_timeout: 300
     image_pull_policy: Always
-    image_spec: jupyterhub/singleuser:0.9.2
+    image_spec: jupyterhub/singleuser:0.9ß.2
     default_url: /lab
     storage:
       user_storage_pvc_ensure: True
@@ -54,11 +54,24 @@ hub:
       pvc_name_template: 'claim-{username}{servername}'
 
 proxy:
-  hub_should_start: True
-  hostname: notebooks.staging.athenaeumnb.com
+  secretToken: 1d16be9c9a48800df8f013841f747289e62054878cd948be0358560ecca2ea53
+  hub_should_start: False
+  hostname: notebooks.dev.athenaeumnb.com
+  image:
+    repository: jupyterhub/configurable-http-proxy
+    tag: 3.0.0
+    pullPolicy: IfNotPresent
   service:
     name:
     type: ClusterIP
+    port: 80
+    targetPort: 8000
+  api:
+    service:
+      name:
+      type: ClusterIP
+      port: 8001
+      targetPort: 8001
   ingress:
     port: 80
     class: nginx

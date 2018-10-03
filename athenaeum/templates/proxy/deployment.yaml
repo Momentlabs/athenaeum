@@ -1,0 +1,51 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: {{ include "athenaeum.proxy.service.name" . }}
+  labels:
+    {{- include "athenaeum.labels" . | nindent 4}}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "athenaeum.labels" . | nindent 6}}
+  template:
+    metadata:
+      labels:
+        {{- include "athenaeum.labels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ include "athenaeum.hub.service.name" . }}
+          image: "{{ .Values.proxy.image.repository }}:{{ .Values.proxy.image.tag }}"
+          command:
+            - configurable-http-proxy
+            - --ip=0.0.0.0
+            - --port={{ .Values.proxy.service.targetPort }}
+            - --api-ip=0.0.0.0
+            - --api-port={{ .Values.proxy.api.service.targetPort }}
+            - --default-target={{ include "athenaeum.hub.service.env_url" . }}
+            - --error-target={{ printf "%s%s" (include "athenaeum.hub.service.env_url" . ) "/hub/error" }}
+            {{- if .Values.hub.debug }}
+            - --log-level=debug
+            {{- end }}
+          imagePullPolicy: {{ .Values.proxy.image.pullPolicy }}
+          env:
+          - name: CONFIGPROXY_AUTH_TOKEN
+            valueFrom: 
+              secretKeyRef:
+                name: hub-secret
+                key: proxy.token
+          ports:
+            - name: proxy-public
+              containerPort: {{ .Values.proxy.service.targetPort }}
+              protocol: TCP
+            - name: api
+              containerPort: {{ .Values.proxy.api.service.targetPort }}
+          # livenessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: 8000
+          # readinessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: 8000

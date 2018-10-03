@@ -32,6 +32,11 @@ spec:
           env:
             - name: AUTH0_SUBDOMAIN 
               value: {{ .Values.hub.auth.auth0.subdomain }}
+            - name: CONFIGPROXY_AUTH_TOKEN
+              valueFrom: 
+                secretKeyRef:
+                  name: hub-secret
+                  key: proxy.token
           ports:
             - name: hub
               containerPort: 8000

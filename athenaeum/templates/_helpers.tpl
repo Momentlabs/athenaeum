@@ -103,7 +103,7 @@ component: "hub"
      athenaeum.proxy.service.name
      Compute the name of the service. If it iπs defined in Values then use that,
      otherwise compute using the release and chartname.
-     
+     TODO: Clean these service names up to a single body of code with config.
 */}}
 {{- define "athenaeum.proxy.service.name" -}}
 {{- if .Values.proxy.service.name -}}
@@ -111,6 +111,38 @@ component: "hub"
 {{- else -}}
 {{ printf "%s-%s-proxy" .Chart.Name .Release.Name }}
 {{- end -}}
+{{- end -}}
+
+{{- /* 
+     athenaeum.proxy.api.service.name
+     Compute the name of the service. If it iπs defined in Values then use that,
+     otherwise compute using the release and chartname.
+     
+*/}}
+{{- define "athenaeum.proxy.api.service.name" -}}
+{{- if .Values.proxy.service.name -}}
+{{ .Values.proxy.service.name }}
+{{- else -}}
+{{ printf "%s-%s-proxy-api" .Chart.Name .Release.Name }}
+{{- end -}}
+{{- end -}}
+
+{{- /*
+    athenaeum.hub.service.env_url
+    Compute the URL for finding the HUB using Kubernetes service discovery environment
+    variables. The resulting URL looks something like:
+        http://$(ATHENAEUM_HUB_SERVICE_HOST):$(ATHENAEUM_HUB_SERVICE_PORT)
+
+    When the hub service is created Kubernetes will create environment
+    variables, <service-name>_SERVICE_HOST and <service-name>_SERVICE_PORT. These are used
+    for service discovery.
+    This should be used by the proxy service to locate the hub.
+*/}}
+{{- define "athenaeum.hub.service.env_url" -}}
+{{- $service := include "athenaeum.hub.service.name" . | replace "-" "_"  | upper -}}
+{{- $host := printf "%s_SERVICE_HOST" $service -}}
+{{- $port := printf "%s_SERVICE_PORT" $service -}}
+{{ printf "$(%s):$(%s)" $host $port }}
 {{- end -}}
 
 {{- /*

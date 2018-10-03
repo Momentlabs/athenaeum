@@ -70,12 +70,25 @@ except FileNotFoundError:
 
 log_debug("Dynamic configuration input: {}".format(config))
 
+# TODO: Remove this in favor of os.getenv()
 def get_env(env_key, default=None):
     return os.environ[env_key] if env_key in os.environ else default
 
 def pod_service_vars(service_name):
     n = service_name.upper().replace('-','_')
     return ("{}_SERVICE_HOST".format(n), "{}_SERVICE_PORT".format(n))
+
+def pod_service_url(service_name):
+    (host_env, port_env) = pod_service_vars(service_name)
+    log_debug("Looking for environment variables: {} and {}".format(host_env, port_env))
+    service_host = get_env(host_env)
+    service_port = get_env(port_env)
+    service_url = "http://{}:{}".format(service_host, service_port)
+    if service_host and service_port:
+        log_debug("Created service url for {} => {}".format(service_name, service_url))
+    else:
+        log_debug("ERROR: SERVICE environment variable(s) not set. host: {} port:{}, bad URL: {}".format(service_host, service_port, service_url))
+    return service_url
 
 debug = config.hub.debug
 def log_debug(mesg):
@@ -121,8 +134,6 @@ else:
     raise ValueError("Unhandled auth type: {} with class: {}", auth_type, auth_class)
 log_debug("Authentication class: {}".format(auth_class))
 
-# c.DummyAuthenticator.password = None
-# c.Authenticator.whitelist = {"jdr"}
 
 ##
 # Spawning Notebook Severs
@@ -153,18 +164,31 @@ c.KubeSpawner.start_timeout = config.hub.spawner.start_timeout
 c.JupyterHub.hub_bind_url = "http://0.0.0.0:8081"
 
 #
-# Service Discovery: Environment variables injected by Kubernetes 
-# at container start up.
-(host_env, port_env) = pod_service_vars(config.hub.service.name)
-log_debug("Looking for environemnt variables: {} and  {}".format(host_env, port_env))
-hub_service_host = get_env(host_env)
-hub_service_port = get_env(port_env)
-hub_service_url = "http://{}:{}".format(hub_service_host, hub_service_port)
-if hub_service_host and hub_service_port:
-    c.JupyterHub.hub_connect_url = hub_service_url
-    log_debug("Set hub_connect_url to: {}".format(hub_service_url))
-else: 
-    log_debug("ERROR: Service environment variable not set for: {}, bad URL: {}".format(config.hub.service.name, hub_service_url))
+# Service Discovery: 
+# Environment variables injected by Kubernetes at container start up.
+# TODO: Remove the computation of these variables from this file and
+# move them to the ConfigMap and template helper functions.
+# e.g. for the Hub we'd get something like:
+#   hub_service_host = get_env(config.hub.service.host_url)
+#   hub_service_port = get_env(config.hub.service.port_url)
+#   c.JupyterHub.hub_connect_url = "http://{}:{}".format(hub_service_host, hub_service_port)
+
+# Hub Service
+c.JupyterHub.hub_connect_url = pod_service_url(config.hub.service.name)
+# (hub_host_env, hub_port_env) = pod_service_vars(config.hub.service.name)
+# log_debug("Looking for environemnt variables: {} and  {}".format(hub_host_env, hub_port_env))
+# hub_service_host = get_env(hub_host_env)
+# hub_service_port = get_env(hub_port_env)
+# hub_service_url = "http://{}:{}".format(hub_service_host, hub_service_port)
+# if hub_service_host and hub_service_port:
+#     c.JupyterHub.hub_connect_url = hub_service_url
+#     log_debug("Set hub_connect_url to: {}".format(hub_service_url))
+# else: 
+#     log_debug("ERROR: Service environment variable not set for: {}, bad URL: {}".format(config.hub.service.name, hub_service_url))
+
+# Proxy Service
+c.ConfigurableHTTPProxy.should_start = config.proxy.hub_should_start
+c.ConfigurableHTTPProxy.api_url = pod_service_url(config.proxy.api.service.name)
 
 # TODO: A notebook SA strategy is quite critical.
 # This default case can't last.
