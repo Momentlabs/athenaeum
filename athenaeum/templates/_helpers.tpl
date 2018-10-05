@@ -146,6 +146,25 @@ component: "hub"
 {{- end -}}
 
 {{- /*
+    athenaeum.hub.auth.auth0.oauth_callback_url 
+    This is the where the hub gets called back to from Auth0 on authentication
+    It's constructed with some additional decoration around the base URL for the site.
+*/}}      
+{{- define "athenaeum.hub.auth.auth0.oauth_callback_url" -}}
+{{ default (printf "https://%s/hub/oauth_callback" .Values.proxy.hostname) .Values.hub.auth.auth0.oauth_callback_url }}
+{{- end -}}
+
+{{- /*
+    athenaeum.hub.auth.auth0.cient_redirect_base_url
+    This is used for redirets like /logout and provided to Auth0 for redirection to.
+    It's the site URL.
+*/}}
+{{- define "athenaeum.hub.auth.auth0.client_redirect_base_url" -}}
+{{ default (printf "https://%s" .Values.proxy.hostname) .Values.hub.auth.auth0.client_redirect_bae_url }}
+{{- end -}}
+
+
+{{- /*
      athenaeum.proxy.tls.secret_name
      Compute the value of the secret where the TLS key/cert will be stored.
 */}}

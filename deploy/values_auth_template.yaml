@@ -1,0 +1,21 @@
+hub:
+  debug: True
+  image:
+    repository: gcr.io/momentlabs-jupyter/athenaeum-hub
+    tag: dev
+    pullPolicy: Always
+  auth:
+    type: auth0
+    auth0:
+      subdomain: momentlabs
+      client_id: "ID_FROM_AUTH0"
+      client_secret: "SECRET_FROM_AUTH0"
+  spawner:
+    start_timeout: 300
+    image_pull_policy: Always
+    image_spec: jupyterhub/singleuser:0.9ß.2
+    default_url: /lab
+
+proxy:
+  hostname: <DEPLOY_URL>
+  secretToken: <Proxy token must be a 32 byte random string generated with `openssl rand -hex 32`>

@@ -127,7 +127,7 @@ elif auth_type == 'auth0':
     c.JupyterHub.authenticator_class = auth_class
     c.Auth0OAuthenticator.client_id = config.hub.auth.auth0.client_id
     c.Auth0OAuthenticator.client_secret = config.hub.auth.auth0.client_secret
-    c.Auth0OAuthenticator.oauth_subdomain = config.hub.auth.auth0.auth0_subdomain
+    c.Auth0OAuthenticator.oauth_subdomain = config.hub.auth.auth0.subdomain
     c.Auth0OAuthenticator.oauth_callback_url = config.hub.auth.auth0.oauth_callback_url
     c.Auth0OAuthenticator.client_redirect_base_url = config.hub.auth.auth0.client_redirect_base_url
 else:

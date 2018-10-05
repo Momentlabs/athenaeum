@@ -43,7 +43,17 @@ data:
         name: {{ include "athenaeum.hub.service.name" . }}
         type: {{ .Values.hub.service.type }}
       db: {{ toYaml .Values.hub.db | trim | nindent 8 }}
-      auth: {{ toYaml .Values.hub.auth | trim | nindent 8 }}
+      # auth: {{ toYaml .Values.hub.auth | trim | nindent 8 }}
+      auth:
+        type: {{ .Values.hub.auth.type }}
+        dummy: {{ toYaml .Values.hub.auth.dummy | trim | nindent 10 }}
+        auth0:
+          subdomain: {{ .Values.hub.auth.auth0.subdomain }}
+          authenticator_class: {{ .Values.hub.auth.auth0.authenticator_class }}
+          client_id: {{ .Values.hub.auth.auth0.client_id }}
+          client_secret: {{ .Values.hub.auth.auth0.client_secret }}
+          oauth_callback_url: {{ include "athenaeum.hub.auth.auth0.oauth_callback_url" . }}
+          client_redirect_base_url: {{ include "athenaeum.hub.auth.auth0.client_redirect_base_url" . }}
       spawner: {{ toYaml .Values.hub.spawner | trim | nindent 8 }}
     proxy:
       hub_should_start: {{ .Values.proxy.hub_should_start }}
