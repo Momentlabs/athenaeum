@@ -7,8 +7,8 @@ metadata:
 spec:
   type: {{ .Values.hub.service.type }}
   ports:
-    - port: 8081
-      targetPort: 8081
+    - port: {{ .Values.hub.service.port }}
+      targetPort: {{ .Values.hub.service.port }}
       protocol: TCP
   selector:
     {{- include "athenaeum.service.selector" . | nindent 4 }}
