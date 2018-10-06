@@ -161,7 +161,7 @@ c.KubeSpawner.start_timeout = config.hub.spawner.start_timeout
 # then the hub_connect_ip is used as the bind ip. Go figure, it didn't really
 # look that way in the code (jpuyterhub 0.92), but that's what I've been seeing.
 # hub_port = 8081
-c.JupyterHub.hub_bind_url = "http://0.0.0.0:8081"
+c.JupyterHub.hub_bind_url = config.hub.bind_url
 
 #
 # Service Discovery: 

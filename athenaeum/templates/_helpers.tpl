@@ -128,6 +128,16 @@ component: "hub"
 {{- end -}}
 
 {{- /*
+    athenaeum.hub.bind_url
+    This is the address for the hub to bind to.
+    It should be the all addreses 0.0.0.0 and the target port the
+    service references for the container port.
+*/}}
+{{- define "athenaeum.hub.bind_url" -}}
+{{ default (printf "http://0.0.0.0:%.0f" .Values.hub.service.targetPort) .Values.hub.bind_url }}
+{{- end -}}
+
+{{- /*
     athenaeum.hub.service.env_url
     Compute the URL for finding the HUB using Kubernetes service discovery environment
     variables. The resulting URL looks something like:

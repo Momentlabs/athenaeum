@@ -39,9 +39,12 @@ data:
       uid: {{ .Values.hub.uid }}
       fs_gid: {{ .Values.hub.fs_gid }}
       image: {{ toYaml .Values.hub.image | trim | nindent 8 }}
+      bind_url: {{ include "athenaeum.hub.bind_url" . }}
       service:
         name: {{ include "athenaeum.hub.service.name" . }}
         type: {{ .Values.hub.service.type }}
+        port: {{ .Values.hub.service.port }}
+        targetPort: {{ .Values.hub.service.targetPort}}
       db: {{ toYaml .Values.hub.db | trim | nindent 8 }}
       auth:
         type: {{ .Values.hub.auth.type }}
