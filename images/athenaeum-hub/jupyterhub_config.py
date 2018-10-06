@@ -175,16 +175,6 @@ c.JupyterHub.hub_bind_url = "http://0.0.0.0:8081"
 
 # Hub Service
 c.JupyterHub.hub_connect_url = pod_service_url(config.hub.service.name)
-# (hub_host_env, hub_port_env) = pod_service_vars(config.hub.service.name)
-# log_debug("Looking for environemnt variables: {} and  {}".format(hub_host_env, hub_port_env))
-# hub_service_host = get_env(hub_host_env)
-# hub_service_port = get_env(hub_port_env)
-# hub_service_url = "http://{}:{}".format(hub_service_host, hub_service_port)
-# if hub_service_host and hub_service_port:
-#     c.JupyterHub.hub_connect_url = hub_service_url
-#     log_debug("Set hub_connect_url to: {}".format(hub_service_url))
-# else: 
-#     log_debug("ERROR: Service environment variable not set for: {}, bad URL: {}".format(config.hub.service.name, hub_service_url))
 
 # Proxy Service
 c.ConfigurableHTTPProxy.should_start = config.proxy.hub_should_start
@@ -241,10 +231,13 @@ c.KubeSpawner.volume_mounts = [{
 # c.KubeSpawner.image_pull_secrets = None
 # c.KubeSpawner.events_enabled = False
 c.KubeSpawner.image_pull_policy = config.hub.spawner.image_pull_policy
+# c.Kube_Spawner.env_keep:
 
 
-# This should be an environment variable, since we want the 
-# hub to restart when this changes.
+# This is a value that essentially obviate the need for the
+# values directly below
+c.KubeSpawner.profile_list = config.hub.spawner.profile_list
+
 c.KubeSpawner.image_spec = config.hub.spawner.image_spec
 # c.Spawner.cmd = ['jupyterhub-singleuser']
 # c.KubeSpawner.mem_limit = get_config('singleuser.memory.limit')
@@ -256,84 +249,6 @@ c.KubeSpawner.image_spec = config.hub.spawner.image_spec
 
 # c.Spawner.args = ['3600']
 # c.KubeSpawner.extra_labels = {}
-
-# This obviates that need for image_spec above.
-c.KubeSpawner.profile_list = [
-    {
-        'display_name': 'juptyerhub/singleuser:0.8',
-        'default': True,
-        'kubespawner_override': {
-            'image_spec': 'jupyterhub/singleuser:0.8',
-            'cpu_limit': 0.2,
-        },
-        'description': 'Something description of what is going on here, maybe a <a href="#">link too!</a>'
-    }, {
-        'display_name': 'juptyerhub/singleuser:0.9.2',
-        'kubespawner_override': {
-            'image_spec': 'jupyterhub/singleuser:0.9.2',
-            'cpu_limit': 0.2,
-        },
-        'description': 'Something description of what is going on here, maybe a <a href="#">link too!</a>'
-    }, {
-        'display_name': 'jupyter/datascience-notebook',
-        'kubespawner_override': {
-            'image_spec': 'jupyter/datascience-notebook',
-            'cpu_limit': 0.2,
-        },
-        'description': 'Something description of how this is different, maybe a <a href="#">link too!</a>'
-    }
-]
-
-
-# used to determine which nodes to run a notebook on.
-# c.KubeSpawner.node_selector = 
-
-## 
-# Kubernetes resource Management
-## 
-
-
-
-# Notebook's Perssitent Volume Configuration
-# 
-# There are two ways to do this:
-# 1. Sattically: Create the claim/store outside of the  KubeSpawner
-#    providing configuration to KS to access this static claim.
-#
-# 2. Dyanmically: Ensure that the claim exists before spawning. Create
-#    a PVC for this user (named KubeSpawner.pvc_name_template) if a pbc
-#    does not exist.
-
-# This is what enables dynamic deployment of the PVC by this KS.
-# c.KubeSpawner.storage_pvc_ensure = False
-
-
-# Volume configuration REQUIRED for KubeSpawner to create a PVC
-# c.KubeSpanwer.storage_access_modes = ['ReadWriteOnce']
-# c.KubeSpawner.storage_capacity = '10Gi'
-# c.KubeSpawner.storage_class = 
-# c.KubeSpawner.storage_extra_labes = Dict()
-
-# also used in creating a PVC
-# This forms the notebooks user's pvc.
-# c.KubeSpawner.pvc_name_template = 'notebook-{username}{servername}'
-
-# List of which volumes are avilable for mounting on 
-# the user's pod.
-# volume_name = 'home-{username}'
-# pvc_claim = 'notebook-jdr'
-# c.KubeSpawner.volumes =[{
-#     'name': volume_name,
-#     'persistent_volume_claim': pvc_claim
-# }]
-
-# List of volume mounts and the path on the user's pod to mount
-# the volume.
-# c.KubeSpawner.volume_mounts = [{
-#     'mountPath': '/home/jovyan',
-#     'name': volume_name,
-#     # 'subPath': '{username}'
-# }]
 
 #------------------------------------------------------------------------------
 # Application(SingletonConfigurable) configuration

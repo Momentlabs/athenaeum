@@ -43,7 +43,6 @@ data:
         name: {{ include "athenaeum.hub.service.name" . }}
         type: {{ .Values.hub.service.type }}
       db: {{ toYaml .Values.hub.db | trim | nindent 8 }}
-      # auth: {{ toYaml .Values.hub.auth | trim | nindent 8 }}
       auth:
         type: {{ .Values.hub.auth.type }}
         dummy: {{ toYaml .Values.hub.auth.dummy | trim | nindent 10 }}

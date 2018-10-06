@@ -17,6 +17,7 @@ hub:
     pullPolicy: Always
   service:
     name:
+    discovery_url:
     type: ClusterIP 
     port: 8081
     targetPort: 8081
@@ -50,7 +51,26 @@ hub:
       storage_access_modes:
       - ReadWriteOnce
       pvc_name_template: 'claim-{username}{servername}'
-
+    profile_list:
+    - display_name: 'jupyterhub/singleuser:0.8'
+      default: 'True'
+      description: "Basic Python3 image from the jupyterub project."
+      kubespawner_override:
+        image_spec: 'jupyterhub/singleuser:0.8'
+        cpu_limit: 0.2
+        mem_limit: '512M'
+    - display_name: 'jupyterhub/singleuser:0.9.2'
+      description: 'Latest version of the basic Python 3 Image.'
+      kubespawner_override:
+        image_spec: 'jupyterhub/singleuser:0.9.2'
+        cpu_limit: 0.2
+        mem_limit: '512M'
+    - display_name: 'jupyterhub/datascience-notebook'
+      description: "Featurefull Python 3 datascience platform including support for R."
+      kubespawner_override:
+        image_spec: 'jupyterhub/datascience-notebook'
+        cpu_limit: 0.2,
+        mem_limit: "512M"
 proxy:
   hostname: 
   secretToken: 
