@@ -2,4 +2,4 @@ apiVersion: v1
 appVersion: "1.0"
 description: Athenaeum core platform
 name: athenaeum
-version: 0.0.2
+version: 0.0.3
