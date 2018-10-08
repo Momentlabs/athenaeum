@@ -1,6 +1,6 @@
 steps:
 - name: 'gcr.io/cloud-builders/gsutil'
-  args: ['cp', '$_GS_HELM_REPO_BUCKET_HEAD$BRANCH_NAME/index.yaml', '.']
+  args: ['cp', '$_GS_HELM_REPO_BUCKET_HEAD-$BRANCH_NAME/index.yaml', '.']
 - name: 'devth/helm'
   args: [ 'helm', 'package', '--save=false', 'athenaeum']
 - name: 'devth/helm'
