@@ -7,3 +7,9 @@ steps:
   args: [ 'helm', 'repo', 'index', '--debug', '--merge', 'index.yaml', '.' ]
 - name: 'gcr.io/cloud-builders/gsutil'
   args: [  'cp', 'index.yaml', '*.tgz', '$_GS_HELM_REPO_BUCKET_HEAD-$BRANCH_NAME' ]
+substitutions:
+  - key: '_BUILD_NAME'
+    value: 'Athenaeum Helm Repo Update - $BRANCH_NAME'
+  - key: '_HELM_REPO_BUCKET'
+    value: '$_GS_HELM_REPO_BUCKET_HEAD-$BRANCH_NAME'
+
