@@ -19,12 +19,6 @@ default:
 # 	gcloud builds submit --tag gcr.io/$(GCP_PROJECT)/$(IMAGE):production .
 
 
-
-
-# dh-staging: dh-build
-# 	docker tag momentlabs/${IMAGE} momentlabs/${IMAGE}:staging
-# 	docker push momentlabs/${IMAGE}:staging
-
 # dh-production: dh-build
 # 	docker tag momentlabs/${IMAGE} momentlabs/${IMAGE}:production
 # 	docker push momentlabs/${IMAGE}:production
