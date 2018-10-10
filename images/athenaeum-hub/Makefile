@@ -4,9 +4,11 @@ GCP_PROJECT := momentlabs-jupyter
 SHORT_SHA := "NO_SHA"
 BRANCH := 'dev'
 IMAGE := athenaeum-hub
+REPO_NAME := "jdr-local/athenaeum"
+
 
 default: 
-	gcloud builds submit --substitutions BRANCH_NAME=${BRANCH},SHORT_SHA=${SHORT_SHA},_IMAGE=${IMAGE},_DOCKERFILE=. --config cloudbuild.yaml
+	gcloud builds submit --substitutions REPO_NAME=${REPO_NAME},BRANCH_NAME=${BRANCH},SHORT_SHA=${SHORT_SHA},_IMAGE=${IMAGE},_DOCKERFILE=. --config cloudbuild.yaml
 
 # 	gcloud builds submit --tag gcr.io/$(GCP_PROJECT)/$(IMAGE):latest .
 

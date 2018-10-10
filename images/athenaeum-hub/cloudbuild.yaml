@@ -1,6 +1,11 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/$_IMAGE', '$_DOCKERFILE']
+  env: 
+  - 'BUILD_NAME=${_BUILD_NAME}'
+  - 'BRANCH_NAME=${BRANCH_NAME}'
+  - 'REPO_NAME=${REPO_NAME}'
+  - 'BUILD_DESCRIPTION=Image build for ${_IMAGE}'
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'tag', 'gcr.io/$PROJECT_ID/athenaeum-hub', 'gcr.io/$PROJECT_ID/$_IMAGE:$BRANCH_NAME' ]
 - name: 'gcr.io/cloud-builders/docker'
