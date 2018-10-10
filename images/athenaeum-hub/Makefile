@@ -20,9 +20,6 @@ default:
 
 
 
-# dh-dev: dh-build
-# 	docker tag momentlabs/${IMAGE} momentlabs/${IMAGE}:56
-# 	docker push momentlabs/${IMAGE}:56
 
 # dh-staging: dh-build
 # 	docker tag momentlabs/${IMAGE} momentlabs/${IMAGE}:staging
