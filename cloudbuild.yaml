@@ -13,6 +13,6 @@ steps:
 - name: 'gcr.io/cloud-builders/gsutil'
   args: [  'cp', 'index.yaml', '*.tgz', '$_GS_HELM_REPO_BUCKET_HEAD-$BRANCH_NAME' ]
 substitutions:
-  _BUILD_NAME: 'Athenaeum Helm Repo Update'
+  _BUILD_NAME: 'Athenaeum Chart Helm Repo Update'
   _GS_HELM_REPO_BUCKET_HEAD: 'gs://momentlabs-helm'
 
