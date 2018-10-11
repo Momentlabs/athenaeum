@@ -2,9 +2,9 @@
 
 GCP_PROJECT := momentlabs-jupyter
 SHORT_SHA := "NO_SHA"
-BRANCH := 'dev'
 IMAGE := athenaeum-hub
 REPO_NAME := "jdr-local/athenaeum"
+BRANCH_NAME := $(shell git rev-parse --abbrev-ref HEAD)
 
 
 default: 
