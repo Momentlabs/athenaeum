@@ -14,3 +14,6 @@ images:
 - 'gcr.io/$PROJECT_ID/$_IMAGE'
 - 'gcr.io/$PROJECT_ID/$_IMAGE:$BRANCH_NAME'
 - 'gcr.io/$PROJECT_ID/$_IMAGE:$SHORT_SHA'
+substitutions:
+  _DOCKERFILE: images/pod-culler
+  _IMAGE: athenaeum-pod-culler
