@@ -5,7 +5,7 @@ steps:
   - 'BUILD_NAME=${_BUILD_NAME}'
   - 'BRANCH_NAME=${BRANCH_NAME}'
   - 'REPO_NAME=${REPO_NAME}'
-  - 'BUILD_DESCRIPTION=Pushed athenaeum helm chart package to heln repo $_GS_HELM_REPO_BUCKET_HEAD-$BRANCH_NAME'
+  - 'BUILD_DESCRIPTION=Push athenaeum helm chart package to helm repo $_GS_HELM_REPO_BUCKET_HEAD-$BRANCH_NAME'
 - name: 'devth/helm'
   args: [ 'helm', 'package', '--save=false', 'athenaeum']
 - name: 'devth/helm'

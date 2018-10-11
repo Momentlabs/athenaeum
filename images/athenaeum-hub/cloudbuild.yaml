@@ -5,7 +5,7 @@ steps:
   - 'BUILD_NAME=${_BUILD_NAME}'
   - 'BRANCH_NAME=${BRANCH_NAME}'
   - 'REPO_NAME=${REPO_NAME}'
-  - 'BUILD_DESCRIPTION=Image build for ${_IMAGE}'
+  - 'BUILD_DESCRIPTION=Image build for ${_IMAGE} and push to container repository'
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'tag', 'gcr.io/$PROJECT_ID/athenaeum-hub', 'gcr.io/$PROJECT_ID/$_IMAGE:$BRANCH_NAME' ]
 - name: 'gcr.io/cloud-builders/docker'
