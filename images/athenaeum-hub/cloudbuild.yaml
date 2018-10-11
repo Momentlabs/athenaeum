@@ -15,4 +15,4 @@ images:
 - 'gcr.io/$PROJECT_ID/$_IMAGE:$BRANCH_NAME'
 - 'gcr.io/$PROJECT_ID/$_IMAGE:$SHORT_SHA'
 substitutions:
-  _BUILD_NAME: 'Athenaeum-hub Docker Image Build'
+  _BUILD_NAME: 'athenaeum-hub Docker Image Build'
