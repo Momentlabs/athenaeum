@@ -71,3 +71,4 @@ data:
             port: {{ .Values.proxy.api.service.port }}
             targetPort: {{ .Values.proxy.api.service.targetPort }}
       ingress: {{ toYaml .Values.proxy.ingress | trim | nindent 8 }}
+    cull: {{ toYaml .Values.cull | trim | nindent 6}}

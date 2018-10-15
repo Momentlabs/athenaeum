@@ -147,9 +147,12 @@ c.JupyterHub.spawner_class = config.hub.spawner.spawner_class
 #
 # KubeSpawner Conifig
 #
+
+# Shutdown single-user servers when the hub shuts-down
 c.JupyterHub.cleanup_servers = False
 
 # First pulls are slow, so long time out.
+c.Spanwer.start_timeout = config.hub.spawner.start_timeout
 c.KubeSpawner.start_timeout = config.hub.spawner.start_timeout
 
 ###
@@ -190,6 +193,7 @@ c.ConfigurableHTTPProxy.api_url = pod_service_url(config.proxy.api.service.name)
 # c.KubeSpawner.namespace = 'default'
 
 ##
+# 
 # Notebook Storage Volumes and Mounts
 ## 
 
@@ -205,7 +209,6 @@ c.KubeSpawner.extra_labels = config.hub.spawner.extra_labels
 # Build out the PVC
 c.KubeSpawner.user_storage_pvc_ensure = config.hub.spawner.storage.user_storage_pvc_ensure
 c.KubeSpawner.user_storage_capacity = config.hub.spawner.storage.user_storage_capacity
-# c.KubeSpawner.storage_access_modes = ["ReadWriteOnce"]
 c.KubeSpawner.storage_access_modes = config.hub.spawner.storage.storage_access_modes
 
 # And the volume and volume mounts.
@@ -224,14 +227,17 @@ c.KubeSpawner.volume_mounts = [{
     'mountPath': '/home/jovyan'
 }]
 
+# c.KubeSpawner.image_pull_secrets = None
+# c.KubeSpawner.events_enabled = False
+
+
 ##
 # Notebook container configuration
 ## 
 
-# c.KubeSpawner.image_pull_secrets = None
-# c.KubeSpawner.events_enabled = False
 c.KubeSpawner.image_pull_policy = config.hub.spawner.image_pull_policy
-# c.Kube_Spawner.env_keep:
+
+
 
 
 # This is a value that essentially obviate the need for the
@@ -239,6 +245,14 @@ c.KubeSpawner.image_pull_policy = config.hub.spawner.image_pull_policy
 c.KubeSpawner.profile_list = config.hub.spawner.profile_list
 
 c.KubeSpawner.image_spec = config.hub.spawner.image_spec
+
+
+# c.KubeSpawner.cmd = config.hub.spawner.cmd
+# c.KubeSpawner.args = config.hub.spawner.args
+c.KubeSpanwer.environment = config.hub.spawner.environment
+
+
+
 # c.Spawner.cmd = ['jupyterhub-singleuser']
 # c.KubeSpawner.mem_limit = get_config('singleuser.memory.limit')
 # c.KubeSpawner.mem_guarantee = get_config('singleuser.memory.guarantee')

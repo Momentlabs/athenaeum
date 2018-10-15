@@ -56,6 +56,7 @@ heritage: {{ .Release.Service }}
 {{- /*
      athenaeum.labels
      Defines a set of default labels: (app, chart, heritage, component, release).
+     TODO: Consider how to handle heritage.
 */}}
 {{- define "athenaeum.labels" -}}
 {{ include "athenaeum.common_labels" . }}
@@ -66,7 +67,7 @@ heritage: {{ .Release.Service }}
      athenaeum.service.selector
      Defines the labels we use to select a service, making allowance
      for the hub to be the deployment/pod that also contains the proxy.
-     Note: the line with the if does NOT want an initial white space from the
+     Note: the line with the if does NOT want an initial white space remocal from the
      previous values.
 */}}
 {{- define "athenaeum.service.selector" -}}
@@ -76,6 +77,22 @@ component: "hub"
 {{- else -}}
 {{ include "athenaeum.component" . -}}
 {{- end -}}
+{{- end -}}
+
+{{- /*
+     athenaem.podCullerSelector
+     Defines the component label for the pod-culler
+     Essentially this means
+              component=singleuser-server
+     Note: this is used in an ENV variable in the pod-culler
+     Note: It sure looks like KubeSpawner sets the value of
+           component to "singleuser-server"
+           Thus: "component=singleuser-server"
+
+           z2jh also sets heritage and app to jupyterhub.
+*/}}
+{{- define "athenaeum.podCullerSelector" -}}
+{{ printf "%s" "component=singleuser-server" }}
 {{- end -}}
 
 {{- /* 
