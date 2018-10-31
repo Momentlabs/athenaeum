@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: notebook-auth0-5f58b8af3b20e74746f356e4c9
+spec:
+  storageClassName: ""
+  capacity:
+    storage: 10G
+  accessModes:
+    - ReadWriteOnce
+  gcePersistentDisk:
+    pdName: notebooks-auth0-5f58b8af3b20e74746f356e4c9-west1-c
+    fsType: ext4
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: claim-auth0-5f58b8af3b20e74746f356e4c9
+spec:
+  storageClassName: ""
+  volumeName: notebook-auth0-5f58b8af3b20e74746f356e4c9
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10G
+---
+

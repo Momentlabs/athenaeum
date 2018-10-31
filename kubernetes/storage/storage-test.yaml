@@ -1,0 +1,53 @@
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: notebook-test-jdr
+spec:
+  storageClassName: ""
+  capacity:
+    storage: 10G
+  accessModes:
+    - ReadWriteOnce
+  gcePersistentDisk:
+    pdName: gke-jupyterhub-d325632-pvc-1d3b7d1f-e096-11e7-928f-42010a8a0070
+    fsType: ext4
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: notebook-test-jdr-claim
+spec:
+  storageClassName: ""
+  volumeName: notebook-test-jdr
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10G
+---
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: notebook-test-jdr
+spec:
+  replicas: 1
+  selector:
+    matchLabels: 
+      app: kuard
+  template:
+    metadata:
+      labels:
+        app: kuard
+    spec:
+      volumes:
+        - name: notebook-test-jdr-volume
+          persistentVolumeClaim:
+            claimName: notebook-test-jdr-claim
+      containers:
+        - name: notebook-test-jdr
+          image: gcr.io/kuar-demo/kuard-amd64:1
+          volumeMounts:
+          - name: notebook-test-jdr-volume
+            mountPath: /notebooks
+
