@@ -38,6 +38,7 @@ hub:
       oauth_callback_url:
       client_redirect_base_url:
   spawner:
+    environment:
     spawner_class: kubespawner.KubeSpawner
     extra_labels:
       notebook_user: "{username}"
