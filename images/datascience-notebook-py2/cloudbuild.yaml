@@ -1,0 +1,20 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/$_IMAGE', '$_DOCKERFILE']
+  env:
+  - 'BUILD_NAME=$_IMAGE Docker Image Build'
+  - 'BRANCH_NAME=${BRANCH_NAME}'
+  - 'REPO_NAME=${REPO_NAME}'
+  - 'BUILD_DESCRIPTION=Image build for `${_IMAGE}` and push to container repository gcr.io/$PROJECT_ID'
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'tag', 'gcr.io/$PROJECT_ID/${_IMAGE}', 'gcr.io/$PROJECT_ID/$_IMAGE:$BRANCH_NAME' ]
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'tag', 'gcr.io/$PROJECT_ID/${_IMAGE}', 'gcr.io/$PROJECT_ID/$_IMAGE:$SHORT_SHA' ]
+images:
+- 'gcr.io/$PROJECT_ID/$_IMAGE'
+- 'gcr.io/$PROJECT_ID/$_IMAGE:$BRANCH_NAME'
+- 'gcr.io/$PROJECT_ID/$_IMAGE:$SHORT_SHA'
+substitutions:
+  _DOCKERFILE: images/datascience-notebook-py2
+  _IMAGE: datascience-notebook-py2
+
