@@ -238,8 +238,6 @@ c.KubeSpawner.volume_mounts = [{
 c.KubeSpawner.image_pull_policy = config.hub.spawner.image_pull_policy
 
 
-
-
 # This is a value that essentially obviate the need for the
 # values directly below
 c.KubeSpawner.profile_list = config.hub.spawner.profile_list
@@ -247,7 +245,7 @@ c.KubeSpawner.profile_list = config.hub.spawner.profile_list
 c.KubeSpawner.image_spec = config.hub.spawner.image_spec
 
 
-# c.KubeSpawner.cmd = config.hub.spawner.cmd
+c.KubeSpawner.cmd = config.hub.spawner.cmd
 # c.KubeSpawner.args = config.hub.spawner.args
 c.KubeSpanwer.environment = config.hub.spawner.environment
 

@@ -9,12 +9,12 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'tag', 'gcr.io/$PROJECT_ID/${_IMAGE}', 'gcr.io/$PROJECT_ID/$_IMAGE:$BRANCH_NAME' ]
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'tag', 'gcr.io/$PROJECT_ID/{_IMAGE}', 'gcr.io/$PROJECT_ID/$_IMAGE:$SHORT_SHA' ]
+  args: [ 'tag', 'gcr.io/$PROJECT_ID/${_IMAGE}', 'gcr.io/$PROJECT_ID/$_IMAGE:$SHORT_SHA' ]
 images:
 - 'gcr.io/$PROJECT_ID/$_IMAGE'
 - 'gcr.io/$PROJECT_ID/$_IMAGE:$BRANCH_NAME'
 - 'gcr.io/$PROJECT_ID/$_IMAGE:$SHORT_SHA'
 substitutions:
-  _DOCKERFILE: images/<IMAGE_DIR>
-  _IMAGE: <IMAGE_NAME>
+  _DOCKERFILE: REPLACE ME e.g. images/athenaeum-hub
+  _IMAGE: REPLACE ME e.g. athenaem-hub
 
