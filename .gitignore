@@ -1,2 +1,3 @@
 .vscode/
 deploy/**/values.yaml
+**/account.json

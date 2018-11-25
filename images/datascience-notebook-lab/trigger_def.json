@@ -1,0 +1,13 @@
+{
+  "description": "Image-build-dsn-lab",
+  "triggerTemplate": {
+    "repoName": "github-momentlabs-athenaeum",
+    "branchName": "staging|master",
+    "projectId": "momentlabs-jupyter"
+  },
+  "includedFiles": [
+    "images/datascience-notebook-lab/Dockerfile",
+    "images/datascience-notebook-lab/cloudbuild.yaml"
+  ], 
+  "filename": "images/datascience-notebook-lab/cloudbuild.yaml"
+}
