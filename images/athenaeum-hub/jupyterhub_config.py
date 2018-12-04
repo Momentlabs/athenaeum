@@ -3,6 +3,7 @@
 
 import os
 import sys
+import json
 import yaml
 
 
@@ -13,16 +14,34 @@ import yaml
 
 # Useful to report out.
 # It looks like, to do this 'right', I'd have to get and
-# configure a Logger.
-# and while I'm at it configure a formatter for JSON logs.
+# configure a Logger, and create or use a JSON formatter.
+# Obviously the 'right' thing to do is do that and
+# embedded it into JupyterHub logging.
 debug = True
-def log_debug(mesg):
+defaultDebugDict = {
+    "application": "JupyterHub"
+}
+def log_debug(mesg, extraDict=dict()):
     if debug:
-        print("{message: \"%s\"}".format(mesg), file=sys.stderr)
+        d = dict()
+        d.update(defaultDebugDict)
+        d['message'] = mesg
+        d.update(extraDict)
+        print("{}".format(json.dumps(d)), file=sys.stderr)
+
 
 #
 # Dynamic Configuration
 #
+
+log_debug("Starting configuraiton", {
+    "imageBuild":  {
+        "repoName": os.getenv("REPO_NAME"),
+        "branchName": os.getenv("BRANCH_NAME"),
+        "commitSHA": os.getenv("COMMIT_SHA"),
+        "tag": os.getenv("TAG_NAME")
+    }
+})
 
 # Want to access the YAML as attributes on an object.
 # We could argue that this is too much magic ....
@@ -69,12 +88,9 @@ try:
 except FileNotFoundError:
     log_debug("Couldn't find the configuration file: {}".config_path)
 
+debug = config.hub.debug
 log_debug("Dynamic configuration input: {}".format(config))
 log_debug("{}".format(config))
-
-# TODO: Remove this in favor of os.getenv()
-def get_env(env_key, default=None):
-    return os.environ[env_key] if env_key in os.environ else default
 
 def pod_service_vars(service_name):
     n = service_name.upper().replace('-','_')
@@ -83,19 +99,14 @@ def pod_service_vars(service_name):
 def pod_service_url(service_name):
     (host_env, port_env) = pod_service_vars(service_name)
     log_debug("Looking for environment variables: {} and {}".format(host_env, port_env))
-    service_host = get_env(host_env)
-    service_port = get_env(port_env)
+    service_host = os.getenv(host_env)
+    service_port = os.getenv(port_env)
     service_url = "http://{}:{}".format(service_host, service_port)
     if service_host and service_port:
         log_debug("Created service url for {} => {}".format(service_name, service_url))
     else:
         log_debug("ERROR: SERVICE environment variable(s) not set. host: {} port:{}, bad URL: {}".format(service_host, service_port, service_url))
     return service_url
-
-debug = config.hub.debug
-def log_debug(mesg):
-    if debug:
-        print(mesg, file=sys.stderr)
 
 
 ####
@@ -104,8 +115,6 @@ def log_debug(mesg):
 #
 ###
 
-log_debug("Configuration startup.")
-# log_debug("Environment: {}".format(os.environ))
 
 # How much commuication in the logs?
 if config.hub.debug:

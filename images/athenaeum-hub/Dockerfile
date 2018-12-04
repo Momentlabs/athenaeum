@@ -32,5 +32,15 @@ RUN adduser \
 # USER ${NB_USER}
 ADD jupyterhub_config.py ${CONFIG_PATH}/jupyterhub_config.py
 
+# jupyterhub_config uses these to log them.
+ARG COMMIT_SHA
+ENV COMMIT_SHA $COMMIT_SHA
+ARG REPO_NAME
+ENV REPO_NAM $REPO_NAME
+ARG BRANCH_NAME
+ENV BRANCH_NAME $BRANCH_NAME
+ARG VERSION
+ENV TAG_NAME ${TAG_NAME}
+
 ENTRYPOINT ["jupyterhub"] 
 CMD ["--debug", "--config", "/srv/jupyterhub_config.py"]
