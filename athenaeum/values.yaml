@@ -38,6 +38,8 @@ hub:
       oauth_callback_url:
       client_redirect_base_url:
   spawner:
+    cmd:
+    args:
     environment:
     spawner_class: kubespawner.KubeSpawner
     extra_labels:

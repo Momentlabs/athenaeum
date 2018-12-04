@@ -134,6 +134,10 @@ else:
     raise ValueError("Unhandled auth type: {} with class: {}", auth_type, auth_class)
 log_debug("Authentication class: {}".format(auth_class))
 
+# Admin access
+c.JupyterHub.admin_access = config.hub.admin_access
+c.Authenticator.admin_users = set(config.hub.auth.admin_users)
+
 
 ##
 # Spawning Notebook Severs
