@@ -14,10 +14,11 @@ import yaml
 # Useful to report out.
 # It looks like, to do this 'right', I'd have to get and
 # configure a Logger.
+# and while I'm at it configure a formatter for JSON logs.
 debug = True
 def log_debug(mesg):
     if debug:
-        print(mesg, file=sys.stderr)
+        print("{message: \"%s\"}".format(mesg), file=sys.stderr)
 
 #
 # Dynamic Configuration
@@ -69,6 +70,7 @@ except FileNotFoundError:
     log_debug("Couldn't find the configuration file: {}".config_path)
 
 log_debug("Dynamic configuration input: {}".format(config))
+log_debug("{}".format(config))
 
 # TODO: Remove this in favor of os.getenv()
 def get_env(env_key, default=None):
