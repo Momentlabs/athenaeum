@@ -9,4 +9,4 @@ pycurl==7.43.0
 mwoauth==0.3.2
 globus_sdk[jwt]==1.2.1
 cryptography==2.0.3
-jupyterhub-kubespawner==0.8.1
+jupyterhub-kubespawner==0.12.0
